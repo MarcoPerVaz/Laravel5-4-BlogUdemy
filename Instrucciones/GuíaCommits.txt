@@ -3,3 +3,11 @@ Commit - Creación del proyecto Laravel5-4_BlogUdemy
 Commit - Se crea la carpeta Instrucciones
   -Se crea el archivo Instalación.txt
   -Se crea el archivo GuíaCommits.txt
+Commit - Integrando la plantilla Zendero al proyecto Laravel5-4_BlogUdemy
+  -Se copian las carpetas css, img y js de la carpeta descargada(Zendero) y se pegan en public/ del proyecto Laravel5-4_BlogUdemy
+  -Se copia el contenido del archivo index.html de la carpeta descargada(Zendero) y se pega en la vista welcome.blade.php
+  -Se edita la vista welcome quitando las partes que se usarán en todas las vistas y se pasa a la vista layout.blade.php
+    -Se usan las directivas (@extends y @section) para vincular la vista con layout.blade.php
+  -Se crea la vista layout.blade.php
+    -Esta vista tendrá todo lo que se repite(head, header y footer) y las demás vistas solo agregarán el contenido del post
+    -Se edita la vista layout usando la directiva (yield) para vincular con la directiva section
