@@ -36,3 +36,12 @@ Commit - Creando la tabla posts y BD
     $table->text('body');
     $table->timestamp('published_at')->nullable();
   -Se usa el comando php artisan migrate
+Commit - Mostrando los posts desde la BD
+  -Se crean 2 campos manualmente en la tabla Posts en la BD
+    -Mi primer post -- Extracto de mi primer post -- <p>Contenido de mi primer post</p>
+  -Se crea una ruta de prueba en web.php
+  -Se edita la ruta por defecto en web.php
+  -Se edita la vista welcome.blade.php para mostrar los Posts que fueron agregados manualmente
+    Nota: Se dejaron entre comentarios los posts que no se usan todavía
+    -Se edita el post con la clase post no-image
+      -Se usa la directiva @foreach ($posts as $post) para mostrar todos los posts
