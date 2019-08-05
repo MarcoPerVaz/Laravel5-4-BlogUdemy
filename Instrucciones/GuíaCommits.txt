@@ -51,3 +51,21 @@ Commit - Mostrando la fecha de publicación de los posts
   -Se edita la vista welcome para mostrar la fecha
     <span class="c-gray-1">{{ $post->published_at->format('M d') }}</span>
 		<span class="c-gray-1">{{ $post->published_at->diffForHumans() }}</span>
+Commit - Creando las categorías
+  -Se usa el comando php artisan make:model Category -m para crear el modelo Category con su migración
+  -Se edita la migración create_categories_table para agregar el campo name
+    -$table->string('name');
+  -Se usa el comando php artisan migrate
+  -Se crea la función category en el modelo Post que tendrá la relación belongsTo() - uno a muchos
+    -return $this->belongsTo(Category::class);
+  -Se edita la migración create_posts_table para agregar el campo category_id después del campo published_at
+    -$table->unsignedInteger('category_id');
+  -Se usa el comando php artisan migrate:refresh para rehacer las tablas de la BD
+  -Se vuelven a crear 2 registros manualmente en la BD en la tabla posts y 2 categorías en la tabla categories
+    -Mi primer post--Extracto de mi primer post--<p>Contenido de mi primer post</p>--2019-08-05 13:17:57--2--2019-08-05 13:18:02--2019-08-05 13:18:03"
+    -Mi segundo post--Extracto de mi segundo post--<p>Contenido de mi segundo post</p>--2019-08-05 13:17:57--1--2019-08-05 13:18:02--2019-08-05 13:18:03"
+    -Categoría 1
+    -Categoría 2
+  -Se edita la vista welcome para mostrar la categoría usando la relación belongsTo
+    -$post->category->name
+      -Dónde $post es la variable del foreach, category es la función con belongsTo y name es el campo de la tabla categories
