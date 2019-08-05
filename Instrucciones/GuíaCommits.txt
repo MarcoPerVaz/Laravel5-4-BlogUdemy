@@ -45,3 +45,9 @@ Commit - Mostrando los posts desde la BD
     Nota: Se dejaron entre comentarios los posts que no se usan todavía
     -Se edita el post con la clase post no-image
       -Se usa la directiva @foreach ($posts as $post) para mostrar todos los posts
+Commit - Mostrando la fecha de publicación de los posts
+   -Se edita el modelo Post agregando
+    -protected $dates = ['published_at']; para decir que el campo published_at también sea una instancia de carbon la librería
+  -Se edita la vista welcome para mostrar la fecha
+    <span class="c-gray-1">{{ $post->published_at->format('M d') }}</span>
+		<span class="c-gray-1">{{ $post->published_at->diffForHumans() }}</span>
