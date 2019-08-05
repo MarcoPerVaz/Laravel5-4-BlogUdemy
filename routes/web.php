@@ -17,7 +17,7 @@ Route::get('/', function () {
     $posts = App\Post::latest('published_at')->get();//Lama a todos los posts de forma descendente
     return view('welcome', compact('posts'));
 });
-// Ruta de prueba
-Route::get('posts', function () {
-    return App\Post::all();
+// Ruta admin
+Route::get('admin', function () {
+    return view('admin.dashboard');
 });

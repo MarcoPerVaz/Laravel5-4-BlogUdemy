@@ -110,3 +110,16 @@ Commit - Creando las etiquetas
     -@foreach ($post->tags as $tag)
       -#{{ $tag->name }}
     -@endforeach
+Commit - Integrando plantilla de administración AdminLTE
+   -Se descarga la plantilla de AdminLTE 2.3.11 desde el sitio
+    -https://github.com/ColorlibHQ/AdminLTE/releases/tag/v2.3.11
+  -Se crea la carpeta adminlte en public/
+    -Se copian dentro, las carpetas dist/css, dist/img, dist/js, bootstrap y plugins del archivo original al proyecto laravel5.4-BlogUdemy
+  -Se crea la carpeta admin en resources/views/ y dentro el archivo layout.blade.php
+  -Se copia el contenido del archivo starter.html y se pega en la vista layout.blade.php
+  -Se edita la vista admin/layout.blade.php para modificar los href de la vista layout.blade.php para que apunten a la carpeta /adminlte/
+    -En el apartado Main Content se agrega la directiva @yield('content')
+  -Se crea la vista dashboard.blade.php dentro de la carpeta admin en resources/views/
+  -Se edita el archivo web.php
+    -Se elimina la ruta de prueba
+    -Se crea la ruta admin 
