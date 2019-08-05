@@ -13,4 +13,10 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class); //Para poder usar $post->category->name
     }
+
+    // Relación Muchos a Muchos - belongsToMany
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

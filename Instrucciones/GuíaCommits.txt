@@ -82,3 +82,31 @@ Commit - Implementando Seeders
   -Se usa el comando php artisan migrate:refresh para probar los seeds
   -Se usa el comando php artisan db:seed para llenar con información desde los seeders
     Nota: También se puede usar php artisan migrate:refresh --seed para refrescar las tablas y agregar los seeds
+Commit - Creando las etiquetas
+  -Se crea el modelo Tag con su migración usando el comando php artisan make:model Tag -m
+    -Se edita la migración create_tags_table agregando el campo name
+      -$table->string('name');
+  -Se usa el comando php artisan migrate
+  -Se crea la migración create_post_tag_table que guardará la relación belongsToMany entre posts y tags
+    -php artisan make:migration create_post_tag_table --create=post_tag
+      -Se agregan los campos para guardar los id's de la posts Post y la tabla tags
+        $table->unsignedInteger('post_id');
+        $table->unsignedInteger('tag_id');
+  -Se usa el comando php artisan migrate
+  -Se crean 2 registros manualmente en la BD para crear etiquetas
+    -Etiqueta 1
+    -Etiqueta 2
+  -Se crean relaciones entre etiquetas y posts colocando los id's correspondientes de forma manual en la tabla post_tag de la BD
+    -1 -- 1 .. dónde 1 es el id del post y 1 es el id del tag
+    -1 -- 2 .. dónde 1 es el id del post y 2 es el id del tag
+    -2 -- 1 .. dónde 2 es el id del post y 1 es el id del tag
+    -3 -- 2 .. dónde 3 es el id del post y 2 es el id del tag
+    -4 -- 1 .. dónde 4 es el id del post y 1 es el id del tag
+    -4 -- 2 .. dónde 4 es el id del post y 2 es el id del tag
+    -5 -- 1 .. dónde 5 es el id del post y 1 es el id del tag
+  -Se crea la función tags en el modelo Post para hacer la relación muchos a muchos(belongsToMany)
+    - return $this->belongsToMany(Tag::class);
+  -Se edita la vista welcome.blade.php para mostrar las etiquetas
+    -@foreach ($post->tags as $tag)
+      -#{{ $tag->name }}
+    -@endforeach
