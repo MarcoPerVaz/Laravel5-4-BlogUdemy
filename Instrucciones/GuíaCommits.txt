@@ -11,3 +11,28 @@ Commit - Integrando la plantilla Zendero al proyecto Laravel5-4_BlogUdemy
   -Se crea la vista layout.blade.php
     -Esta vista tendrá todo lo que se repite(head, header y footer) y las demás vistas solo agregarán el contenido del post
     -Se edita la vista layout usando la directiva (yield) para vincular con la directiva section
+Commit - Creando la tabla posts y BD
+  -Se modifica el archivo .env
+    APP_URL=https://laravel5-4_blogudemy.it/
+    DB_DATABASE=laravel54blogudemy
+    DB_USERNAME=root
+    DB_PASSWORD=
+    -La base de datos se creó desde consola
+      -se usa el comando mysql -uroot
+      -CREATE DATABASE laravel54blogudemy;
+  -Se usa el comando php artisan migrate
+  -Error si se usa MariaDB : Specified key was too long; max key length es 767 bytes
+    -Solución: Ir a app/Providers/appServiceProvider.php
+      -En la función boot agregar:
+        -Schema::defaultStringLength(191);
+        Nota: Importar el Facade 
+          -use Illuminate\Support\Facades\Schema;
+    Nota: Solo si hubo el error se vuelve a usar el comando php artisan migrate
+  -Se usa el comando php artisan make:model Post -m para crear un modelo con su migración
+    -Dónde Post es el nombre del modelo, m es migración
+  -Se edita la migración create_posts_table agregando los campos
+    $table->string('title');
+    $table->mediumText('excerpt');
+    $table->text('body');
+    $table->timestamp('published_at')->nullable();
+  -Se usa el comando php artisan migrate
