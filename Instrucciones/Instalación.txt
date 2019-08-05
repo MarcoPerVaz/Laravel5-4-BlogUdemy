@@ -1,0 +1,7 @@
+Instalación del Proyecto Laravel5-4_BlogUdemy
+  -Clonar el proyecto
+  -Usar el comando composer install
+  -Copiar el archivo .env-example, cambiarle el nombre a .env 
+    -Editarlo
+  -Usar el comando php artisan key:generate 
+  -Listo

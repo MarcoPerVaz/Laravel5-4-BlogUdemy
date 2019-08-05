@@ -1,0 +1,5 @@
+Commit - Creación del proyecto Laravel5-4_BlogUdemy
+  -composer create-project --prefer-dist laravel/laravel Laravel5-4_BlogUdemy "5.4.*"
+Commit - Se crea la carpeta Instrucciones
+  -Se crea el archivo Instalación.txt
+  -Se crea el archivo GuíaCommits.txt
