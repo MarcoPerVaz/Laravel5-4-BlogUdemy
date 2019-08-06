@@ -217,3 +217,12 @@ Commit - Reestructuración de código y activación de links
     -Esto: Route::get('home', 'AdminController@index'); por esto: Route::get('/', 'AdminController@index');
     -Se le da un nombre a la ruta Route::get('/', 'AdminController@index')->name('dashboard');
   -Se edita el partial nav.blade.php modificando los href y clase active para la activación de los links del menú navegación iquierdo
+Commit - Creación del formulario para crear posts
+  -Se crea la función create en PostsController
+  -Se edita los href /admin/nav.blade.php para vincular ahacía vistas usando el herlper route('')
+    -Se le agrega admin/posts* para mantener la barra de navegación desplegada {{ request()->is('admin/posts*') ?  'active' : '' }}
+  -Se crea la ruta create en el grupo de rutas de admin
+    -Route::get('posts/create', 'PostsController@create')->name('admin.posts.create');
+  -Se crea y se edita la vista admin/posts/create.blade.php
+  -Se edita la vista nav.blade.php para activar el link de navegación crear un post
+  -Se editan los href de section header en los partials index.blade.php y  create.blade.php
