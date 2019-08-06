@@ -202,3 +202,18 @@ Commit - Mostrando los posts en admin con Datatables
     -Se extiende de layout
     -Contiene 2 section(header y content)
     -Se edita el datatable para mostrar los posts y sus botones de edición y eliminación
+Commit - Reestructuración de código y activación de links
+  -Se edita el LoginController cambiando el redirect de /home a /admin
+  -Se edita el middleware RedirectIfAuthenticated.php cambiando el redirect de /home a /admin
+  -Se edita el nombre del controlador HomeController por AdminController
+    -Se le cambia el nombre al archivo de HomeController.php por AdminController.php
+    -Se cambia el nombre de class HomeController por class AdminController dentro del controlador
+  -Se mueve el controlador AdminController a dentro de la carpeta Admin/
+    -Edita el namespace del controlador AdminController
+      -Esto: namespace App\Http\Controllers; por esto: namespace App\Http\Controllers\Admin; porque está dentro de la carpeta Admin
+      Nota: Importar use App\Http\Controllers\Controller;
+  -Se mueve la ruta admin a dentro del grupo de rutas Rutas para los posts si se está logueado
+  -Se edita la ruta admin 
+    -Esto: Route::get('home', 'AdminController@index'); por esto: Route::get('/', 'AdminController@index');
+    -Se le da un nombre a la ruta Route::get('/', 'AdminController@index')->name('dashboard');
+  -Se edita el partial nav.blade.php modificando los href y clase active para la activación de los links del menú navegación iquierdo

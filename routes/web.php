@@ -13,8 +13,6 @@
 
 // Ruta por defecto
 Route::get('/', 'PagesController@home');
-// Ruta admin
-Route::get('home', 'HomeController@index');
 
 // Rutas para los posts si se está logueado
 Route::group([
@@ -22,6 +20,7 @@ Route::group([
   'namespace' => 'Admin', 
   'middleware' => 'auth'], 
   function(){
+    Route::get('/', 'AdminController@index')->name('dashboard');
     Route::get('posts', 'PostsController@index')->name('admin.posts.index');
 });
 
