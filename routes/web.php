@@ -12,15 +12,18 @@
 */
 
 // Ruta por defecto
-Route::get('/', function () {
-    $posts = App\Post::all();//Lama a todos los posts
-    $posts = App\Post::latest('published_at')->get();//Lama a todos los posts de forma descendente
-    return view('welcome', compact('posts'));
-});
+Route::get('/', 'PagesController@home');
 // Ruta admin
-Route::get('home', function () {
-    return view('admin.dashboard');
-})->middleware('auth');
+Route::get('home', 'HomeController@index');
+
+// Rutas para los posts si se está logueado
+Route::group([
+  'prefix' => 'admin', 
+  'namespace' => 'Admin', 
+  'middleware' => 'auth'], 
+  function(){
+  Route::get('posts', 'PostsController@index');
+});
 
 // Rutas de login
 

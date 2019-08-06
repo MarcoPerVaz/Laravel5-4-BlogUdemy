@@ -161,3 +161,20 @@ Commit - Integrando el login
   -Se edita la vista /admin/dashboard.blade.php
     -Poniendo <p>Usuario autenticado: {{ auth()->user()->name }}</p> para comprobar si se inicio sesión
   -Se vuelve a editar la ruta admin agregandole un middleware auth
+Commit - Personalizando el menú y utilizando controladores
+  -Se edita la vista admin/layout.blade.php
+    -Cambiando el title por  <title>{{ config('app.name') }}</title>
+    -Varios cambios extenso de documentar
+  -Se crea una carpeta llamada partials dentro de vies/admin/ y dentro el fragmento de visat nav.blade.php
+  -Se crea la carpeta posts dentro de views/admin/ para guardar todo lo relacionado con los posts y dentro la vista index.blade.php
+  -Se crea el controlador HomeController porque en mi proyecto no se genero al momento de usar el comando make:auth
+    -php artisan make:controller HomeController
+      -Se crea el constructor con el middleware auth
+      -Se crea la función index para retornar la vista admin.dashboard
+  -Se edita la ruta admin para redirigir a HomeController en su método index 
+  -Se crea el controlador PagesController con el comando php artisan make:controller PagesController encargado de listar los posts
+    -Se pasa lo que había en la ruta por defecto a la función home de PagesController
+      Nota: Importar la clase use App\Post;
+  -Se crea el controlador PostsController dentro de la carpeta Admin usando el comando php artisan make:controller Admin/PostsController
+    -Se crea la función index devolviendo la vista admin.posts.index
+  -Se crea un grupo de rutas para los posts si se está logueado 
