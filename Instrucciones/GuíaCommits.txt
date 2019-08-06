@@ -123,3 +123,41 @@ Commit - Integrando plantilla de administración AdminLTE
   -Se edita el archivo web.php
     -Se elimina la ruta de prueba
     -Se crea la ruta admin 
+Commit - Integrando el login
+  -Se usa el comando php artisan make:auth --views para generar los archivos básicos para integrar el login
+    -Dónde --views es un parámetro para solo crear las vistas de autenticación
+  Nota: Se elimina el archivo app.css en public/css/ para igualar lo que se hace en el curso(no sé en que momento se eliminó)
+  -Se copian las rutas de la función auth() que están en vendor/laravel/framework/src/Illuminate/Routing/Router.php(línea 1007)
+   y se pegan en web.php
+  -Se pone entre comentarios las rutas para Register
+    Nota: Aparece un error de que la ruta register no está definida
+    -Error: Route [register] not defined. (View: C:\laragon\www\Laravel5-4_BlogUdemy\resources\views\layouts\app.blade.php)
+    Solución: Se debe editar la vista layouts.app.blade.php
+      -Quitar la línea <li><a href="{{ route('register') }}">Register</a></li>
+  -Se elimina la carpeta layouts que viene por defecto con el comando auth porque no se va a usar
+  -Se edita la vista login en la directiva @extends para que extienda de admin.layout
+  -Al final se copia todo el contenido de la plantilla Adminlte en pages/examples/login.html 
+    -Se quitan las directivas extends y section y sin borrar nada se pega arriba porque se usará el código que generó el comando auth
+    -Se van reemplazando cosas del código de auth al código de la plantilla de adminlte(muy extenso de documentar)
+    -Se borra el código hecho por el comando auth cuando se termina de copiar al código de la plantilla admilte
+    -Se actualizan las rutas de los href 
+  -Se cambia el lenguaje de los mensajes de error
+    -En config/app.php en la variable locale cambias de 'en' por 'es'
+    -Se crea la carpeta es dentro de resources/lang 
+      -Dónde 'es' es de español
+    -Se copian los 4 archivos dentro de la siguiente url https://github.com/caouecs/Laravel-lang/tree/master/src/es
+    -Se pegan dentro de resources/lang/es
+  -Se le cambia el nombre a la aplicación desde el archivo .env en el campo APP_NAME=Zendero
+  -Se le cambia el nombre a la aplicación tambien en el archivo config/app.php
+    -Esto: 'name' => env('APP_NAME', 'Laravel'), por: 'name' => env('APP_NAME', 'Zendero'),
+  -Se agregó un usuario usando la herramienta Tinker de laravel
+    -php artisan tinker
+    -$user = new App\User
+    -$user->name = "Marco"
+    -$user->email = "admin@mail.com"
+    -$user->password = bcrypt('123456')
+    -$user->save()
+  -Se edita la ruta por admin cambiando admin por home
+  -Se edita la vista /admin/dashboard.blade.php
+    -Poniendo <p>Usuario autenticado: {{ auth()->user()->name }}</p> para comprobar si se inicio sesión
+  -Se vuelve a editar la ruta admin agregandole un middleware auth
