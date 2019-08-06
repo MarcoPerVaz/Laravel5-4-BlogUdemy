@@ -178,3 +178,27 @@ Commit - Personalizando el menú y utilizando controladores
   -Se crea el controlador PostsController dentro de la carpeta Admin usando el comando php artisan make:controller Admin/PostsController
     -Se crea la función index devolviendo la vista admin.posts.index
   -Se crea un grupo de rutas para los posts si se está logueado 
+Commit - Mostrando los posts en admin con Datatables
+  -Se edita la ruta admin en web.php
+    -Se le da un nombre a la ruta Route::get('posts', 'PostsController@index');
+      -Route::get('posts', 'PostsController@index')->name('admin.posts.idex');
+  -Se edita el partial admin/nav.blade.php agregando el href a ver todos los posts
+    -href="{{ route('admin.posts.index') }}
+  -Se edita la vista admin/layout.blade.php
+    -Se corta el contenido de section page header y se cambia por la directiva @yield('header') para poder cambiarlo dependiendo la página
+      -El header se agrega en el partial admin/posts/index.blade.php
+      -Uno para header y otro para content
+  -Para usar datatables se deben agregar los estilos y js en la vista layout.blade.php
+    -Se editan los href del css y js para que vincule bien a la carpeta adminlte/
+  -Se copia y edita el script de datatables que está al final del archivo pages/tables/data.html y se pega en la vista layout.blade.php
+  -Se copia el datatables de pages/tables/data.html y se pega en la vista layout.blade.php
+    -Se quita el contenido estático del tbody del datatable porque ahí van los posts de la BD
+    -Se agrega el foreach que recorrerá los posts
+  -Se edita la función index de PostsController para mandar los posts a la vista
+    -$posts = Post::all();
+      Nota: Importar el modelo 
+        -use App\Post;
+  -Se edita la vista admin/posts/index.blade.php
+    -Se extiende de layout
+    -Contiene 2 section(header y content)
+    -Se edita el datatable para mostrar los posts y sus botones de edición y eliminación

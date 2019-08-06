@@ -16,6 +16,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="/adminlte/plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/adminlte/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -263,14 +265,7 @@ desired effect
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Page Header
-        <small>Optional description</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
-      </ol>
+     @yield('header')
     </section>
 
     <!-- Main content -->
@@ -380,8 +375,23 @@ desired effect
 <script src="/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="/adminlte/bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/adminlte/js/app.min.js"></script>
+<script>
+  $(function () {
+    $('#posts-table').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+</script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
