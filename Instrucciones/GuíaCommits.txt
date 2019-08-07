@@ -244,3 +244,12 @@ Commit - Implementación de un selector de fechas 'datapicker'
     -Se editan los href y src de los archivos importados para tener bien las referencias
   -Se edita la función create de Admin/PostsController para mostrar todas las categorías en el select de la vista create.blade.php
     Nota: Importar el modelo use App\Category;
+Commit - Integrando un editor de contenido y un selector múltiple
+  -Se importa Ck Editor 4.6.2 dentro de la directiva push en la vista /admin/posts/create.blade.php
+    -Se implementa ck editor en la directiva @push('scripts') y se hace referencia el id con el id del textarea del html
+  -Se copia el contenido del select de adminlte/pages/forms/advanced.html y se pega en admin/posts/create.blade.php
+    -Se pega debajo de categorías
+  -Se importa Select2 dentro de la directiva push en la vista /admin/posts/create.blade.php
+    -Se editan los href y src de los archivos importados para tener bien las referencias
+  -Se edita la función create de Admin/PostsController para mostrar todos los tags en el select de la vista create.blade.php
+    Nota: Importar el modelo use App\Tag;
