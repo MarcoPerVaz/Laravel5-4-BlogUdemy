@@ -271,6 +271,10 @@ desired effect
 
     <!-- Main content -->
     <section class="content">
+      {{-- Variable de sesión flash enviada desde el controlador --}}
+      @if (session()->has('flash'))
+          <div class="alert alert-success">{{ session('flash') }}</div>
+      @endif
 
       <!-- Your Page Content Here -->
       @yield('content')

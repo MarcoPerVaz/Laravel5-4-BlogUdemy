@@ -253,3 +253,21 @@ Commit - Integrando un editor de contenido y un selector múltiple
     -Se editan los href y src de los archivos importados para tener bien las referencias
   -Se edita la función create de Admin/PostsController para mostrar todos los tags en el select de la vista create.blade.php
     Nota: Importar el modelo use App\Tag;
+Commit - Guardando las publicaciones
+  -Se edita la vista admin/posts/create.blade.php
+    -Se modifica el action y method del form
+    -Se agrega el token csrf dentro y hasta arriba de la etiqueta form
+    -Se le agrega la propiedad name="category" al elemento select de categorías
+    -Se le agrega la propiedad name al elemento select de etiquetas
+      Nota: Al ser un array la propiedad name debe ser name="tags[]"
+  -Se edita web.php para crear la ruta admin.posts.store detro del grupo de Rutas Admin para los posts si se está logueado
+  -Se edita el modelo Post para agregar la propiedad guard para que omita el error de asignación masiva
+  -Se crea y edita la función store de PostsController
+    Nota: Importar use Carbon\Carbon; si se usa la librería Carbon
+      -Despues de guardar el post y formatear el campo published_at con Carbon
+      -Se usa la relación tags que está en el modelo Post para guardar las etiquetas usando el método attach() o adjuntar en español
+      -Se regresa a la página anterior con una variable de sesión que contiene el mensaje
+  -Se edita la vista admin/layout.blade.php para agregar la variable de sesión flash enviada desde el controlador
+  Nota: Al momento de ver los posts en https://laravel5-4_blogudemy.it/ mostró un error porque en la BD había un registro con el
+        campo published_at vacío
+        -Solución Agregarle una fecha al campo published_at o eliminar el registro
