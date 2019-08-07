@@ -271,3 +271,23 @@ Commit - Guardando las publicaciones
   Nota: Al momento de ver los posts en https://laravel5-4_blogudemy.it/ mostró un error porque en la BD había un registro con el
         campo published_at vacío
         -Solución Agregarle una fecha al campo published_at o eliminar el registro
+Commit - Validando el formulario para crear posts
+  -Se edita la función create de PostsController para agregar la validación
+    -Se cambia esto: $post->published_at = Carbon::parse($request->get('published_at')); 
+    -Por esto: $post->published_at = $request->has('published_at') ?  Carbon::parse($request->get('published_at')) : null;
+    Nota: Acá hay un error, al momento de mostrar los posts en la página principal https://laravel5-4_blogudemy.it/
+          -Error: Call to a member function format() on null
+            Nota:Se debe a que guarda null en el campo published_at
+              Nota:Se soluciona más adelante en otro commit.
+  -Se edita la vista admin/posts/create.blade.php 
+    -Se muestran los errores de validación
+    -Se corrigió una palabra que estaba mal escrita en el placeholder de contenido y extracto
+    -Se corrigió que no mostraba el texto de placeholder en el extracto por el orden del elemento textarea en el html
+      -El placeholder de body no funciona por usar CkEditor, si se quita si funciona
+    -Se agrega el método old('') para que en caso de mostrar un error de validación, no se pierda la información
+      Nota: El tratamiento de old para categories y tags es diferente
+        -Para categories es: <option value="{{ $category->id }}" {{ old('category') == $category->id ? 'selected' : '' }}>
+        -Para tags es:  <option {{ collect(old('tags'))->contains($tag->id) ? 'selected' : '' }} value="{{ $tag->id }}">{{ $tag->name }}</option>
+          -Dónde collect(old('tags')) es para convertirlo en una colección
+          -Dónde contains($tag->id) es para comprobar si contiene $tag->id
+          -Dónde ? 'selected' : '' si lo contiene colocale la propiedad selected, de lo contrario no coloques nada
