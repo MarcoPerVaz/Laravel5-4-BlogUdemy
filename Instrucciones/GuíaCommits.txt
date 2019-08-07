@@ -226,3 +226,21 @@ Commit - Creación del formulario para crear posts
   -Se crea y se edita la vista admin/posts/create.blade.php
   -Se edita la vista nav.blade.php para activar el link de navegación crear un post
   -Se editan los href de section header en los partials index.blade.php y  create.blade.php
+Commit - Implementación de un selector de fechas 'datapicker'
+  -Se copia el datepicker seleccionado de adminlte/pages/forms/advanced.html y se pega en la vista create.blade.php
+  -Se edita la vista admin/layout.blade.php
+    -Se usa la directiva @stack('') para cargar archivos solo en la vista que lo necesitemos
+      -@stack('styles') para los css y para utilizar stack se usa la directiva @push en la vista donde se usen los archivos
+      -@stack('scripts') para los js y para utilizar stack se usa la directiva @push en la vista donde se usen los archivos
+  -Se edita la vista admin/create.blade.php
+    -Se usa la directiva @push('') para elegir que archivos irán en la directiva @stack
+      -Se crea la directiva @push('styles') y @push('scripts') en la vista admin/create.blade.php
+    -Se editan los href y src de los archivos importados para tener bien las referencias
+    -Se crea el select para las categorías
+    -Se crea el botón guardar
+  -Se edita la vista admin/index.blade.php
+    -Se usa la directiva @push('') para elegir que archivos irán en la directiva @stack
+      -Se crea la directiva @push('styles') y @push('scripts') en la vista admin/index.blade.php
+    -Se editan los href y src de los archivos importados para tener bien las referencias
+  -Se edita la función create de Admin/PostsController para mostrar todas las categorías en el select de la vista create.blade.php
+    Nota: Importar el modelo use App\Category;

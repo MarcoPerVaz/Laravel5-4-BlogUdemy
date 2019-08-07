@@ -32,13 +32,59 @@
         <div class="col-md-4">
             <div class="box box-primary">
                 <div class="box-body">
+                    {{-- Datapicker --}}
+                    <div class="form-group">
+                        <label>Fecha de publicación:</label>
+                        <div class="input-group date">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input name="published_at" type="text" class="form-control pull-right" id="datepicker">
+                        </div>
+                        <!-- /.input group -->
+                    </div>
+                    {{-- Fin Datapicker --}}
+                    {{-- Categories --}}
+                    <div class="form-group">
+                        <label for="">Categorías</label>
+                        <select name="" id="" class="form-control">
+                            <option value="">Selecciona una categoría</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    {{-- Fin Categories --}}
+                    {{-- Extracto --}}
                     <div class="form-group">
                         <label for="">Extracto de la publicación</label>
                         <textarea name="excerpt" placeholder="Ingresa un extracto de la publicaicón" class="form-control"></textarea>
                     </div>
+                    {{-- Fin Extracto --}}
+                    {{-- Botón Guardar --}}
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Guardar Publicación</button>
+                    </div>
+                    {{-- Fin Botón Guardar --}}
                 </div>
             </div>
         </div>
     </form>
 </div>
 @endsection
+
+@push('styles')
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="/adminlte/plugins/datepicker/datepicker3.css">
+@endpush
+
+@push('scripts')
+    <!-- bootstrap datepicker -->
+    <script src="/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script>
+        //Date picker
+        $('#datepicker').datepicker({
+        autoclose: true
+        });
+    </script>
+@endpush
