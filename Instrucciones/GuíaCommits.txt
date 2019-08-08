@@ -306,3 +306,31 @@ Commit - Query scopes
   -Se crea un query scope llamado scopePublished() en el modelo Post para sustituir la búsqueda de los posts que se hace en PagesController
     Nota: Importar la librería carbon 
       -use Carbon\Carbon;
+Commit - Mostrando los posts individuales
+  -Se edita la vista welcome.blade.php
+    -Se edita el href junto con el texto para vincular al post individual
+  -Se crea el controlador PostsController que es diferente a admin/PostsController
+    -Este controlador servirá para cuando no es admin
+      -php artisan make:controller PostsController
+    -Se crea la función show en PostsController
+  -Se crea la carpeta posts en resources/views y dentro la vista show.blade.php
+    -Se edita la vista show.blade.php
+      -Se copia contenido de la plantilla Zendero del archivo single-post.html
+        -Es extenso de documentar
+    -Esta vista es para mostrar los posts individuales sin ser admin
+    -Se corta el contenido de disqus que está entre la etiqueta script
+      -Se crea la carpeta partials en resources/views para guardar archivos de terceros
+        -Dentro se crea el archivo disqus-script.blade.php
+          -Aquí se pega el contenido del script cortando anteriormente
+    -Se usa la directiva @include('disqus-script') para agregar disqus a la vista show.blade.php
+    -Se reemplaza el contenido estático por contenido de la BD
+      -Demasiados cambios como para documentar
+    -Se edita la función show de PostsController para vincular la vista con el contenido de la BD
+      -$post = Post::find($id);
+      Nota: Importar el modelo
+        -use App\Post;
+  Nota: Al mostrar el post individual hubo un error en los estilos por lo que no se mostraban
+  -Se edita la vista layout.blade.php
+    -Solución: A los estilos se les agregó un barra diagonal '/' a los href
+    -Se agrega la directiva @stack('scripts') para vincular los css
+    -Se edita el href de home del menú principal

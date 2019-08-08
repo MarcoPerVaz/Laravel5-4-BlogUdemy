@@ -13,6 +13,7 @@
 
 // Ruta por defecto
 Route::get('/', 'PagesController@home');
+Route::get('blog/{id}', 'PostsController@show');
 
 // Rutas Admin para los posts si se está logueado
 Route::group([
