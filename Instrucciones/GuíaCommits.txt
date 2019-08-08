@@ -370,3 +370,18 @@ Commit - Título y descripción para SEO
   -Se edita la vista /posts/show.blade.php para cambiar el atributo meta-title
     -@section('meta-title', $post->title)
     -@section('meta-description', $post->excerpt)
+Commit - Social links
+  -Se edita el archivo public/styles.css
+    -Se agrega estilos a los botones de redes sociales
+  -Se edita la vista posts/show.blade.php
+    -Se comodan los botones de redes sociales
+    Nota: Al momento de crear este proyecto Google+ ya no está disponible pero se mantiene el link para fines prácticos
+    -Se editan los href de los links de redes sociales
+    Nota:Tuve un error por la url del proyecto, pero funciona correctamente con la url sin carácteres especiales
+    -Funciona: https://blogudemy1.it/blog/mi-cuarto-post
+    -No funciona: https://laravel5-4_blogudemy.it/blog/mi-quinto-post
+    -Se corta los links de redes sociales y se pega en el partial partials/social-links.blade.php
+  -Se crea el partial social-links.blade.php dentro de la carpeta resources/views/partials/
+    -Se edita para que el partial sea reutilizable y no dependa de variables pasadas a través del controlador 
+      -@include('partials.social-links', ['description' => $post->title])
+    -Se pega el contenido cortado de la vista posts/show.blade.php

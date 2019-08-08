@@ -266,7 +266,21 @@ a.btn-bar{
           top: 18px;
           right: 7px;
           
-      }
+			}
+			
+			/* Laravel5.4 BlogUdemy */
+			.buttons-social-media-share {
+				margin-bottom: 20px;
+			}
+			.buttons-social-media-share .share-buttons {
+				padding: 0; margin: 0;
+			}
+			.buttons-social-media-share .share-buttons li{
+				list-style: none;
+				float: left;
+				margin-right: 10px;
+			}
+			/*  */
       
       
 
