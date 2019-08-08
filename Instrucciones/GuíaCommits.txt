@@ -291,3 +291,18 @@ Commit - Validando el formulario para crear posts
           -Dónde collect(old('tags')) es para convertirlo en una colección
           -Dónde contains($tag->id) es para comprobar si contiene $tag->id
           -Dónde ? 'selected' : '' si lo contiene colocale la propiedad selected, de lo contrario no coloques nada
+Commit - Query scopes
+  -Se edita la función home de PagesController para no mostrar los posts sin fecha de publicación(published_at) o futuros
+    Nota: Importar la librería carbon 
+      -use Carbon\Carbon;
+      Nota: Si la consulta SQL se pasa a un query scope y no se usa la librería carbon en el controlador, se puede quitar la referencia a carbon
+        -Quitar: use Carbon\Carbon;
+    Nota: Se soluciona el error al momento de mostrar los posts en la página principal https://laravel5-4_blogudemy.it/
+      -Error: Call to a member function format() on null
+        Nota:Se debe a que guarda null en el campo published_at
+    -Se usa el query scope en la función home
+      -$posts = Post::published()->get();
+        -Dónde published() es la scope scopePublished creado en el modelo Post
+  -Se crea un query scope llamado scopePublished() en el modelo Post para sustituir la búsqueda de los posts que se hace en PagesController
+    Nota: Importar la librería carbon 
+      -use Carbon\Carbon;
