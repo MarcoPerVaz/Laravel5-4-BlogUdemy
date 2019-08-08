@@ -11,6 +11,12 @@ class Post extends Model
     protected $guarded = [];
     protected $dates = ['published_at'];
 
+    // Route Model Binding | Usar otro campo que no sea id en la url
+    public function getRouteKeyName()
+    {
+        return 'url';
+    }
+
     // Relación Uno a Muchos - belongsTo
     public function category()
     {

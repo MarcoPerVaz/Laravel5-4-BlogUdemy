@@ -28,6 +28,7 @@ class PostsTableSeeder extends Seeder
         // Primer post
         $post = new Post;
         $post->title = "Mi primer post";
+        $post->url = str_slug("Mi primer post");
         $post->excerpt = "Extracto de mi primer post";
         $post->body = "<p>Contenido de mi primer post</p>";
         $post->published_at = Carbon::now()->subDays(4); //del día cuando fue creado 4 días antes
@@ -36,6 +37,7 @@ class PostsTableSeeder extends Seeder
         // Segundo post
         $post = new Post;
         $post->title = "Mi segundo post";
+        $post->url = str_slug("Mi segundo post");
         $post->excerpt = "Extracto de mi segundo post";
         $post->body = "<p>Contenido de mi segundo post</p>";
         $post->published_at = Carbon::now()->subDays(3); //del día cuando fue creado 3 días antes
@@ -44,6 +46,7 @@ class PostsTableSeeder extends Seeder
         // Tercer post
         $post = new Post;
         $post->title = "Mi tercer post";
+        $post->url = str_slug("Mi tercer post");
         $post->excerpt = "Extracto de mi tercer post";
         $post->body = "<p>Contenido de mi tercer post</p>";
         $post->published_at = Carbon::now()->subDays(2); //del día cuando fue creado 2 días antes
@@ -52,6 +55,7 @@ class PostsTableSeeder extends Seeder
         // Cuarto post
         $post = new Post;
         $post->title = "Mi cuarto post";
+        $post->url = str_slug("Mi cuarto post");
         $post->excerpt = "Extracto de mi cuarto post";
         $post->body = "<p>Contenido de mi cuarto post</p>";
         $post->published_at = Carbon::now()->subDays(1); //del día cuando fue creado 1 día antes
@@ -60,6 +64,7 @@ class PostsTableSeeder extends Seeder
         // Quinto post
         $post = new Post;
         $post->title = "Mi quinto post";
+        $post->url = str_slug("Mi quinto post");
         $post->excerpt = "Extracto de mi quinto post";
         $post->body = "<p>Contenido de mi quinto post</p>";
         $post->published_at = Carbon::now(); //del día cuando fue creado

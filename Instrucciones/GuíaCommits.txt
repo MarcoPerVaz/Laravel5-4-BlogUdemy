@@ -334,3 +334,30 @@ Commit - Mostrando los posts individuales
     -Solución: A los estilos se les agregó un barra diagonal '/' a los href
     -Se agrega la directiva @stack('scripts') para vincular los css
     -Se edita el href de home del menú principal
+Commit - Generando url's amigables
+  -Se arregla un error con imágenes que no se mostraban en la vista posts/show.blade.php
+    -Se copia la carpeta flat_web_icon_set que está en la plantilla Zendero/img y se pega en public/ del proyecto
+  -Se edita la función show de PostsController para implementar Model Binding
+  -Se edita web.php
+    -Esto: Route::get('blog/{id}', 'PostsController@show'); por esto: Route::get('blog/{post}', 'PostsController@show');
+  -Se crea la función getRouteKeyName() en el modelo Post para sobreescribir la función y que pueda mostrar otro campo diferente a id
+  Nota: Para que en lugar de ver el id en la url se vea algún otro campo
+  -Se crea un nuevo campo en la migración create_posts_table
+    -$table->string('url');
+  -Se usa el comando php artisan migrate:refresh --seed
+  -Acá hubo un error ya que el campo url no tiene un valor por defecto
+    -Se edita el seed PostsTableSeeder para darle un valor por defecto al campo url al crear el seed
+      -Ejemplo: $post->url = str_slug("Mi primer post");
+  -Se edita el href de Leer más de la vista welcome.blade.php 
+    -Se cambia $post->id por $post->url
+  -Se crea un usuario usando Tinker
+    -php artisan tinker
+    -$user = new App\User;
+    -$user->name = "Marco"
+    -$user->email = "admin@mail.com"
+    -$user->password = bcrypt('123456')
+    -$user->save()
+    -exit
+  -Se edita la función create de Admin/PostsController
+    -Se agrega: $post->url = str_slug($request->get('title'));
+  -Se crean 2 etiquetas manualmente desde la BD
