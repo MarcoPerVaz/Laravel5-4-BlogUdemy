@@ -361,3 +361,12 @@ Commit - Generando url's amigables
   -Se edita la función create de Admin/PostsController
     -Se agrega: $post->url = str_slug($request->get('title'));
   -Se crean 2 etiquetas manualmente desde la BD
+Commit - Título y descripción para SEO
+  -Se edita la vista layout.blade.php
+    -Se usa la directiva @yield('') para que el título sea dinámico en cada página
+      -	<title>@yield('meta-title', config('app.name') . ' | Blog')</title>
+    -Se crea la etiqueta para la descripción del sitio
+      <meta name="description" content="@yield('meta-description', 'Este es el blog de Zendero')">
+  -Se edita la vista /posts/show.blade.php para cambiar el atributo meta-title
+    -@section('meta-title', $post->title)
+    -@section('meta-description', $post->excerpt)
