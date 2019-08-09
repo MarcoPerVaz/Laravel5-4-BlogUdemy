@@ -486,4 +486,25 @@ Commit - Validando las imágenes con DropzoneJs
     -Se agregan las validaciones de lado del servidor (Siempre es bueno tener otra capa de seguridad)
     -Se guarda el array photo de dropzone cambiado con paramName 
       -$photo = request()->file('photo');
-  
+Commit - Almacenando las imágenes en BD 
+  -Se edita la vista admin/posts/index.blade.php 
+    -Se agregan los href de los links de operaciones para mostrar(show) y editar(edit) los posts individualmente
+      Nota: Faltaba un link para mostrar(show) el post y se agregó
+  -Se edita web.php
+    -Se le da un nombre a la ruta posts.show
+  -Se edita la función store de Admin/PhotosController
+    -Si se usa el helper Storage
+      -use Illuminate\Support\Facades\Storage;
+    Nota: Importar el modelo Photo
+      -use App\Photo;
+  -Se usa el comando php artisan storage:link para crear un acceso directo de la carpeta storage en la carpeta public
+  -Se edita el archivo Instrucciones/Instalación.txt
+  -Se edita la migración create_photos_table
+    -Se agregan los campos
+      $table->unsignedInteger('post_id');
+      $table->string('url');
+  -Se usa el comando php artisan migrate:refresh --seed
+  -Se edita el modelo Photo
+    -protected $guarded = false;
+  -Se crea la función photos en el modelo Post que tendrá la relación hasMany() - tiene muchos
+    -return $this->hasMany(Photo::class);

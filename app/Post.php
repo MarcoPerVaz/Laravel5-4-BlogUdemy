@@ -29,6 +29,12 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
+    // Relación Tiene Muchos - hasMany
+    public function photos()
+    {
+        return $this->hasMany(Photo::class);
+    }
+
     // Query Scope
     public function scopePublished($query)
     {

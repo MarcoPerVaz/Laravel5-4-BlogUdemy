@@ -15,6 +15,10 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->increments('id');
+            // BlogUdemy
+                $table->unsignedInteger('post_id');
+                $table->string('url');
+            // 
             $table->timestamps();
         });
     }
