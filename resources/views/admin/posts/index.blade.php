@@ -13,9 +13,12 @@
 
 {{-- DataTable --}}
 @section('content')
-    <div class="box">
+    <div class="box box-primary">
       <div class="box-header">
         <h3 class="box-title">Listado de publicaciones</h3>
+        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
+          <i class="fa fa-plus"></i> Crear publicación
+        </button>
       </div>
       <!-- /.box-header -->
       <div class="box-body">

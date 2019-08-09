@@ -385,3 +385,57 @@ Commit - Social links
     -Se edita para que el partial sea reutilizable y no dependa de variables pasadas a través del controlador 
       -@include('partials.social-links', ['description' => $post->title])
     -Se pega el contenido cortado de la vista posts/show.blade.php
+Commit - Actualizar posts
+  -Se edita la vista admin/posts/index.blade.php 
+    -Se agrega un botón para crear un post
+      -Se agrega el modal vinculado a este botón
+    -Se copian ciertas cosas de la vista admin/posts/create.blade.php
+  -Se edita Admin/PostsController 
+    -Se comenta la función store(sé usará más adelante en este mismo commit)
+    -Se crea una nueva función store para el modal que solo requiere el title
+    -Se crea la función edit 
+  -Se crea la ruta admin.posts.edit en web.php dentro de las rutas admin
+    -Route::get('posts/{post}', 'PostsController@edit')->name('admin.posts.edit');
+  -Se crea la vista edit.blade.php dentro de resources/views/admin/
+  -Se edita la migración create_posts_table para aceptar valores nulos
+    -$table->mediumText('excerpt')->nullable();
+    -$table->text('body')->nullable();
+    -$table->unsignedInteger('category_id')->nullable();
+  -Se crea un seeder para los usuarios
+    -php artisan make:seed UsersTableSeeder
+    -Se edita UsersTableSeeder
+      Nota: Importar el modelo User
+        -use App\User;
+  -Se registra UsersTableSeeder en DatabaseSeeder.php
+  -Se usa el comando php artisan migrate:refresh --seed
+  -Se corta todo el contenido de admin/posts/create.blade.php y se pega en admin/posts/edit.blade.php
+  -Se edita Admin/PostsController
+    -Se pone entre comentarios la función create
+    -Se copia el contenido de la función create y se pega en la función edit
+    -Se edita la función edit
+  -Se edita la vista admin/posts/edit.blade.php
+    -Se usa casi lo mismo que en admin/posts/create
+    -Se agregó un valor por defecto al método old()
+      -Se hizo una condición ternearia en la función old de published_at para arreglar el error por intentar darle formato a null(osea sin fecha)
+        -old('published_at', $post->published_at ? $post->published_at->format('m/d/Y') : null) }}"
+    -Se edita el action del form
+    -Se agrega después de csrf_field 
+      -{{ method_field('PUT') }}
+  -Se crea la ruta admin.posts.update en web.php dentro de las rutas admin
+    -Route::put('posts/{post}', 'PostsController@update')->name('admin.posts.update');
+  -Se edita Admin/PostsController cambiandole el nombre a la función comentada store por update
+    -Se edita la función update
+      -Se quita la instancia de nuevo Post ya que es pasada por parámetro por el modal
+      -Se agrega la validación al campo tags
+      -Se cambia el mensaje de la variable de sesión flash
+  -Se edita PostsTableSeeder para asignar etiquetas usando seeds
+    Nota: Importar el modelo Tag
+      -use App\Tag;
+    -Se usa en cada post para djuntar una etiqueta a cada post
+      - $post->tags()->sync(Tag::create(['name' => 'Etiqueta 1']));
+  -Se usa el comando php artisan migrate:refresh --seed
+  -Se edita la migración create_post_tag_table quitando el campo timestamps ya que no se usa
+  -Se usa el comando php artisan migrate:refresh --seed
+  -Se edita la vista admin/posts/index.blade.php 
+    -Se corta el modal y se pega en admin/posts/create.blade.php
+  -Se edita la vista admin/partials/nav.blade.php

@@ -5,6 +5,7 @@ use Illuminate\Database\Seeder;
 use App\Post;
 use App\Category;
 use Carbon\Carbon;
+use App\Tag;
 
 class PostsTableSeeder extends Seeder
 {
@@ -17,6 +18,7 @@ class PostsTableSeeder extends Seeder
     {
         Post::truncate(); //Borra la información y vuelve a crearla (Evita duplicaciones)
         Category::truncate(); //Borra la información y vuelve a crearla (Evita duplicaciones)
+        Tag::truncate(); //Borra la información y vuelve a crearla (Evita duplicaciones)
         // Categoría 1
         $category = new Category;
         $category->name = "Categoría 1";
@@ -34,6 +36,7 @@ class PostsTableSeeder extends Seeder
         $post->published_at = Carbon::now()->subDays(4); //del día cuando fue creado 4 días antes
         $post->category_id = 1;
         $post->save();
+        $post->tags()->attach(Tag::create(['name' => 'Etiqueta 1']));
         // Segundo post
         $post = new Post;
         $post->title = "Mi segundo post";
@@ -43,6 +46,7 @@ class PostsTableSeeder extends Seeder
         $post->published_at = Carbon::now()->subDays(3); //del día cuando fue creado 3 días antes
         $post->category_id = 1;
         $post->save();
+         $post->tags()->attach(Tag::create(['name' => 'Etiqueta 2']));
         // Tercer post
         $post = new Post;
         $post->title = "Mi tercer post";
@@ -52,6 +56,7 @@ class PostsTableSeeder extends Seeder
         $post->published_at = Carbon::now()->subDays(2); //del día cuando fue creado 2 días antes
         $post->category_id = 1;
         $post->save();
+         $post->tags()->attach(Tag::create(['name' => 'Etiqueta 3']));
         // Cuarto post
         $post = new Post;
         $post->title = "Mi cuarto post";
@@ -61,6 +66,7 @@ class PostsTableSeeder extends Seeder
         $post->published_at = Carbon::now()->subDays(1); //del día cuando fue creado 1 día antes
         $post->category_id = 2;
         $post->save();
+         $post->tags()->attach(Tag::create(['name' => 'Etiqueta 4']));
         // Quinto post
         $post = new Post;
         $post->title = "Mi quinto post";
@@ -70,5 +76,6 @@ class PostsTableSeeder extends Seeder
         $post->published_at = Carbon::now(); //del día cuando fue creado
         $post->category_id = 2;
         $post->save();
+         $post->tags()->attach(Tag::create(['name' => 'Etiqueta 5']));
     }
 }
