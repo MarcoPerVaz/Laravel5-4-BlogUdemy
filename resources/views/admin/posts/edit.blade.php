@@ -143,12 +143,24 @@
         // CK Editor
         CKEDITOR.replace('editor');
         // Dropzone 5.0.1
-        new Dropzone('.dropzone', {
+        var myDropzone = new Dropzone('.dropzone', {
             url: '/admin/posts/{{ $post->url }}/photos',
+            acceptedFiles: 'image/*',
+            maxFilesize: 2,
+            paramName: 'photo',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             },
             dictDefaultMessage: 'Arrastra las fotos aquí para subirlas'
+        });
+
+        // Mostrar mensaje de error en el área de Dropzone
+        myDropzone.on('error', function(file, res){
+            var msg = res.photo[0];
+            $('.dz-error-message:last > span').text(msg); 
+            // Dónde .dz-error-message es la clase del elemento de Dropzone
+            // Dónde :last es para que solo vaya modificando el último elemento y no todos
+            // Dónde > span es para todo lo que está adentro de la etiqueta span
         });
         Dropzone.autoDiscover = false;
     </script>

@@ -469,4 +469,21 @@ Commit - Subir imágenes con DrozoneJs
       -Se le debe cambiar el namespace porque el controlador está dentro de la carpeta Admin
         -Esto: namespace App\Http\Controllers;
         -Por esto: namespace App\Http\Controllers\Admin;
+Commit - Validando las imágenes con DropzoneJs
+  -Se edita la vista admin/posts/edit.blade.php
+    -Se le agrega la propiedad acceptedFile para indicarle que tipo de archivo es el que se va a subir
+      -acceptedFiles: 'image/*',
+        -Dónde el * es para permitir cuqluier extensión de imágenes
+    -Se agreg la propiedad maxFilesize para indicarle el tamaño máximo permitido
+      -maxFilesize: 2,
+        -La cantidad está en megabytes
+        -Dónde 2 debe ser el tamaño máximo del archivo imagen
+    -Dropzone regresa un array con el nombre file para cambiarle el nombre se usa
+      -paramName: 'photo'
+    Nota: En la versión 5.4 de laravel para ver el mensaje de error es así res.photo[0];
+          pero en laravel 5.7 donde se había hecho el proyecto antes tenía que ser así res.errors.photo[0];
+  -Se edita la función store de Admin/PhotoController
+    -Se agregan las validaciones de lado del servidor (Siempre es bueno tener otra capa de seguridad)
+    -Se guarda el array photo de dropzone cambiado con paramName 
+      -$photo = request()->file('photo');
   
