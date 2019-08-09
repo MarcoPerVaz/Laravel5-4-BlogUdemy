@@ -65,6 +65,6 @@ class PostsController extends Controller
         // Guardar etiquetas usabdo la relación tags del modelo Post y adjuntando(attach) lo que venga del select de etiquetas
         $post->tags()->sync($request->get('tags'));
 
-        return back()->with('flash', 'Tu publicación ha sido guardada');
+        return redirect()->route('admin.posts.edit', $post)->with('flash', 'Tu publicación ha sido guardada');
     }
 }

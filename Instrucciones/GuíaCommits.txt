@@ -439,3 +439,34 @@ Commit - Actualizar posts
   -Se edita la vista admin/posts/index.blade.php 
     -Se corta el modal y se pega en admin/posts/create.blade.php
   -Se edita la vista admin/partials/nav.blade.php
+Commit - Subir imágenes con DrozoneJs
+  -Se edita la vist a admin/posts/create.blade.php
+    -Se le agrega la propiedad required al elemento title 
+  -Error al momento de guardar un post porque redirige a una ruta que ya no existe porque fue cambiado el nombre del post
+  Solución
+  -Se edita la función update en el redirect de Admin/PostsController
+    -return redirect()->route('admin.posts.edit', $post)->with('flash', 'Tu publicación ha sido guardada');
+  -Se obtiene DropzoneJs del cdn del sitio web
+    -https://cdnjs.com/libraries/dropzone/5.0.1 la versión minificada
+    -JS
+      -https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.0.1/min/dropzone.min.js
+    -CSS
+      -https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.0.1/dropzone.css
+  -Se edita admin/posts/edit.blade.php 
+    -Se importa DropzoneJs tanto en la directiva push de css como de js
+    -Se crea el área donde se mostrarán las imágenes
+    -Se crea el código javascript de dropzone para editar el mensaje, la url.
+  -Se crea el modelo Photo junto con una migración y el controlador
+    -php artisan make:model Photo -mc
+  -Se crea la ruta para guardar las imágenes dentro del grupo de rutas admin
+  Nota: Se debe mover el controlador PhotoController dentro de la carpeta de Admin
+    -Se le debe cambiar el nombre al controlador por PhotosController.php
+    -Se le cambia el nombre en el namespace dentro del controlador PhotosController
+  -Se crea la función store dentro de PhotosController
+    Nota: Importar el modelo Post
+      -use App\Post;
+      -use App\Http\Controllers\Controller;
+      -Se le debe cambiar el namespace porque el controlador está dentro de la carpeta Admin
+        -Esto: namespace App\Http\Controllers;
+        -Por esto: namespace App\Http\Controllers\Admin;
+  
