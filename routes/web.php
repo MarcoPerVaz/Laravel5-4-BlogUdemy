@@ -29,6 +29,8 @@ Route::group([
     Route::put('posts/{post}', 'PostsController@update')->name('admin.posts.update');
     // Dropzone
     Route::post('posts/{post}/photos', 'PhotosController@store')->name('admin.posts.photos.update');
+    // Eliminar imágenes
+    Route::delete('photos/{photo}', 'PhotosController@destroy')->name('admin.photos.destroy');
 });
 
 // Rutas de login

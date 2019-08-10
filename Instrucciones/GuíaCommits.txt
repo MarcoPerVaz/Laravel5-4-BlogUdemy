@@ -550,3 +550,9 @@ Commit - Galería de fotos
     -Se mueve la directiva stack de scripts al final del body ya que en el proyecto estaba en el head
       @stack('scripts')
   -Se edita el archivo public/css/styles.css para modificar el carousel de imágenes
+Commit - Eliminando imágenes
+  -Se edita admin/posts/edit.blade.php para mostrar las imágenes y poder borrarlas
+    -Se agrega una configuración a CKEDITOR para aumentar su alto
+  -Se crea la ruta admin.photos.destroy dentro de las rutas de admin
+    -Route::delete('photos/{photo}', 'PhotosController@destroy')->name('admin.photos.destroy');
+  -Se crea y se edita la función destroy en Admin/PhotosController

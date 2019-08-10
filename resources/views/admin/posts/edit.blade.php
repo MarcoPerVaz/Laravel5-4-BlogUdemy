@@ -14,6 +14,27 @@
 
 @section('content')
 <div class="row">
+    {{-- Imágenes --}}
+    @if ($post->photos->count())
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="row">
+                    @foreach ($post->photos as $photo)
+                    <form action="{{ route('admin.photos.destroy', $photo) }}" method="post">
+                        {{ method_field('DELETE') }}  {{ csrf_field() }}
+                        <div class="col-md-2">
+                            <button class="btn btn-danger btn-xs" style="position: absolute;"><i class="fa fa-remove"></i></button>
+                            <img src="{{ url($photo->url) }}" alt="" class="img-responsive">
+                        </div>
+                    </form>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+    {{-- Fin Imágenes --}}
     <form action="{{ route('admin.posts.update', $post) }}" method="POST">
         {{ csrf_field() }} {{ method_field('PUT') }}
         <div class="col-md-8">
@@ -39,8 +60,8 @@
                         {!! $errors->first('body', '<span class="help-block">:message</span>') !!}
                     </div>
                 </div>
-                </div>
             </div>
+        </div>
         <div class="col-md-4">
             <div class="box box-primary">
                 <div class="box-body">
@@ -97,12 +118,12 @@
                                   class="form-control">{{ old('excerpt', $post->excerpt) }}</textarea>
                         {!! $errors->first('excerpt', '<span class="help-block">:message</span>') !!}
                     </div>
-                    {{-- Imágenes Dropzone --}}
-                        <div class="form-group">
-                            <div class="dropzone"></div>
-                        </div>
-                    {{-- Fin Imágenes Dropzone --}}
                     {{-- Fin Extracto --}}
+                    {{-- Imágenes Dropzone --}}
+                    <div class="form-group">
+                        <div class="dropzone"></div>
+                    </div>
+                    {{-- Fin Imágenes Dropzone --}}
                     {{-- Botón Guardar --}}
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block">Guardar Publicación</button>
@@ -142,6 +163,7 @@
         $(".select2").select2();
         // CK Editor
         CKEDITOR.replace('editor');
+        CKEDITOR.config.height = 330;
         // Dropzone 5.0.1
         var myDropzone = new Dropzone('.dropzone', {
             url: '/admin/posts/{{ $post->url }}/photos',
