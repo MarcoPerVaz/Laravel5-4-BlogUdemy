@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             // BlogUdemy
                 $table->string('name');
+                $table->string('url')->nullable();
             // 
             $table->timestamps();
         });

@@ -623,3 +623,28 @@ Commit - Filtrar posts por etiqueta
   -Se crea la función posts en el modelo Tag para relacionar las etiquetas con los posts (Pertenece a muchos - hasMany)
     -return $this->hasMany(Post::class);
   -Se edita la función show de CategoriesController
+Commit - Accesores y mutadores de Eloquent
+  -Se edita el modelo Category
+    -Se crea el mutator llamado setNameAttribute()
+    Nota: Checar la documentación
+      -https://laravel.com/docs/5.4/eloquent-mutators#accessors-and-mutators
+  -Se edita la migración create_categories_table
+    -Se agrega el campo después del campo name
+      -$table->string('url')->nullable;
+  -Se usa el comando php artisan migrate:refresh --seed
+    Nota: Se le agrega temporalmente el método nullable al campo url, se usa el comando migrate:refresh y se le quita el método al campo url
+  Nota: El mutador se ejecuta automáticamente
+  -Se edita la migración create_tags_table
+    -Se agrega el campo después del campo name
+      -$table->string('url')->nullable;
+  -Se usa el comando php artisan migrate:refresh --seed
+  Nota: El mutador se ejecuta automáticamente
+   -Se edita el modelo Tag
+    -Se crea el mutator llamado setNameAttribute()
+    Nota: Checar la documentación
+      -https://laravel.com/docs/5.4/eloquent-mutators#accessors-and-mutators
+  -Se usa el comando php artisan migrate:refresh --seed
+  Nota: El mutador se ejecuta automáticamente
+  -Se edita el modelo Post para usar mutadores
+    -Se crea el mutator setTitleAttribute
+  -Se edita la función update y store de Admin/PostsController

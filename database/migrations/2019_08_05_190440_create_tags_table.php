@@ -17,6 +17,7 @@ class CreateTagsTable extends Migration
             $table->increments('id');
             // BlogUdemy
                 $table->string('name');
+                $table->string('url');
             // 
             $table->timestamps();
         });

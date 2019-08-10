@@ -9,12 +9,19 @@ class Tag extends Model
     // Route Model Binding | Usar otro campo que no sea id en la url
     public function getRouteKeyName()
     {
-        return 'name';
+        return 'url';
     }
 
     // Relación Pertene a Muchos - belongsToMany
     public function posts()
     {
         return $this->belongsToMany(Post::class);
+    }
+
+    // Mutator Name
+    public function setNameAttribute($name)
+    {
+       $this->attributes['name'] = $name;
+       $this->attributes['url'] = str_slug($name);
     }
 }
