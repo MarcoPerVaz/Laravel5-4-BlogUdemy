@@ -593,3 +593,17 @@ Commit - Paginación personalizada
         -{{-- Se agregaron estas clases (todas) Laravel5.4 BlogUdemy --}}
         -{{-- Se agrego la clase pagination-active y se cambio la etiqueta span por a --}}
           Nota: Este comentario es de la línea de abajo pero por esapcio se puso arriba
+Commit - Filtrar posts por categoría
+  -Se crea el controlador usando el comando php artisan make:controller CategoriesController
+    -Se crea la función show dentro de CategoriesController
+  -Se elimina la vista home.blade.php
+  -Se crea la ruta categories.show en web.php
+    -Route::get('categories/{category}', 'CategoriesController@show')->name('categories.show');
+  -Se crea la función getRouteKeyName() en el modelo Category
+  -Se edita la vista welcome.blade.php
+    -Se agrega la etiqueta a en las categorías
+    -Se edita el archivo public/css/styles.css
+      -Se edita la clase .post .category a{}
+       Nota: Está entre comentarios /* Creado para Laravel 5.4 BlogUdemy */
+  -Se crea la función post en el modelo Category para relacionar las categorías con los posts (Tiene muchos - hasMany)
+    -return $this->hasMany(Post::class);

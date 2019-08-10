@@ -14,6 +14,7 @@
 // Ruta por defecto
 Route::get('/', 'PagesController@home');
 Route::get('blog/{post}', 'PostsController@show')->name('posts.show');
+Route::get('categories/{category}', 'CategoriesController@show')->name('categories.show');
 
 // Rutas Admin para los posts si se está logueado
 Route::group([

@@ -43,6 +43,12 @@ header nav li a:hover{
     top: 30px;
     text-transform: capitalize;
 }
+/* Creado para Laravel 5.4 BlogUdemy */
+	.post .category a{
+		color: inherit;
+		font-size: inherit;
+	}
+/* Fin Creado para Laravel 5.4 BlogUdemy */
 .post figure{
 	margin:0;
 }
