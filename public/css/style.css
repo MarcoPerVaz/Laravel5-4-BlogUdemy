@@ -80,11 +80,34 @@ header nav li a:hover{
 }
 .masonry .gallery-image {
     display: inline-block;
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 4px;
-    border: 1px solid #000;
+		padding: 4px;
+		/* Editado para Laravel 5.4 BlogUdemy */
+			position: relative;
+			width: 98.1%; height: 100%;
+			/* margin-bottom: 20px; */
+			/* border: 1px solid #000; */
+		/* Fin Editado Laravel 5.4 BlogUdemy */
 }
+
+/* Creado para Laravel 5.4 BlogUdemy */
+.gallery-image img{
+	width: 100%;
+}
+.gallery-photos{
+	overflow: hidden;
+}
+.overlay{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width:98.1%; height: 97.5%;
+	position: absolute;
+	color: white;
+	font-size: 30px;
+	background-color: rgba(0, 0, 0, .5);
+}
+/* Fin Laravel 5.4 BlogUdemy */
+
 cite, .cite{
 	font-size: 22px;
 	line-height: 1.7;

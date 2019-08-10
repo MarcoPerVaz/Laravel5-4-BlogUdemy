@@ -508,3 +508,18 @@ Commit - Almacenando las imágenes en BD
     -protected $guarded = false;
   -Se crea la función photos en el modelo Post que tendrá la relación hasMany() - tiene muchos
     -return $this->hasMany(Photo::class);
+Commit - Mostrando las imágenes
+  -Se usa el comando php artisan migrate:refresh --seed
+  -Se edita la vista welcome.blade.php para mostrar las imágenes
+  -Se edita la vista posts/show.blade.php para mostrar las imágenes
+    -Se edita el archivo public/css/framework.css
+      -Se edita la clase container quitando los padding right y left para mejorar el diseño
+      Nota: Está entre comentarios /* Editado para Laravel 5.4 BlogUdemy */
+    -Se edita el archivo public/css/styles.css 
+      -Se edita la clase .masonry .gallery-image {}
+      -Se agrega .gallery-image img {}
+      -Se agrega .gallery-photos {}
+      -Se agrega .overlay {} - Está clase sirve para mostrar el conteo de imágenes que hay a partir de 4 imágenes
+      Nota: Está entre comentarios /* Editado para Laravel 5.4 BlogUdemy */ o /* Creado para Laravel 5.4 BlogUdemy */
+    -@foreach ($post->photos->take(4) as $photo) para que solo tome 4 fotos
+    -@if ($loop->iteration === 4) Hace algo cuando el foreach llega a 4

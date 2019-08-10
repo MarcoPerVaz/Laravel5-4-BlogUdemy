@@ -1,6 +1,8 @@
 .container{
-	padding-right: 15px;
-  	padding-left: 15px;
+		/* Editado para Laravel 5.4 BlogUdemy */
+			/* padding-right: 15px; */
+			/* padding-left: 15px; */
+		/* Fin Editado Laravel 5.4 BlogUdemy */
   	margin-right: auto;
   	margin-left: auto;
 }
