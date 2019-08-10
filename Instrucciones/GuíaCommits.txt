@@ -578,3 +578,18 @@ Commit - Posts con vídeo y audio
   Nota: Al agregar un iframe sea vídeo o audio, considerar el tamaño width: 100%; y height:480px;
   -Se edita la vista posts/show.blade.php
     -Se agrega el área para mostrar el iframe del post si es que tiene
+Commit - Paginación personalizada
+  -Se edita la función home de PagesController
+  -Se edita la vista welcome.blade.php
+    -Se quitan los posts que estaba entre comentarios
+  -Se usa el comando php artisan vendor:publish --tag=laravel-pagination
+    -Este comando publica las vistas de la paginación usada por laravel y así poder editar al gusto
+  -Se edita la vista default.blade.php que está en resources/views/pagination/
+    -Esta vista se crea al usar el comando php artisan vendor:publish --tag=laravel-pagination
+    -Se adapta la paginación de default.blade.php por lo que tiene la plantilla Zendero en la vista welcome.blade.php
+      Nota: Tan pronto se adapta, se borra lo que tenía la plantilla Zendero en su paginación
+      -Se usan comentarios para indicar que cambios se hicieron
+        -{{-- Se agrego este div con la clase pagination Laravel5.4 BlogUdemy --}}
+        -{{-- Se agregaron estas clases (todas) Laravel5.4 BlogUdemy --}}
+        -{{-- Se agrego la clase pagination-active y se cambio la etiqueta span por a --}}
+          Nota: Este comentario es de la línea de abajo pero por esapcio se puso arriba
