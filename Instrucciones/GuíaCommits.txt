@@ -605,5 +605,21 @@ Commit - Filtrar posts por categoría
     -Se edita el archivo public/css/styles.css
       -Se edita la clase .post .category a{}
        Nota: Está entre comentarios /* Creado para Laravel 5.4 BlogUdemy */
-  -Se crea la función post en el modelo Category para relacionar las categorías con los posts (Tiene muchos - hasMany)
+  -Se crea la función posts en el modelo Category para relacionar las categorías con los posts (Tiene muchos - hasMany)
     -return $this->hasMany(Post::class);
+Commit - Filtrar posts por etiqueta
+  -Se edita la vista welcome.blade.php
+    -Se agrega la etiqueta a en las etiquetas
+    -Se edita el archivo style.css
+      -Se edita la clase .post .tag a{}
+       Nota: Está entre comentarios /* Creado para Laravel 5.4 BlogUdemy */
+  -Se crea la ruta tags.show en web.php
+    -Route::get('tags/{tag}', 'TagsController@show')->name('tags.show');
+  -Se crea el controlador TagsController usando el comando php artisan make:controller TagsController
+    -Se crea y se edita la función show en TagsController
+      Nota: Importar el modelo Tag
+        -use App\Tag;
+  -Se crea la función getRouteKeyName() en el modelo Tag
+  -Se crea la función posts en el modelo Tag para relacionar las etiquetas con los posts (Pertenece a muchos - hasMany)
+    -return $this->hasMany(Post::class);
+  -Se edita la función show de CategoriesController

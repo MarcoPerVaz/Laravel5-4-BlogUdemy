@@ -15,6 +15,7 @@
 Route::get('/', 'PagesController@home');
 Route::get('blog/{post}', 'PostsController@show')->name('posts.show');
 Route::get('categories/{category}', 'CategoriesController@show')->name('categories.show');
+Route::get('tags/{tag}', 'TagsController@show')->name('tags.show');
 
 // Rutas Admin para los posts si se está logueado
 Route::group([

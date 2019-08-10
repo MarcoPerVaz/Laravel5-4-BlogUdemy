@@ -71,6 +71,12 @@ header nav li a:hover{
 .post .tag{
 	margin: 0 5px;
 }
+/* Creado para Laravel 5.4 BlogUdemy */ 
+	.post .tag a{
+		color: inherit;
+		font-size: inherit;
+	}
+/* Fin Creado para Laravel 5.4 BlogUdemy */
 .post footer{
 	margin-top: 45px;
 	background: none;
