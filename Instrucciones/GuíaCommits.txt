@@ -556,3 +556,25 @@ Commit - Eliminando imágenes
   -Se crea la ruta admin.photos.destroy dentro de las rutas de admin
     -Route::delete('photos/{photo}', 'PhotosController@destroy')->name('admin.photos.destroy');
   -Se crea y se edita la función destroy en Admin/PhotosController
+Commit - Posts con vídeo y audio
+  -Se edita la vista welcome.blade.php
+    -Se agrega un elseif para comprobar que si no tiene imágenes, muestre el vídeo del post
+      -@elseif($post->iframe)
+        -Dónde iframe se va a crear en la migración create_posts_table
+    Nota: El iframe se guardará en la BD con todo y etiquetas iframe
+    -Para mostrar el iframe guardado en la base de datos
+      -{!! $post->iframe !!} 
+        -Dónde al usar {!!  !!} permite insertar html en la vista
+  -Se edita la migración create_posts_table
+    -Después del campo excerpt se agrega el campo iframe
+      -$table->text('iframe')->nullable();
+  -Se usa el comando php artisan migrate:refresh --seed
+  -Se agregaron unos comentarios en el archivo public/css/responsive.css
+    -La clase .video iframe también será usada para los posts con audio
+  -Se edita la vista admin/posts/edit.blade.php
+    -Se crea el área para colocar el iframe(después del campo body)
+  -Se edita Admin/PostsController
+    -Se edita la función update para agregar el campo iframe
+  Nota: Al agregar un iframe sea vídeo o audio, considerar el tamaño width: 100%; y height:480px;
+  -Se edita la vista posts/show.blade.php
+    -Se agrega el área para mostrar el iframe del post si es que tiene

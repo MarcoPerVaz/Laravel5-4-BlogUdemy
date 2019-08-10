@@ -40,6 +40,7 @@
         <div class="col-md-8">
             <div class="box box-primary">
                 <div class="box-body">
+                    {{-- Title --}}
                     <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
                         <label for="">Título de la publicación</label>
                         <input type="text" 
@@ -49,6 +50,8 @@
                                placeholder="Ingresa aquí el título de la publicación">
                         {!! $errors->first('title', '<span class="help-block">:message</span>') !!}
                     </div>
+                    {{-- Fin Title --}}
+                    {{-- Body --}}
                     <div class="form-group {{ $errors->has('body') ? 'has-error' : '' }}">
                         <label for="">Contenido de la publicación</label>
                         <textarea 
@@ -59,6 +62,19 @@
                             class="form-control">{{ old('body', $post->body) }}</textarea>
                         {!! $errors->first('body', '<span class="help-block">:message</span>') !!}
                     </div>
+                    {{-- Fin Body --}}
+                    {{-- Iframe --}}
+                    <div class="form-group {{ $errors->has('iframe') ? 'has-error' : '' }}">
+                        <label for="">Contenido embebido (iframe)</label>
+                        <textarea 
+                            id="editor"
+                            name="iframe" 
+                            rows="2" 
+                            placeholder="Ingresa contenido embebido (iframe) de aduio o vídeo" 
+                            class="form-control">{{ old('iframe', $post->iframe) }}</textarea>
+                        {!! $errors->first('iframe', '<span class="help-block">:message</span>') !!}
+                    </div>
+                    {{-- Fin Iframe --}}
                 </div>
             </div>
         </div>
