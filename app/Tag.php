@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
+    // Deshabilitar la protección contra asignación masiva
+    protected $guarded = [];
+    
     // Route Model Binding | Usar otro campo que no sea id en la url
     public function getRouteKeyName()
     {

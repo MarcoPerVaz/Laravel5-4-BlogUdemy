@@ -100,7 +100,7 @@
                     {{-- Categories --}}
                     <div class="form-group {{ $errors->has('category') ? 'has-error' : '' }}">
                         <label for="">Categorías</label>
-                        <select name="category" id="" class="form-control">
+                        <select name="category" id="" class="form-control select2">
                             <option value="">Selecciona una categoría</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}"
@@ -176,7 +176,9 @@
         autoclose: true
         });
         // Select2
-        $(".select2").select2();
+        $(".select2").select2({
+            tags:true
+        });
         // CK Editor
         CKEDITOR.replace('editor');
         CKEDITOR.config.height = 330;

@@ -648,3 +648,11 @@ Commit - Accesores y mutadores de Eloquent
   -Se edita el modelo Post para usar mutadores
     -Se crea el mutator setTitleAttribute
   -Se edita la función update y store de Admin/PostsController
+Commit - Creando categorías y etiquetas sobre la marcha
+  -Se edita la vista admin/posts/edit.blade.php
+    -Se le agrega la clase select2 a las catgeorías y se modifica el script de select2
+  -Se edita la función update de Admin/PostsController
+  -Se edita el modelo Category 
+    -Se agrega la propiedad protected guarded para deshabilitar la asignación masiva 
+  -Se edita el modelo Tag 
+    -Se agrega la propiedad protected guarded para deshabilitar la asignación masiva 
