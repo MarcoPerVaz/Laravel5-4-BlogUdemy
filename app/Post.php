@@ -8,7 +8,10 @@ use Carbon\Carbon;
 
 class Post extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'title', 'body', 'iframe', 'excerpt', 'published_at', 'category_id',
+    ];
+
     protected $dates = ['published_at'];
 
     // Route Model Binding | Usar otro campo que no sea id en la url
@@ -48,5 +51,29 @@ class Post extends Model
     {
         $this->attributes['title'] = $title;
         $this->attributes['url'] = str_slug($title);
+    }
+
+    // Mutator Puublished_at
+    public function setPublishedAtAttribute($published_at)
+    {
+        $this->attributes['published_at'] = $published_at ?  Carbon::parse($published_at) : null;;
+    }
+
+    // Mutator Category_id
+    public function setCategoryIdAttribute($category)
+    {
+        $this->attributes['category_id'] = Category::find($category) 
+                                           ? $category
+                                           : Category::create(['name' => $category])->id;;
+    }
+
+    // Función para guardar las etiquetas
+    public function syncTags($tags)
+    {
+        $tagIds = collect($tags)->map(function($tag){
+            return Tag::find($tag) ? $tag : Tag::create(['name' => $tag])->id;
+        });
+        
+        return $this->tags()->sync($tagIds);
     }
 }

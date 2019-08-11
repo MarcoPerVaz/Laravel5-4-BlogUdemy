@@ -656,3 +656,24 @@ Commit - Creando categorías y etiquetas sobre la marcha
     -Se agrega la propiedad protected guarded para deshabilitar la asignación masiva 
   -Se edita el modelo Tag 
     -Se agrega la propiedad protected guarded para deshabilitar la asignación masiva 
+Commit - Reestructuración de Admin/PostsController
+  -Se usa el comando php artisan make:request StorePostRequest
+  Nota: Al usar el comando para crear un request, si no existe ningún request, laravel crea la carpeta app/Http/Requests y dentro el request creado
+  Nota: Request es creado para almacenar las validaciones
+  -Se edita el request StorePostRequest
+    -Se cambia esto return false; por esto return true;
+    -Se edita la función rules donde irán las validaciones
+    -Se pasa el formRequest StorePostRequest por parámetro en la función update de Admin/PostsController
+    Nota: Importar el request
+      -use App\Http\Requests\StorePostRequest;
+    -Se edita el modelo Post para crear mutadores
+      -Se crea el mutator setPublishedAtAttribute 
+      -Se crea el mutator setCategoryIdAttribute 
+      -Se crea la función syncTags que tendrá la lógica que antes estaba en la función update de Admin/PostsController para 
+       guardar etiquetas
+      -Se quita la propiedad guarded para deshabilitar la protección de asignación masiva
+      -Se agrega la propiedad fillable para protección de asignación masiva
+  -Se edita la vista admin/posts/edit.blade.php 
+    -Se edita el área de categorias cambiando todo de 'category' a 'category_id'
+  -Se edita StorePostRequest
+    -Cambiando la validación de category por category_id
