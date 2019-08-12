@@ -32,6 +32,10 @@ class PostsController extends Controller
 
         $post = Post::create($request->only('title'));
 
+        // Esto crea las url's únicas (funciona) pero fue pasado al modelo Post a la función create
+            // $post->url = str_slug($request->get('title')) . "-{$post->id}"; 
+            // $post->save();
+
         return redirect()->route('admin.posts.edit', $post);
     }
 

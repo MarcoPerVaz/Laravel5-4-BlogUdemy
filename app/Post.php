@@ -59,14 +59,35 @@ class Post extends Model
               ->latest('published_at');
     }
 
-    // Mutator Title
-    public function setTitleAttribute($title)
+    // Sobreescribe al método create usado en el controlador
+    public static function create(array $attributes = [])
     {
-        $this->attributes['title'] = $title;
-        $this->attributes['url'] = str_slug($title);
+        $post = static::query()->create($attributes);
+
+        $post->generateUrl();
+
+        return $post;
     }
 
-    // Mutator Puublished_at
+    public function generateUrl()
+    {
+        $url = str_slug($this->title); 
+
+        if ($this::whereUrl($url)->exists()) {
+            $url = "{$url}-{$this->id}"; 
+        }
+        $this->url = $url;
+        $this->save();
+    }
+    // Mutator Title
+    // public function setTitleAttribute($title)
+    // {
+    //     $this->attributes['title'] = $title;
+
+    //     $this->attributes['url'] = $url;
+    // }
+
+    // Mutator Published_at
     public function setPublishedAtAttribute($published_at)
     {
         $this->attributes['published_at'] = $published_at ?  Carbon::parse($published_at) : null;;
