@@ -718,3 +718,20 @@ Commit - Actualizando a Laravel 5.5
     -Agregar filp/whoops en su versión ~2.0
       -"filp/whoops": "~2.0"
   -Usar el comando composer update
+Commit - Mantener el modal si hay errores
+  -Se edita la vista admin/layout.blade.php
+    -Se usa la directiva unless para verificar que el modal solo se abra dependiendo la url admin/posts/*
+      -Donde * es todo lo que venga después de /
+    -Dentro de la directiva unless se incluye la vista del modal @include('admin.posts.create') 
+  -Se edita la vista admin/posts/create.blade.php
+    -Se le quita la propiedad required al campo title
+      Nota: Al final se pone de nuevo
+    -Se modifica la ruta del formulario para pasar #create en la url
+    -Se le da un id al campo title
+    -Se le agrega la propiedad autofocus al campo title
+    -Se usa la directiva push con el script para verificar si el modal está abierto
+  -Se edita la función store de Admin/PostsController
+    -Se agrega una regla de validación al campo title
+      -$this->validate($request, ['title' => 'required|min:3']);
+  -Se edita la vista admin/partials/nav.blade.php
+    -Se le agrega la directiva condicional if para redireccionar dependiendo en que url tenga

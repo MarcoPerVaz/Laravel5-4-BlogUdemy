@@ -1,6 +1,6 @@
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-       <form action="{{ route('admin.posts.store') }}" method="POST">
+       <form action="{{ route('admin.posts.store', '#create') }}" method="POST">
         {{ csrf_field() }}
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -15,7 +15,8 @@
                               value="{{ old('title') }}"
                               class="form-control" 
                               name="title" 
-                              placeholder="Ingresa aquí el título de la publicación" required>
+                              id="post-title"
+                              placeholder="Ingresa aquí el título de la publicación" autofocus required>
                       {!! $errors->first('title', '<span class="help-block">:message</span>') !!}
                   </div>
               </div>
@@ -27,3 +28,20 @@
           </div>
        </form>
     </div>
+
+@push('scripts')
+  {{-- Script para verificar si el modal está abierto --}}
+  <script>
+    if (window.location.hash === '#create') 
+    {
+      $('#myModal').modal('show');
+    }
+    $('#myModal').on('hide.bs.modal', function(){
+        window.location.hash = '#';
+    });
+    $('#myModal').on('shown.bs.modal', function(){
+      $('#post-title').focus();
+        window.location.hash = '#create';
+    });
+  </script>
+@endpush

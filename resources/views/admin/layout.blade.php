@@ -380,12 +380,23 @@ desired effect
 <script src="/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="/adminlte/bootstrap/js/bootstrap.min.js"></script>
+
+{{-- Condicional para verificar que el modal solo se abra dependiendo la url admin/posts/* --}}
+@unless (request()->is('admin/posts/*'))
+  {{-- Modal para crear posts --}}
+    @include('admin.posts.create') 
+@endunless
+
 {{-- Directiva stack para cargar archivos dependiendo la vista --}}
   @stack('scripts')
 <!-- AdminLTE App -->
 <script src="/adminlte/js/app.min.js"></script>
-{{-- Modal para crear posts --}}
-@include('admin.posts.create')
+
+
+
+
+
+
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
