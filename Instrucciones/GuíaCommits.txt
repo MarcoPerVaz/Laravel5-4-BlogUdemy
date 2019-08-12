@@ -707,4 +707,14 @@ Commit - Eliminar posts y sus relaciones
   -Se crea la función destroy en Admin/PostsController
   -Se crea la función boot con la función estática deleting en el modelo Post 
   -Se usa el comando php artisan migrate:refresh --seed para probar si se eliminan las etiquetas correctamente
-  
+Commit - Actualizando a Laravel 5.5
+  -Se usa el comando composer global update
+  -Se usa el comando composer self-update
+  -Editar el archivo composer.json
+    -Actualizar el framework a 5.5.*
+      -"laravel/framework": "5.5.*",
+    -Actualizar phpunit/phpunit a ~6.0
+      -"phpunit/phpunit": "~6.0",
+    -Agregar filp/whoops en su versión ~2.0
+      -"filp/whoops": "~2.0"
+  -Usar el comando composer update
