@@ -6,6 +6,7 @@ use App\Post;
 use App\Category;
 use Carbon\Carbon;
 use App\Tag;
+use Illuminate\Support\Facades\Storage;
 
 class PostsTableSeeder extends Seeder
 {
@@ -16,6 +17,7 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
+        Storage::disk('public')->deleteDirectory('posts');//Elimina las imágenes dentro de storage/app/public/posts/
         Post::truncate(); //Borra la información y vuelve a crearla (Evita duplicaciones)
         Category::truncate(); //Borra la información y vuelve a crearla (Evita duplicaciones)
         Tag::truncate(); //Borra la información y vuelve a crearla (Evita duplicaciones)

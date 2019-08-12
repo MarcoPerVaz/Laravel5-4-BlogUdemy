@@ -677,3 +677,26 @@ Commit - Reestructuración de Admin/PostsController
     -Se edita el área de categorias cambiando todo de 'category' a 'category_id'
   -Se edita StorePostRequest
     -Cambiando la validación de category por category_id
+Commit - Reestructuración de Admin/PhotosController
+  -Se edita la función store de Admin/PhotosController
+    Nota:No salió igual que en el curso
+      -Curso: 'url' => request()->file('photo')->store('posts', 'public'),
+      -Proyecto: 'url' => Storage::url(request()->file('photo')->store('posts', 'public')),
+      Nota: En el curso el podía acceder https://blog.dev/posts/imagen.jpg y yo no pude acceder así, 
+        yo accedo con https://blog.dev/storage/posts/imagen.jpg
+      -Se tuvo que dejar pero funciona igual.
+  -Se edito la vista posts/show.blade.php para agregar el helper url
+    -<figure><img src="{{ url($post->photos->first()->url) }}" alt="" class="img-responsive"></figure>
+  -Se edita el modelo Photo
+    -Se crea una función estática para que elimine de la carpeta Storage la o las imágenes
+      Nota:Reemplaza lo que está entre comentarios en el controlador Admin/PhotosController
+      Nota: Importar el Facade
+        -use Illuminate\Support\Facades\Storage;
+  -Se edita PostsTableSeeder para eliminar las imágenes de Storage al usar el comando php artisan migrate:refresh --seed
+    -Storage::disk('public')->deleteDirectory('posts');
+    Nota: Dónde public es la configuración de config/filesystems.php y deleteDirectory es la carpeta que se va a eliminar
+      Nota:Importar el Facade
+        -use Illuminate\Support\Facades\Storage;
+  -Se usa el comando php artisan migrate:refresh --seed 
+    Nota: Se comprueba si la carpeta posts dentro de Storage/app/ se borra(Si se borra)
+  
