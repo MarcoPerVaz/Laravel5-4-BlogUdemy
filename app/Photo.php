@@ -17,6 +17,6 @@ class Photo extends Model
             static::deleting(function($photo){
                 Storage::disk('public')->delete(str_replace('storage/', '', $photo->url));
             });
+        }
     // 
-    }
 }

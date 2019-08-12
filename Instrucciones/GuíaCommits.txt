@@ -699,4 +699,12 @@ Commit - Reestructuración de Admin/PhotosController
         -use Illuminate\Support\Facades\Storage;
   -Se usa el comando php artisan migrate:refresh --seed 
     Nota: Se comprueba si la carpeta posts dentro de Storage/app/ se borra(Si se borra)
+Commit - Eliminar posts y sus relaciones
+  -Se edita la vista admin/posts/index.blade.php
+    -Se agrega la etiqueta al form al botón de eliminar
+  -Se crea la ruta admin.posts.destroy dentro de las rutas de admin
+    -Route::delete('posts/{post}', 'PostsController@destroy')->name('admin.posts.destroy');
+  -Se crea la función destroy en Admin/PostsController
+  -Se crea la función boot con la función estática deleting en el modelo Post 
+  -Se usa el comando php artisan migrate:refresh --seed para probar si se eliminan las etiquetas correctamente
   

@@ -49,6 +49,38 @@ class PostsController extends Controller
         // Guardar etiquetas usando la función que está en el modelo Post
         $post->syncTags($request->get('tags'));
 
-        return redirect()->route('admin.posts.edit', $post)->with('flash', 'Tu publicación ha sido guardada');
+        return redirect()->route('admin.posts.edit', $post)->with('flash', 'La publicación ha sido guardada');
+    }
+
+    public function destroy(Post $post)
+    {
+        // //Elimina las etiquetas de todas las referencias antes de eliminar el post
+            // $post->tags()->detach(); //Fue pasado a la función boot del modelo Post
+        // 
+
+            // $post->photos()->delete(); //Borra las imágenes de la Bd pero no de la carpeta Storage(Funciona)
+
+            // Este foreach si elimina y si ejecuta la función estática boot del modelo Post (Funciona)
+            //     foreach ($post->photos as $photo) {
+            //         $photo->delete();
+            //     }
+            
+
+            // Se usan colecciones para eliminar las imágenes y si ejecuta la función estática boot del modelo Post (Funciona)
+            //     $post->photos->each(function(){
+            //         $photo->delete();
+            //     });
+            
+
+        // Se usan colecciones pero usando un atajo para eliminar las imágenes y si ejecuta la función estática boot del modelo Post (Funciona)
+            // $post->photos->each->delete(); //Fue pasado a la función boot del modelo Post
+        // 
+
+
+
+        // NOTA: Se creo la función boot en el modelo Post y por eso solo quedo el delete aquí
+        $post->delete(); //Elimina el post
+
+        return redirect()->route('admin.posts.index')->with('flash', 'La publicación ha sido eliminada');
     }
 }

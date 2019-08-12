@@ -14,6 +14,19 @@ class Post extends Model
 
     protected $dates = ['published_at'];
 
+    // Función que elimina las imágenes del post(Reemplaza a lo del controlador Admin/PhotosController)
+        protected static function boot(){
+            parent::boot();
+
+            static::deleting(function($post){ //Esta función se enlaza con la función deleting del modelo Photo
+
+                $post->tags()->detach(); //Elimina las etiquetas de todas las referencias antes de eliminar el post
+                $post->photos->each->delete(); //Se usan colecciones pero usando un atajo para eliminar las imágenes
+
+            });
+        }
+    // 
+
     // Route Model Binding | Usar otro campo que no sea id en la url
     public function getRouteKeyName()
     {
