@@ -746,3 +746,24 @@ Commit - Generando URL's únicas
     -Se edita el campo url
       -Esto $table->string('url'); por esto: $table->string('url')->unique()->nullable;
   -Se usa el comando php artisan migrate:refresh --seed
+Commit - Activando la navegación
+  -Se Crean las rutas para el menú de navegación en web.php
+    -Route::get('/', 'PagesController@home')->name('pages.home');
+    -Route::get('nosotros', 'PagesController@about')->name('pages.about');
+    -Route::get('archivo', 'PagesController@archive')->name('pages.archive');
+    -Route::get('contacto', 'PagesController@contact')->name('pages.contact');
+  -Se edita la vista layout.blade.php
+    -Se extrae toda la etiqueta nav y se hace un @include('partials.nav') que será la vista de la navegación
+  -Se edita la vista partials/nav.blade.php
+    -Se usa el helper route para enlazar los href con las rutas 
+    -Se crea un helper
+  -Se edita el controlador PagesController
+    -Se crea la función about
+    -Se crea la función archive
+    -Se crea la función contact
+  -Se crea la carpeta pages en resources/views y dentro las vistas about.blade.php, archive.blade.php y contact.blade.php
+  -Se mueve la vista welcome.blade.php a la carpeta resources/vews/pages y se renombra a home.blade.php
+  -Se crea el archivo helpers.php en app/Http/
+    -Para poderlo usar se debe agregar en composer.json
+      -"files": ["app/Http/helpers.php"]
+    -Se usa el comando composer dumpautoload -o
