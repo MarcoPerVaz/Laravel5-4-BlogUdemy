@@ -17,12 +17,14 @@
     <div class="content-post">
       <header class="container-flex space-between">
         <div class="date">
-          	<span class="c-gris">{{ $post->published_at->format('M d') }}</span>
-						<span class="c-gris">- {{ $post->published_at->diffForHumans() }}</span>
+          	<span class="c-gris">{{ optional($post->published_at)->format('M d') }}</span>
+						<span class="c-gris">- {{ optional($post->published_at)->diffForHumans() }}</span>
         </div>
-        <div class="post-category">
-          <span class="category">{{ $post->category->name }}</span>
-        </div>
+        @if ($post->category)
+          <div class="post-category">
+            <span class="category">{{ $post->category->name }}</span>
+          </div>
+        @endif
       </header>
       <h1>{{ $post->title }}</h1>
       <div class="divider"></div>

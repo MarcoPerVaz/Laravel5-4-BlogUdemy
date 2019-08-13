@@ -775,3 +775,15 @@ Commit - Agregando las páginas estáticas del menú
   -Se edita TagsController para cambiar welcome por pages.home ya que se le cambió el nombre
   -Se edita el archivo public/css/twitter-bootstrap.css 
     -se quita todo antes de la clase carousel
+Commit - Acceso a posts no públicos
+  -Se edita la vista posts/show.blade.php
+    -Se le agrega el helper optional para poder ver el post desde admin, ya que sin fecha mostraba error 
+     de que no se le puede dar formato si el valor es null 
+      -<span class="c-gris">{{ optional($post->published_at)->format('M d') }}</span>
+			-<span class="c-gris">- {{ optional($post->published_at)->diffForHumans() }}</span>
+    -Se agrega la directiva @if para comprobar si $post->category tiene un valor porque mostraba un error 
+     si el post no tenía categoría
+  -Se edita la función show de PostsController
+  -Se crea la función isPublished() en el modelo Post
+  -Se crea la carpeta errors en resources/views y dentro se crea la vista 404.blade.php
+    -Se edita la vista 404.blade.php

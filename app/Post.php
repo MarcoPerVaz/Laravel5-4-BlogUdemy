@@ -59,6 +59,12 @@ class Post extends Model
               ->latest('published_at');
     }
 
+    // Verifica si el post es público
+    public function isPublished()
+    {
+        return ! is_null($this->published_at) && $this->published_at < today(); //Devuelve verdadero o falso si el post tiene fecha o fechat futura
+    }
+
     // Sobreescribe al método create usado en el controlador
     public static function create(array $attributes = [])
     {
