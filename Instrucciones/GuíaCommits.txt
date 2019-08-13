@@ -805,3 +805,31 @@ Commit - Asignar posts a usuarios
       -return $this->belongsTo(User::class, 'user_id');
         -Dónde 'user_id' es el campo que va referenciado porque de lo contrario buscaría el campo 'owner_id' por convención
   -Se edita la vista pages/home.blade.php para mostrar al creador del post
+Commit - Reestructuración de vistas
+  -Se edita la vista posts/show.blade.php
+    -Se corta el contenido de la etiqueta header
+    -Se usa la directiva @include para vincular con la vista posts/header.blade.php
+    -Se usa la directiva @include para vincular con la vista posts/tags.blade.php
+    -Se usa la directiva @include para vincular con la vista posts/photo.blade.php
+    -Se usa la directiva @include para vincular con la vista posts/iframe.blade.php
+  -Se edita la vista home.blade.php
+    -Se quita el contenido de la etiqueta header
+    -Se usa el helper route en el href de leer más
+    -Se corta el área de las etiquetas y se pega en la vista posts/tags.blade.php
+    -Se usa la directiva @include para vincular con la vista posts/header.blade.php
+    -Se usa la directiva @include para vincular con la vista posts/tags.blade.php
+    -Se corta el contenido dentro de elseif($post->photos->count() > 1) para pasarse a la vista carousel-preview.blade.php
+    -Se corta el contenido dentro de @if ($post->photos->count() === 1) para pasarse a la vista posts/photo.blade.php
+    -Se usa la directiva @include para vincular con la vista posts/photo.blade.php
+    -Se corta el contenido dentro de @elseif($post->iframe) para pasarse a la vista posts/iframe.blade.php
+    -Se usa la directiva @include para vincular con la vista posts/iframe.blade.php
+  -Se crea la vista header.blade.php en resources/views/posts/
+    -Se pega el header en la vista posts/header.blade.php, el que fue cortado de la vista posts/show.blade.php
+  -Se crea la vista tags.blade.php en resources/views/posts/
+    -Se pega el área de las etiquetas que fue cortado de la vista home.blade.php y se pega en posts.tags
+  -Se crea la vista carousel-preview.blade.php en resources/views/posts/
+    -Se pega el contenido cortado de la vista home.blade.php
+  -Se crea la vista photo.blade.php en resources/views/posts/
+    -Se pega el contenido cortado de la vista home.blade.php
+  -Se crea la vista iframe.blade.php en resources/views/posts/
+    -Se pega el contenido cortado de la vista home.blade.php
