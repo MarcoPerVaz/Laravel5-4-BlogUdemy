@@ -767,3 +767,11 @@ Commit - Activando la navegación
     -Para poderlo usar se debe agregar en composer.json
       -"files": ["app/Http/helpers.php"]
     -Se usa el comando composer dumpautoload -o
+Commit - Agregando las páginas estáticas del menú
+  -Se copia contenido de la plantilla Zendero del archivo about.html y se pega en la vista pages/about.blade.php
+  -Se copia contenido de la plantilla Zendero del archivo archive.html y se pega en la vista pages/archive.blade.php
+  -Se copia contenido de la plantilla Zendero del archivo contact.html y se pega en la vista pages/contact.blade.php
+  -Se edita CategoriesController para cambiar welcome por pages.home ya que se le cambió el nombre
+  -Se edita TagsController para cambiar welcome por pages.home ya que se le cambió el nombre
+  -Se edita el archivo public/css/twitter-bootstrap.css 
+    -se quita todo antes de la clase carousel
