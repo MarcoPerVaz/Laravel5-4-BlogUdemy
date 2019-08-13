@@ -7,19 +7,10 @@
 		@endif
 		@foreach ($posts as $post)
 				<article class="post">
-					@if ($post->photos->count() === 1)
 
-							@include('posts.photo')
-							
-					@elseif($post->photos->count() > 1)
-					
-						@include('posts.carousel-preview')
+					{{-- Función para las Vistas polfórmicas - Está en el modelo Post --}}
+					@include( $post->viewType('home') )
 
-					@elseif($post->iframe)
-
-						@include('posts.iframe')
-						
-					@endif
 					<div class="content-post">
 						
 						@include('posts.header')

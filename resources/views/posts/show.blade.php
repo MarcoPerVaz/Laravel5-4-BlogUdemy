@@ -5,19 +5,10 @@
 
 @section('content')
   <article class="post container">
-    @if ($post->photos->count() === 1)
 
-        @include('posts.photo')
+    {{-- Función para las Vistas polfórmicas - Está en el modelo Post --}}
+    @include( $post->viewType() ) 
 
-    @elseif($post->photos->count() > 1)
-
-      @include('posts.carousel-preview')
-
-    @elseif($post->iframe)
-
-      <@include('posts.iframe')
-
-    @endif  
     <div class="content-post">
 
       @include('posts.header')

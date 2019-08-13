@@ -833,3 +833,13 @@ Commit - Reestructuración de vistas
     -Se pega el contenido cortado de la vista home.blade.php
   -Se crea la vista iframe.blade.php en resources/views/posts/
     -Se pega el contenido cortado de la vista home.blade.php
+Commit - Vistas polimórficas
+  -Se crea la función viewType() en el modelo post que servirá para integrar las vistas polimórficas
+  -Se crea la vista text.blade.php dentro de resources/views/posts/
+    -Se mantiene en blanco
+  -Se edita la vista posts/home.blade.php
+    -Se agrega la función viewType() dentro de <article class="post">
+    -Se quitan los las directiva
+  -Se edita la vista posts/show.blade.php
+    -Se agrega la función viewType() dentro de <article class="post">
+    -Se quitan los las directivas 
