@@ -30,7 +30,11 @@ class PostsController extends Controller
     {
         $this->validate($request, ['title' => 'required|min:3']);
 
-        $post = Post::create($request->only('title'));
+        // $post = Post::create($request->only('title'));
+        $post = Post::create([
+            'title' => $request->get('title'),
+            'user_id' => auth()->id()
+        ]);
 
         // Esto crea las url's únicas (funciona) pero fue pasado al modelo Post a la función create
             // $post->url = str_slug($request->get('title')) . "-{$post->id}"; 

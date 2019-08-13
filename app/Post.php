@@ -9,7 +9,7 @@ use Carbon\Carbon;
 class Post extends Model
 {
     protected $fillable = [
-        'title', 'body', 'iframe', 'excerpt', 'published_at', 'category_id',
+        'title', 'body', 'iframe', 'excerpt', 'published_at', 'category_id', 'user_id',
     ];
 
     protected $dates = ['published_at'];
@@ -49,6 +49,12 @@ class Post extends Model
     public function photos()
     {
         return $this->hasMany(Photo::class);
+    }
+
+    // Relación Pertenece a - belongsTo
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     // Query Scope

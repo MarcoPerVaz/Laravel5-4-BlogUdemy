@@ -787,3 +787,21 @@ Commit - Acceso a posts no públicos
   -Se crea la función isPublished() en el modelo Post
   -Se crea la carpeta errors en resources/views y dentro se crea la vista 404.blade.php
     -Se edita la vista 404.blade.php
+Commit - Asignar posts a usuarios
+  -Se edita la migración create_posts_table
+    -Se agrega el campo user_id después de category_id
+      $table->unsignedInteger('user_id');
+  -Se edita la función store de Admin/PostsController
+  -Se edita PostsTableSeeder
+    -Se agrega a los posts
+      -$post->user_id = 1;
+  -Se usa el comando php artisan migrate:refresh --seed
+  -Se edita el modelo Post
+    -Se agrega el campo user_id a la propiedad fillable
+  -Se edita el modelo User
+    -Se crea la función posts para indicar la relación hasMany
+  -Se edita el modelo Post
+    -Se crea la función owner para indicar la relación belongsTo
+      -return $this->belongsTo(User::class, 'user_id');
+        -Dónde 'user_id' es el campo que va referenciado porque de lo contrario buscaría el campo 'owner_id' por convención
+  -Se edita la vista pages/home.blade.php para mostrar al creador del post
