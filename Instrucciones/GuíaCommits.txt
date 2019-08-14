@@ -880,3 +880,26 @@ Commit - Políticas de acceso a publicaciones
   -Se edita la función destro de Admin/PostsController
     -$this->authorize('delete', $post);
       -Dónde delete es la función de PostPolicy
+Commit - Instalando el paquete laravel-permission
+  -Se usa el comando composer require spatie/laravel-permission sacado del sitio web
+    -https://docs.spatie.be/laravel-permission/v2/installation-laravel/
+  -Se actualizan las dependencias de composer
+    -Se copian los scripts de composer.json del repositorio de laravel con el branch 5.5 del sitio
+      -https://github.com/laravel/laravel/tree/5.5
+      -Se reemplaza por los scripts del composer.json del proyecto
+    -Se copia el array config de composer.json del repositorio de laravel con el branch 5.5 del sitio
+      -https://github.com/laravel/laravel/tree/5.5
+      -Se reemplaza por el array de config de composer.json del proyecto
+    -Se copia el array extra de composer.json del repositorio de laravel
+      -Se pega el array extra en composer.json del proyecto
+    -Se copia el array classmap de composer.json del repositorio de laravel con el branch 5.5 del sitio
+      -https://github.com/laravel/laravel/tree/5.5
+      -Se reemplaza por el classmap de composer.json del proyecto
+    -Se usa el comando composer update
+  -Se deb usar el siguiente comando para publicar las migraciones de laravel-permission
+    -php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="migrations"
+    Nota: Crea la migración create_permission_tables
+  -Se usa el comando php artisan migrate
+  -Se edita el modelo User
+    -Se agrega el trait 
+      -use Spatie\Permission\Traits\HasRoles;
