@@ -74,6 +74,8 @@ class Post extends Model
     // Sobreescribe al método create usado en el controlador
     public static function create(array $attributes = [])
     {
+        $attributes['user_id'] = auth()->id();
+
         $post = static::query()->create($attributes);
 
         $post->generateUrl();

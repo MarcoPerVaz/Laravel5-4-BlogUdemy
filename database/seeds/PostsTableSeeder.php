@@ -70,7 +70,7 @@ class PostsTableSeeder extends Seeder
         $post->body = "<p>Contenido de mi cuarto post</p>";
         $post->published_at = Carbon::now()->subDays(1); //del día cuando fue creado 1 día antes
         $post->category_id = 2;
-        $post->user_id = 1;
+        $post->user_id = 2;
         $post->save();
          $post->tags()->attach(Tag::create(['name' => 'Etiqueta 4']));
         // Quinto post
@@ -81,7 +81,7 @@ class PostsTableSeeder extends Seeder
         $post->body = "<p>Contenido de mi quinto post</p>";
         $post->published_at = Carbon::now(); //del día cuando fue creado
         $post->category_id = 2;
-        $post->user_id = 1;
+        $post->user_id = 2;
         $post->save();
          $post->tags()->attach(Tag::create(['name' => 'Etiqueta 5']));
     }

@@ -843,3 +843,40 @@ Commit - Vistas polimórficas
   -Se edita la vista posts/show.blade.php
     -Se agrega la función viewType() dentro de <article class="post">
     -Se quitan los las directivas 
+Commit - Políticas de acceso a publicaciones
+  -Se edita UsersTableSeeder
+    -Se agrega un nuevo usuario
+  -Se edita PostsTableSeeder
+    -Se cambia que el user_id del post 3 y 4 sean para el usuario 2 recien creado en UsersTableSeeder
+  -Se usa el comando php artisan migrate:fresh --seed
+  -Se edita la función index de Admin/PostsController
+    -Se muestran solo los posts del usuario logueado
+      -Forma 1: $posts = Post::where('user_id', auth()->id())->get();
+      -Forma 2: $posts = auth()->user()->posts;
+  -Se edita la vista admin/layout.blade.php para implementar el cierre de sesión y quitar ciertas cosas que no se van a usar
+  -Se usa el comando php artisan make:policy PostPolicy -m Post para implementar las políticas
+    -Dónde -m es para vincular la política a un modelo y Post el modelo a vincular
+    -Se edita la función view que es la que sirve para ver un post
+      -return $user->id === $post->user_id;
+  -Se edita la función edit de Admin/PostsController
+    -$this->authorize('view', $post);
+      -Dónde view es la función de PostPolicy
+  -Se edita el archivo AuthServiceProvider.php que está en app/Providers/AuthServiceProvider.php
+    -Se agrega  'App\Post' => 'App\Policies\PostPolicy', en la propiedad $policies 
+  -Se crea y se edita la vista 403.blade.php en resources/views/errors/ para mostrar la vista de sitio no autorizado
+  -Se edita la función update de PostPolicy
+    -return $user->id === $post->user_id;
+  -Se edita la función update de Admin/PostsController para autorizar a la función update de PostPolicy
+    -Se agrega $this->authorize('update', $post);
+      -Dónde update es la función de PostPolicy
+  -Se reestructura la función edit de Admin/PostsController
+  -Se reestructura la función store de Admin/PostsController
+  -Se edita la función create en el modelo Post
+  -Se edita la función create de PostPolicy
+    -return true;
+  -Se edita la función store de Admin/PostsController para autorizar a la función create de PostPolicy
+    - $this->authorize('create', new Post);
+      -Dónde create es la función de PostPolicy
+  -Se edita la función destro de Admin/PostsController
+    -$this->authorize('delete', $post);
+      -Dónde delete es la función de PostPolicy
