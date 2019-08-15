@@ -68,7 +68,12 @@ class Post extends Model
     // Query Scope
     public function scopeAllowed($query)
     {
-        if (auth()->user()->hasRole('Admin')) {
+        // Dónde:
+            // can() es parte de laravel y no de laravel-permission
+            // Dónde view es la función de PostPolicy
+            //Dónde $this es la instancia del modelo Post vacía
+        // 
+        if (auth()->user()->can('view', $this)) { 
             return $query;
         }
         

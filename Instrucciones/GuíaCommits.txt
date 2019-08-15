@@ -945,4 +945,73 @@ Commit - Roles y usuarios
     -Se crea una función Scope llamada scopeAllowed para verificar que posts puede ver el usuario dependiendo el Role
   -Se edita PostPolicy
     -Se crea la función before que se ejecuta antes que cualquier otra función de PostPolicy
+Commit - Permisos de usuario
+  -Se edita la vista admin/layout.blade.php
+  -Se corrigió un error en UsersTableSeeder al asignar el role de writer, la variable se cambio de $admin por $writer
+    -Esto: $admin->assignRole($writerRole); por: $writer->assignRole($writerRole);
+    -Usar el comando php artisan migrate:fresh --seed
+  -Se usa Tinker para manipular permisos
+    -php artisan tinker
+    -use Spatie\Permission\Models\Permission;
+    -$permission = Permission::create(['name' => 'View posts'])
+      Nota: Los permisos se leen así Permission::create(['name' => 'Ver post'])
+        -Dónde se crea el permiso en la BD y en el campo name lo que permitirá ese permiso
+    -use Spatie\Permission\Models\Role;
+    -$roleAdmin = Role::find(1)
+    -$roleAdmin->givePermissionTo($permission)
+      Nota: Dónde role es lo que tiene Role::find(1)
+      Nota: Dónde givePermissionTo es para darPermisoPara()
+      Nota: Dónde $permission es el role creado
+        -Permission::create(['name' => 'View posts'])
+    -$u = App\User::find(1)
+    -$u->hasPermissionTo('View posts');
+      Nota: Dónde hasPermissionTo() es para preguntar siTienesPermisoPara()
+      Nota: Dónde View posts es el permiso creado 
+        -Permission::create(['name' => 'View posts'])
+        Nota: Si devuelve true es que el usuario tiene el permiso
+    -Nos salimos de Tinker con el comando exit y se usa el comando php artisan migrate:fresh --seed
+  -Se usa tinker de nuevo con el comando php artisan tinker 
+    -use Spatie\Permission\Models\Permission;
+    -$permission = Permission::create(['name' => 'View posts'])
+    -$u = App\User::find(1)
+    -$u->givePermissionTo('View posts')
+    -$u->hasPermissionTo('View posts');
+      Nota: Dónde hasPermissionTo() es para preguntar siTienesPermisoPara()
+      Nota: Dónde View posts es el permiso creado 
+        -Permission::create(['name' => 'View posts'])
+        Nota: Si devuelve true es que el usuario tiene el permiso, de lo contrario un error
+    -Nos salimos de tinker con el comando exit
+  -Se edita UsersTableSeeder
+    -Se importa el namespace use Spatie\Permission\Models\Permission;
+    -Se limpia la tabla de permisos al usar migrate:refresh
+      -Permission::truncate();
+    -Se crea el permiso View posts 
+      -$viewPostsPermission = Permission::create(['name' => 'View posts']);
+  -Se usa el comando php artisan migrate:fresh --seed
+  -Se edita Admin/PostsController
+  -Se edita la función scope scopeAllowed() del modelo Post
+  -Se edita la función view de PostPolicy
+  -Se usa Tinker para dar permisos al usuario
+    -php artisan tinker
+    -$user = App\User::find(2)
+    -$user->givePermissionTo('View posts)
+    Nota:Funciona agregando el permiso (Se comprobó en el navegador)
+    -use Spatie\Permission\Models\Role;
+    -$role = Role::find(2)
+    -$role->givePermissionTo('View posts')
+    -Se usa el comando exit para salir de Tinker
+    -Se usa el comando php artisan migrate:fresh --seed
+  -Se editan las funciones create, update y delete de PostPolicy
+    -La función edit usa la función update de PostPolicy
+      -$this->authorize('update', $post);
+  -Se edita UsersTableSeeder para agregar 3 permisos más
+    -$createPostsPermission = Permission::create(['name' => 'Create posts']);
+    -$updatePostsPermission = Permission::create(['name' => 'Update posts']);
+    -$deletePostsPermission = Permission::create(['name' => 'Delete posts']);
+  -Se usa tinker para dar permisos al role writer
+    -php artisan tinker
+    -$writer = App\User::find(2)
+    -$writer->givePermissionTo('Update posts')
+    -Se usa el comando exit para salir de tinker
+    -Se usa el comando php artisan migrate:fresh --seed
   
