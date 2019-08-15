@@ -903,3 +903,46 @@ Commit - Instalando el paquete laravel-permission
   -Se edita el modelo User
     -Se agrega el trait 
       -use Spatie\Permission\Traits\HasRoles;
+Commit - Roles y usuarios
+  -Se usa tinker
+    -Se crea un role
+      -php artisan tinker
+      -use Spatie\Permission\Models\Role;
+      -$adminRole = Role::create(['name' => 'Admin'])
+    -Se obtiene el primer usuario
+      $u = App\User::first()
+    -Se asigna el role 
+      Nota: Se puede usar la función assignRole() porque se importó el trait use HasRoles en el modelo User
+        -HasRoles se puede usar por el namespace de use Spatie\Permission\Traits\HasRoles;
+      -$u->assignRole($adminRole)
+    -Para preguntar si un usuario tiene role específico
+      -$u->hasRole('Admin')  
+        Nota: Si devuelve true es que tiene el role asignado
+        Nota: Si se pregunta por un role no asignado o que no existe regresa false
+          -$u->hasRole('Writer')
+  -Se edita UsersTableSeeder para agregar roles a los usuarios
+    -Se importa el namespace use Spatie\Permission\Models\Role;
+    -Se limpia la tabla roles cada que se usa migrate:refresh
+      -Role::truncate();
+    -Se crean 2 roles
+      -$adminRole = Role::create(['name' => 'Admin']);
+      -$writerRole = Role::create(['name' => 'Writer']);
+    -Se edita el usuario 1 cambiando el nombre de la variable para tener mejor referencia de que será admin
+    -Se le asigna el role admin al usuario 1
+      -$admin->assignRole($adminRole);
+    -Se edita el usuario 2 cambiando el nombre de la variable para tener mejor referencia de que será writer
+    -Se le asigna el role writer al usuario 2
+      -$admin->assignRole($writerRole);
+  Nota: Para poder limpiar la tabla roles 
+    -Se edita el archivo DatabaseSeeder.php en database/seeds
+      -Para deshabilitar la revisión de llaves foráneas
+        -DB::statement('SET FOREIGN_KEY_CHECKS=0');
+      -Para habilitar la revisión de llaves foráneas
+        -DB::statement('SET FOREIGN_KEY_CHECKS=1');
+  -Se usa el comando php artisan migrate:fresh --seed
+  -Se edita la función index de Admin/PostsController
+  -Se edita el modelo Post
+    -Se crea una función Scope llamada scopeAllowed para verificar que posts puede ver el usuario dependiendo el Role
+  -Se edita PostPolicy
+    -Se crea la función before que se ejecuta antes que cualquier otra función de PostPolicy
+  

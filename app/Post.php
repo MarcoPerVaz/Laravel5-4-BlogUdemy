@@ -65,6 +65,16 @@ class Post extends Model
               ->latest('published_at');
     }
 
+    // Query Scope
+    public function scopeAllowed($query)
+    {
+        if (auth()->user()->hasRole('Admin')) {
+            return $query;
+        }
+        
+        return $query->where('user_id', auth()->id());
+    }
+
     // Verifica si el post es público
     public function isPublished()
     {

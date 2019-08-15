@@ -10,6 +10,14 @@ class PostPolicy
 {
     use HandlesAuthorization;
 
+    public function before($user)
+    {
+        // Si el usuario tiene el role Admin puede editar todos los posts
+        if ($user->hasRole('Admin')) {
+            return true;
+        }
+    }
+
     /**
      * Determine whether the user can view the post.
      *

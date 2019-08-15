@@ -15,8 +15,17 @@ class PostsController extends Controller
 {
     public function index()
     {
-        // $posts = Post::where('user_id', auth()->id())->get();
-        $posts = auth()->user()->posts;
+        // Esta lógica fue pasada a la función allowed del modelo Post
+            // if (auth()->user()->hasRole('Admin')) {
+            //     $posts = Post::all();
+            // }
+            // else {
+            //     // $posts = Post::where('user_id', auth()->id())->get();
+            //     $posts = auth()->user()->posts;
+            // }
+        // 
+
+        $posts = Post::allowed()->get(); //Función Scope creada en el modelo Post para verificar que posts puede ver el usuario dependiendo el Role
         return view('admin.posts.index', compact('posts'));
     }
 
