@@ -41,8 +41,7 @@
                   <td>
 
                     <a href="{{ route('admin.users.show', $user) }}" 
-                      class="btn btn-xs btn-default"
-                      target="_blank">
+                      class="btn btn-xs btn-default">
                       <i class="fa fa-eye"></i>
                     </a>
 

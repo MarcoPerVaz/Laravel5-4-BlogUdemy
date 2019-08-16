@@ -187,7 +187,15 @@ desired effect
                 <img src="/adminlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  {{ auth()->user()->name }} - {{ auth()->user()->roles->first()->name }}
+                  {{-- Agregado por mi --}}
+                    @if (auth()->user()->roles->count())
+                      {{ auth()->user()->name }} - {{ auth()->user()->roles->first()->name }}
+                    @else
+                      {{ auth()->user()->name }}
+                    @endif
+                  
+                  {{-- Curso --}}
+                    {{-- {{ auth()->user()->name }} - {{ auth()->user()->roles->first()->name }} --}}
                   <small>Desde {{ auth()->user()->created_at->format('d/m/Y') }}</small>
                 </p>
               </li>

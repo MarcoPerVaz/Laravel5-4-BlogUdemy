@@ -1035,4 +1035,12 @@ Commit - Mostrando el listado de usuarios
         Nota: <td>{{ $user->getRoleNames()->implode(', ') }}</td>
           -Dónde getRoleNames() es parte del paquete laravel-permission y obtiene el campo name de la tabla roles
           -Dónde implode agrega una coma y un espacio por cada role que encuentra
+Commit - Creando el perfil de usuario
+  -Se edita la vista admin/users/index.blade.php para quitar la propiedad target="_blank" del href de admin.users.show
+  -Se edita la función show de Admin/UsersController
+  -Se crea la vista admin/users/show.blade.php
+    -Se edita la vista admin/users/show.blade.php
+  Nota: Tuve que editar la vista admin/layout.blade.php por un error al momento de dejar al usuario 2 sin role
+    Nota: Esta entre comentarios {{-- Agregado por mi --}}
+
   
