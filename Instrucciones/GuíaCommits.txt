@@ -1042,5 +1042,13 @@ Commit - Creando el perfil de usuario
     -Se edita la vista admin/users/show.blade.php
   Nota: Tuve que editar la vista admin/layout.blade.php por un error al momento de dejar al usuario 2 sin role
     Nota: Esta entre comentarios {{-- Agregado por mi --}}
-
-  
+Commit - Editar usuarios
+  -Se edita la función edit de Admin/UsersController
+  -Se crea la vista edit.blade.php en resources/views/admin/users/ 
+    -Se edita la vista admin/users/edit.blade.php
+  -Se edita la función update de Admin/UsersController
+    Nota: Rule::unique('users')->ignore(($user->id))
+      -Es para que permita actualizar si el email es el mismo que el del usuario logueado
+    Nota: Importar el namespace use Illuminate\Validation\Rule;
+    Nota: >withFlash('Usuario actualizado')
+      -Dónde withFlash es un método mágico de laravel que une la función with con la variable de sesión flash que es pasada a la vista
