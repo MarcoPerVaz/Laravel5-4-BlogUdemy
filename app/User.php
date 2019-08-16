@@ -29,6 +29,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    // Función mutator setPasswordAttribute
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+
     // Relación Tiene Muchos - hasMany 
     public function posts()
     {

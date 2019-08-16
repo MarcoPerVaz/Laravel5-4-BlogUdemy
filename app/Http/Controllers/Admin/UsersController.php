@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 // Importado
 use App\User;
-use Illuminate\Validation\Rule;
+// use Illuminate\Validation\Rule; // No se usa porque se pasó a UpdateUserRequest
+use App\Http\Requests\UpdateUserRequest;
 
 class UsersController extends Controller
 {
@@ -71,15 +72,22 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        $data = $request->validate ([
-            'name' => 'required',
-            'email' => ['required', Rule::unique('users')->ignore(($user->id))],
-        ]);
+        // Funciona pero se ha pasado a UpdateUserRequest
+            // $rules = [
+            //     'name' => 'required',
+            //     'email' => ['required', Rule::unique('users')->ignore(($user->id))],
+            // ];
 
-        $user->update($data);
-        
+            // if ($request->filled('password')) {
+            //     $rules['password'] = ['confirmed', 'min:6'];
+            // }
+            
+            // $user->update($request->validate ($rules));
+        // 
+        $user->update( $request->validated() );
+
         return back()->withFlash('Usuario actualizado');
     }
 

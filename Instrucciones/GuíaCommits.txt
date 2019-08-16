@@ -1052,3 +1052,22 @@ Commit - Editar usuarios
     Nota: Importar el namespace use Illuminate\Validation\Rule;
     Nota: >withFlash('Usuario actualizado')
       -Dónde withFlash es un método mágico de laravel que une la función with con la variable de sesión flash que es pasada a la vista
+Commit - Editar contraseña
+  -Se edita la vista admin/users/edit.blade.php
+  -Se edita la función update de Admin/UsersController
+    Nota: $request->filled('password')
+      -Dónde filled pregunta si el elemento html password contiene información
+  -Se crea una función mutador llamada setPasswordAttribute() en el modelo User para encriptar el campo password
+  -Se edita la función create de Auth/RegisterController
+    -Se quita el campo 'password' => bcrypt($data['password']), para evitar doble encriptación solo si se usa RegisterController para registrar
+  -Se crea el formRequest UpdateUserRequest usando el comando
+    -php artisan make:request UpdateUserRequest
+    -Se edita el UpdateUserRequest
+      -En la función authorize se devuelve true
+      -Se importa el namespace use Illuminate\Validation\Rule;
+      Nota: ->ignore($this->route('user')->id)
+        Nota: route('user')->id
+          -Dónde 'user' nos devuelve el usuario completo y solo obtenemos el id del objeto usuario
+  -Se edita Admin/UsersController
+    -Se quita el namespace use Illuminate\Validation\Rule; en Admin/UsersController
+    -Se importa el namespace use App\Http\Requests\UpdateUserRequest; en Admin/UsersController
