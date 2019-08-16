@@ -1014,4 +1014,25 @@ Commit - Permisos de usuario
     -$writer->givePermissionTo('Update posts')
     -Se usa el comando exit para salir de tinker
     -Se usa el comando php artisan migrate:fresh --seed
+Commit - Mostrando el listado de usuarios
+  -Se edita el archivo web.php
+    -Se cambian las 6 rutas del grupo de admin (index, create, store, edit, update y destroy) por
+      -Route::resource('posts', 'PostsController', ['except' => 'show', 'as' => 'admin']);
+        -Dónde except es para que imita la ruta show
+        -Dónde as es para que los nombres de las rutas empiecen con admin.
+          -Ejemplo: admin.posts.index
+  -Se crea la ruta users dentro del grupo de rutas de Admin
+    -Route::resource('users', 'UsersController', ['as' => 'admin']);
+  -Se crea el controlador UsersController dentro de la carpeta Admin usando el comando php artisan make:controller Admin/UsersController -r
+    -Dónde -r es para crear la estructura de los 7 métodos REST (index, create, store, show, edit, update, destroy)
+  -Se edita Admin/UsersController
+    -Se edita la función index de Admin/UsersController
+      Nota: Importar el namespace use App\User;
+  -Se crea la carpeta users en resources/views/admin/
+    -Se crea y se edita la vista index.blade.php en admin/users/
+      -Se copia todo de la vista admin/posts/index.blade.php y se pega en users/index.blade.php
+        -Se reemplaza el contenido para mostrar a los usuarios
+        Nota: <td>{{ $user->getRoleNames()->implode(', ') }}</td>
+          -Dónde getRoleNames() es parte del paquete laravel-permission y obtiene el campo name de la tabla roles
+          -Dónde implode agrega una coma y un espacio por cada role que encuentra
   
