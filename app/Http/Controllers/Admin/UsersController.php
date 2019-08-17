@@ -10,6 +10,7 @@ use Spatie\Permission\Models\Role;
 // use Illuminate\Validation\Rule; // No se usa porque se pasó a UpdateUserRequest
 use App\Http\Requests\UpdateUserRequest;
 use Spatie\Permission\Models\Permission;
+use App\Events\UserWasCreated;
 
 class UsersController extends Controller
 {
@@ -72,7 +73,7 @@ class UsersController extends Controller
                 // $user->givePermissionTo($request->permissions);
 
         // Enviamos el email
-
+        UserWasCreated::dispatch($user, $data['password']);
 
         // Regresamos al usuario
         return redirect()->route('admin.users.index')->withFlash('El usuario ha sido creado');

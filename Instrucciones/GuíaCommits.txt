@@ -1136,3 +1136,22 @@ Commit - Crear usuarios
       -Dónde withFlash es el método mágico de laravel uniendo el método with con la variable de sesión flash que es pasada a la vista
   Nota: Al momento de crear un usuario sin roles ni permisos en el curso dio un error, pero en mi proyecto no, pero igual hice los cambios 
         para continuar igual que el curso
+Commit - Eventos y Listeners
+  -Se edita la propiedad $listen del app/Providers/EventServiceProvider
+  -Se usa el comando php artisan event:generate
+    -genera los eventos basandose em lo que haya en la propiedad $listen en app/Providers/EventServiceProvider.php
+  Nota: El comando genera 2 nuevas carpetas, Events y Listeners
+  -Se edita el evento UserWasCreated
+    -Se quita la función broadcastOn() ya que no se va a usar
+    -Se quita el trait InteractsWithSockets
+  -Se edita la función store para usar el evento UserWasCreated recien creado
+    Nota: Importar el namespace
+      -use App\Events\UserWasCreated;
+    Nota: UserWasCreated::dispatch($user, $data['password']);
+      -Dónde dispatch es para disparar el evento
+      -Dónde $user es el modelo User
+      -Dónde $data['password'] es la variable que contiene el request
+  -Se edita __construct en Events/UserWasCreated.php
+  -Se edita el listener Listeners/SendLoginCredentials.php
+    -Se quita el constructor __construct que no se va a usar
+    -Se edita la funcioón handle()
