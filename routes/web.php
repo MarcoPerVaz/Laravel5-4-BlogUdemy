@@ -34,6 +34,8 @@ Route::group([
 
     // Roles
     Route::put('users/{user}/roles', 'UsersRolesController@update')->name('admin.users.roles.update');
+    // Permissions
+    Route::put('users/{user}/permissions', 'UsersPermissionsController@update')->name('admin.users.permissions.update');
     // Dropzone
     Route::post('posts/{post}/photos', 'PhotosController@store')->name('admin.posts.photos.update');
     // Eliminar imágenes

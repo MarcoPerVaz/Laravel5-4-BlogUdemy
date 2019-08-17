@@ -1089,3 +1089,23 @@ Commit - Agregar y quitar roles de usuario
     Nota: ->withFlash('Los roles han sido actualizados');
       -Dónde withFlash es un método mágico de laravel usando el método with con la variable de sesion flash pasada a la vista
     -Se borran todo los métodos excepto el método update ya que no se van a usar
+Commit - Agregar y quitar permisos de usuarios 
+  -Se edila la vista admin/users/edit.blade.php
+  -Se edita la función edit de Admin/UsersController
+    Nota: Importar el modelo Permission 
+      -use Spatie\Permission\Models\Permission;
+  -Se crea la ruta para los permisos en web.php
+    -Route::put('users/{user}/permissions', 'UsersPermissionsController@update')->name('admin.users.permissions.update');
+  -Se crea el controlador Admin/UsersPermissionsController
+    -Se crea y edita la función update
+      Nota: Importar el modelo User
+        -use App\User;
+        Nota: $user->syncPermissions($request->permissions);
+      -Dónde syncPermissions es un método del paquete laravel-permission
+    Nota: ->withFlash('Los permisos han sido actualizados');
+      -Dónde withFlash es un método mágico de laravel usando el método with con la variable de sesion flash pasada a la vista
+    NOTA: En el curso hubo un error al intentar guardar los permisos sin ningún permiso seleccionado, implementé la solución como en el curso
+          pero en mi proyecto yo no tuve ese error
+  -Se edita la función update de Admin/UsersRolesController
+     NOTA: En el curso hubo un error al intentar guardar los roles sin ningún role seleccionado, implementé la solución como en el curso
+          pero en mi proyecto yo no tuve ese error
