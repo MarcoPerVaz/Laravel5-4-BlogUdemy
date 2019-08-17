@@ -1119,3 +1119,20 @@ Commit - Activando rutas anidadas
     -Solución: En la tabla de usuarios faltaba una etiqueta th, el thead debe tener las mismas columnas que tbody
       -Se edita la vista admin/users/index.blade.php
         -Se agrega el th en el thead <th>Operaciones</th>
+Commit - Crear usuarios
+  -Se edita la vista admin/users/index.blade.php
+  -Se edita la vista admin/users/create.blade.php
+  -Se edita la vista admin/users/edit.blade.php
+    -Se corta el foreach de los roles y se pasa a una vista partial y se reemplaza por @include('admin.roles.checkboxes')
+  -Se crea carpeta roles en resources/views/admin/ y dentro la vista checkboxes.blade.php
+    -Se pega el foreach de roles, cortado de la vista admin/users/edit.blade.php
+  -Se crea carpeta permissions en resources/views/admin/ y dentro la vista checkboxes.blade.php
+    -Se pega el foreach de permissions, cortado de la vista admin/users/edit.blade.php
+  -Se edita la función create en Admin/UsersController
+  -Se edita la función store en Admin/UsersController
+    Nota: Importar el modelo User si es que no está importado 
+      -use App\User;
+    Nota: ->withFlash('El usuario ha sido creado')
+      -Dónde withFlash es el método mágico de laravel uniendo el método with con la variable de sesión flash que es pasada a la vista
+  Nota: Al momento de crear un usuario sin roles ni permisos en el curso dio un error, pero en mi proyecto no, pero igual hice los cambios 
+        para continuar igual que el curso
