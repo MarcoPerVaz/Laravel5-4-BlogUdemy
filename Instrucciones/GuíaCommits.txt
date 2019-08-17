@@ -1071,3 +1071,21 @@ Commit - Editar contraseña
   -Se edita Admin/UsersController
     -Se quita el namespace use Illuminate\Validation\Rule; en Admin/UsersController
     -Se importa el namespace use App\Http\Requests\UpdateUserRequest; en Admin/UsersController
+Commit - Agregar y quitar roles de usuario
+  -Se edita la vista admin/users/edit.blade.php
+    -Se crea la 2da columna col-md-6
+  -Se edita la función edit de Admin/UsersController
+    Nota: Se importa el modelo Role 
+      -use Spatie\Permission\Models\Role;
+  -Se crea el controlador Admin/UsersRolesController usando el comando
+    -php artisan make:controller Admin/UsersRolesController -r
+      -Dónde -r es para que cree los 7 método REST (index, create, store, show, edit, update y destroy) en el controlador
+  -Se crea la ruta en web.php
+    -Route::put('users/{user}/roles', 'UsersRolesController@update')->name('admin.users.roles.update');
+  -Se edita la función edit de Admin/UsersRolesController
+    Nota: Importar el modelo use App\User;
+    Nota: $user->syncRoles($request->roles);
+      -Dónde syncRoles es un método del paquete laravel-permission
+    Nota: ->withFlash('Los roles han sido actualizados');
+      -Dónde withFlash es un método mágico de laravel usando el método with con la variable de sesion flash pasada a la vista
+    -Se borran todo los métodos excepto el método update ya que no se van a usar
