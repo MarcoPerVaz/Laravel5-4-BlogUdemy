@@ -1109,3 +1109,13 @@ Commit - Agregar y quitar permisos de usuarios
   -Se edita la función update de Admin/UsersRolesController
      NOTA: En el curso hubo un error al intentar guardar los roles sin ningún role seleccionado, implementé la solución como en el curso
           pero en mi proyecto yo no tuve ese error
+Commit - Activando rutas anidadas
+  -Se edita la función edit de Admin/UsersController
+  -Se edita la vista admin/users/edit.blade.php
+  -Se edita la vista admin/partials/nav.blade.php
+  -Se edita la función create de Admin/UsersController
+  -Se crea la vista create.blade.php en resources/views/admin/users/
+  Nota: Hay un error con datatables al ver todos los usuarios
+    -Solución: En la tabla de usuarios faltaba una etiqueta th, el thead debe tener las mismas columnas que tbody
+      -Se edita la vista admin/users/index.blade.php
+        -Se agrega el th en el thead <th>Operaciones</th>

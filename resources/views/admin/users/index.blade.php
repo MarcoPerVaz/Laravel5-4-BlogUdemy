@@ -29,6 +29,7 @@
               <th>Nombre</th>
               <th>Email</th>
               <th>Roles</th>
+              <th>Operaciones</th>
             </tr>
           </thead>
           <tbody>
