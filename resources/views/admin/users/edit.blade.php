@@ -53,15 +53,25 @@
       <div class="box-header with-border">
         <h3 class="box-title">Roles</h3>
       </div>
-      <form action="{{ route('admin.users.roles.update', $user) }}" method="post">
-        {{ csrf_field() }} {{ method_field('PUT') }}
-        <div class="box-body">
-          
-          @include('admin.roles.checkboxes')
+       @role('Admin')
+        <form action="{{ route('admin.users.roles.update', $user) }}" method="post">
+          {{ csrf_field() }} {{ method_field('PUT') }}
+          <div class="box-body">
+            
+            @include('admin.roles.checkboxes')
 
-        </div>
-        <button class="btn btn-primary btn-block">Actualizar roles</button>
-      </form>
+          </div>
+          <button class="btn btn-primary btn-block">Actualizar roles</button>
+        </form>
+       @else
+         <ul class="list-group">
+          @forelse ($user->roles as $role)
+            <li class="list-group-item">{{ $role->name }}</li>    
+          @empty
+            <li class="list-group-item">No tiene roles</li>   
+          @endforelse
+        </ul>
+      @endrole
     </div>
     {{-- Fin Roles --}}
     {{-- Permisos --}}
@@ -69,15 +79,25 @@
       <div class="box-header with-border">
         <h3 class="box-title">Permisos</h3>
       </div>
-      <form action="{{ route('admin.users.permissions.update', $user) }}" method="post">
-        {{ csrf_field() }} {{ method_field('PUT') }}
-        <div class="box-body">
-          
-          @include('admin.permissions.checkboxes')
+      @role('Admin')
+        <form action="{{ route('admin.users.permissions.update', $user) }}" method="post">
+          {{ csrf_field() }} {{ method_field('PUT') }}
+          <div class="box-body">
+            
+            @include('admin.permissions.checkboxes')
 
-        </div>
-        <button class="btn btn-primary btn-block">Actualizar permisos</button>
-      </form>
+          </div>
+          <button class="btn btn-primary btn-block">Actualizar permisos</button>
+        </form>
+      @else
+        <ul class="list-group">
+          @forelse ($user->permissions as $permission)
+            <li class="list-group-item">{{ $permission->name }}</li>    
+          @empty
+            <li class="list-group-item">No tiene permisos</li>
+          @endforelse
+        </ul>
+      @endrole
     </div>
     {{-- Fin Permisos --}}
   </div>

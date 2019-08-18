@@ -1216,3 +1216,21 @@ Commit - Eliminar usuarios
   -Corregí un error en la función create de Admin/UsersController ya que no permitía crear un nuevo usuario
     -Se cambió esto: $this->authorize('create', $user);
     -Por esto: $this->authorize('create', New User);
+Commit - Permisos para asignar roles
+  -Se edita el archivo app/Http/kernel.php
+    -Se agregan en la propiedad $routeMiddleware
+      -'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+      -'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+  -Se edita web.php
+    -Esto: Route::put('users/{user}/roles', 'UsersRolesController@update')->name('admin.users.roles.update');
+    -Por esto: Route::middleware('role:Admin')->put('users/{user}/roles', 'UsersRolesController@update')->name('admin.users.roles.update');
+  -Se edita UsersTableSeedes
+    -$UpdateRolesPermission = Permission::create(['name' => 'Update roles']);
+  -Se usa el comando php artisan migrate:fresh --seed
+  -Se edita web.php
+    -Esto: Route::put('users/{user}/permissions', 'UsersPermissionsController@update')->name('admin.users.permissions.update');
+    -Por esto:
+      -Route::middleware('role:Admin')->put('users/{user}/permissions', 'UsersPermissionsController@update')->name('admin.users.permissions.update');
+  -Se edita la vista admin/users/edit.blade.php
+    -Se usa la directiva @role que viene con el paquete laravel-permission
+    -Se usa la directiva @permission que viene con el paquete laravel-permission
