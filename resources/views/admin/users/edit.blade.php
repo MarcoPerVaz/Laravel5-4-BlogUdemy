@@ -9,13 +9,7 @@
         <h3 class="box-title">Datos personales</h3>
       </div>
       <div class="box-body">
-        @if ( $errors->any() )
-          <ul class="list-group">
-            @foreach ($errors->all() as $error)
-              <li class="list-group-item list-group-item-danger">{{ $error }}</li>  
-            @endforeach
-          </ul>
-        @endif
+        @include('partials.error-messages')
         <form action="{{ route('admin.users.update', $user) }}" method="post">
           {{ csrf_field() }} {{ method_field('PUT') }}
 
@@ -84,7 +78,7 @@
           {{ csrf_field() }} {{ method_field('PUT') }}
           <div class="box-body">
             
-            @include('admin.permissions.checkboxes')
+            @include('admin.permissions.checkboxes', ['model' => $user])
 
           </div>
           <button class="btn btn-primary btn-block">Actualizar permisos</button>

@@ -1244,3 +1244,23 @@ Commit - Mostrando el listado de roles
     Nota: Importar el modelo Role 
       -use Spatie\Permission\Models\Role;
   -Se crea y se edita la vista index.blade.php en admin/roles/
+Commit - Formulario para crear roles 
+  -Se edita la función create de Admin/RolesController
+  -Se crea y se edita la vista create.blade.php en admin/roles/
+    -Se corta el condicional @if() de los errores y se pega en otra vista
+    -Se reemplaza por la directiva @include()
+      -@include('partials.error-messages')
+  -Se crea la vista partial error-messages.blade.php en resources/views/partials/
+    -Se pega el contenido cortado de la vista admin/roles/create.blade.php
+  -Se edita la vista admin/users/create.blade.php
+    -Se quita el condicional if() para mostrar los errores
+      -Se reemplaza por la directiva @include()
+        -include('partials.error-messages')
+  -Se edita la vista admin/users/edit.blade.php
+    -Se quita el condicional if() para mostrar los errores
+      -Se reemplaza por la directiva @include()
+        -include('partials.error-messages')
+  -Se edita la función store de Admin/RolesController
+  -Se edita la vista permissions/checkboxes.blade.php
+  -Se edita la vista admin/users/create.blade.php
+  -Se edita la vista admin/users/edit.blade.php
