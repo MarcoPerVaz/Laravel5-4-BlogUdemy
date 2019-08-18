@@ -1234,3 +1234,13 @@ Commit - Permisos para asignar roles
   -Se edita la vista admin/users/edit.blade.php
     -Se usa la directiva @role que viene con el paquete laravel-permission
     -Se usa la directiva @permission que viene con el paquete laravel-permission
+Commit - Mostrando el listado de roles
+  -Se crea la ruta en web.php
+    -Route::resource('roles', 'RolesController', ['as' => 'admin']);
+  -Se crea el controlador RolesController usando el comando
+    -php artisan mak:controller Admin/RolesController -r
+      -Dónde -r es para crear los 7 métodos REST (index, create, store, show, edit, update y destroy)
+  -Se edita la función index de Admin/RolesController
+    Nota: Importar el modelo Role 
+      -use Spatie\Permission\Models\Role;
+  -Se crea y se edita la vista index.blade.php en admin/roles/
