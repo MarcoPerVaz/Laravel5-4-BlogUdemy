@@ -1208,3 +1208,11 @@ Commit - Políticas de acceso a usuarios
   -Se usa el comando php artisan migrate:fresh --seed
   -Se edita el controlador Admin/UsersController
     -Se editan las funciones create, store, show, edit y update
+Commit - Eliminar usuarios
+  -Se edita la función destroy de Admin/UsersController
+  -Se edita la función update de Admin/UsersController
+  -Se edita la migración create_posts_table
+  -Se usa el comando php artisan migrate:fresh --seed
+  -Corregí un error en la función create de Admin/UsersController ya que no permitía crear un nuevo usuario
+    -Se cambió esto: $this->authorize('create', $user);
+    -Por esto: $this->authorize('create', New User);
