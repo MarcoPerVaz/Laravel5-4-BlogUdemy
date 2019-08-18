@@ -1155,3 +1155,33 @@ Commit - Eventos y Listeners
   -Se edita el listener Listeners/SendLoginCredentials.php
     -Se quita el constructor __construct que no se va a usar
     -Se edita la funcioón handle()
+Commit - Enviar las credenciales vía email
+  -Se edita la función handle() de SendLoginCredentials
+  -Se usa el comando php artisan make:mail LoginCredentials -m emails.login-credentials
+      -Dónde -m es para crear la vista del email
+    -El comando crea:
+      -La carpeta Mail en app/ y dentro el archivo LoginCredentials.php
+      -La carpeta emails y dentro la vista login-credentials.blade.php
+  -Se edita Mail/LoginCredentials.php
+    -Se agregan 2 variables protected
+      -public $user;
+      -public $password;
+    -Se edita el constructor __construct
+      -Se le pasan 2 parámetros: $user y $passowrd
+  -Se crea la ruta email para visualizar el email que será enviado
+    -Acá va el password que mostrará el preview del email
+    Nota: Se comenta esta ruta porque solo se usó para ver el diseño del email
+  -Se edita la vista emails/login-credentials.blade.php
+  -Se crea o se inicia sesión en mailtrap para probar el envío del email
+    -Sitio mailtrap: https://mailtrap.io/
+  -Se edita el archivo .env para agregar los datos de mailtrap
+    Nota:Los datos los da mailtrap
+    MAIL_DRIVER=smtp
+    MAIL_HOST=smtp.mailtrap.io
+    MAIL_PORT=2525
+    MAIL_USERNAME=f342f5dfd159ca
+    MAIL_PASSWORD=030e3333865c6d
+    MAIL_ENCRYPTION=null
+  -Se edita la función build de Mail/LoginCredentials
+    -Esto: return $this->markdown('emails.login-credentials');
+    -Por esto: return $this->markdown('emails.login-credentials')->subject('Tus credenciales de acceso a ' . config('app.name'));

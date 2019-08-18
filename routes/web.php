@@ -11,6 +11,12 @@
 |
 */
 
+// Ruta preview del email
+  // Solo se usó para visualizar el diseño del email
+    // Route::get('/email', function(){
+    //   return new App\Mail\LoginCredentials(App\User::first(), '123456');
+    // });
+
 // Ruta por defecto
 Route::get('/', 'PagesController@home')->name('pages.home');
 Route::get('nosotros', 'PagesController@about')->name('pages.about');
