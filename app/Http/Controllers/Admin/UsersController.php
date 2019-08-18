@@ -21,7 +21,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all(); 
+        //Función Scope query creada en el modelo User para verificar si el usuario puede ver a los usuarios creados
+            $users = User::allowed()->get(); 
+        // 
         return view('admin.users.index', compact('users'));
     }
 
@@ -32,6 +34,7 @@ class UsersController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', $user);
         $user = new User;
         $roles = Role::with('permissions')->get();
         $permissions = Permission::pluck('name', 'id');
@@ -46,6 +49,8 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', new User);
+
         // Validar el formulario
         $data = $request->validate([
                     'name' => 'required|string|max:255',
@@ -87,6 +92,7 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
+        $this->authorize('view', $user);
         return view('admin.users.show', compact('user'));
     }
 
@@ -98,6 +104,7 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
         $roles = Role::with('permissions')->get();
         $permissions = Permission::pluck('name', 'id');
         return view('admin.users.edit', compact('user', 'roles', 'permissions'));
@@ -124,6 +131,8 @@ class UsersController extends Controller
             
             // $user->update($request->validate ($rules));
         // 
+        $this->authorize('update', $user);
+
         $user->update( $request->validated() );
 
         return back()->withFlash('Usuario actualizado');

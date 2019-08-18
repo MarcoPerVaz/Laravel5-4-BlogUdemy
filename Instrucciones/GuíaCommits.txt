@@ -1185,3 +1185,26 @@ Commit - Enviar las credenciales vía email
   -Se edita la función build de Mail/LoginCredentials
     -Esto: return $this->markdown('emails.login-credentials');
     -Por esto: return $this->markdown('emails.login-credentials')->subject('Tus credenciales de acceso a ' . config('app.name'));
+Commit - Políticas de acceso a usuarios
+  -Se crea la política usando el comando 
+    -php artisan make:policy UserPolicy -m User
+      -Dónde -m es para vincularlo con un modelo en este caso el modelo User
+  -Se edita UserPolicy
+    -Se crea y se edita la función before()
+    -Se edita la función view()
+    -Se edita la función create()
+    -Se edita la función update()
+  -Se registra la política en app/Providers/AuthServiceProvider en la propiedad $policies
+    -'App\User' => 'App\Policies\UserPolicy',
+  -Se crea la función queryScope scopeAllowed () en el modelo User
+  -Se edita la función index de Admin/UsersController
+  -Se crean los permisos en UsersTableSeeder
+      $viewUsersPermission = Permission::create(['name' => 'View users']);
+      $createUsersPermission = Permission::create(['name' => 'Create users']);
+      $updateUsersPermission = Permission::create(['name' => 'Update users']);
+      $deleteUsersPermission = Permission::create(['name' => 'Delete users']);
+    -Edite el nombre de los usuarios creados(Cambio hecho por mi)
+    -Se quita el método bcrypt ya que hay un mutador que encripta el campo password
+  -Se usa el comando php artisan migrate:fresh --seed
+  -Se edita el controlador Admin/UsersController
+    -Se editan las funciones create, store, show, edit y update
