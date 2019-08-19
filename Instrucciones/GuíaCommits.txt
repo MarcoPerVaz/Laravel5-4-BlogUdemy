@@ -1297,3 +1297,22 @@ Commit - Mensajes de validación personalizados
 Commit - Eliminar roles
   -Se edita la función destroy de Admin/RolesController
   -Se edita la vista errors/403.blade.php
+Commit - Políticas de acceso a roles
+  -Se edita la vista admin/roles/index.blade.php
+  -Se edita la ruta en web.php
+    -Esto: Route::resource('roles', 'RolesController', ['as' => 'admin']);
+    -Por esto: Route::resource('roles', 'RolesController', ['except' => 'show', 'as' => 'admin']);
+  -Se edita Admin/RolesController
+    -Se quita la función show ya que no se va a utilizar
+  -Se crea la política RolePolicy usando el comando
+    -php artisan make:policy RolePolicy -m Role
+      -Dónde -m es para vincular la política con el modelo Role
+    -Se edita el namespace use App\Role; ya que no es el que usa laravel-permission
+      -Esto: use App\Role;
+      -Por esto: use Spatie\Permission\Models\Role;
+    -Se registra la política en la propiedad $policies en Providers/AuthServiceProvider.php
+      -'Spatie\Permission\Models\Role' => 'App\Policies\RolePolicy',
+    -Se editan las funciones view, create, update y delete de RolePolicy
+  -Se editan las funciones index, create, store, edit, update y destroy de Admin/RolesController para agregar la política
+  -Se edita el UsersTableSeeder para agregar los permisos para los roles
+  -Se usa el comando php artisan migrate:fresh --seed

@@ -13,6 +13,10 @@ class SaveRolesRequest extends FormRequest
      */
     public function authorize()
     {
+        // Funciona pero se uso la policy en el controlador Admin/RolesController
+            // return \Gate::authorize('update', $this->route('role'));
+        // 
+        
         return true;
     }
 
