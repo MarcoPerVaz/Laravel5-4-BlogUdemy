@@ -1316,3 +1316,16 @@ Commit - Políticas de acceso a roles
   -Se editan las funciones index, create, store, edit, update y destroy de Admin/RolesController para agregar la política
   -Se edita el UsersTableSeeder para agregar los permisos para los roles
   -Se usa el comando php artisan migrate:fresh --seed
+Commit - Ver y editar permisos
+  -Se crea la ruta para los permisos(es temporal porque se modificará)
+    -Route::resource('permissions', 'PermissionsController', ['except' => 'show', 'as' => 'admin']);
+      -Ruta final: Route::resource('permissions', 'PermissionsController', ['only' => ['index', 'edit', 'update'], 'as' => 'admin']);
+  -Se crea el controlador Admin/PermissionsController usando el comando
+    -php artisan make:controller Admin/PermissionsController
+    -Se crea la función index en Admin/PermissionsController
+      Nota: Importar el modelo Permission
+        -use Spatie\Permission\Models\Permission;
+  -Se crea la vista index.blade.php en resources/views/admin/permissions/
+  -Se crea la función edit en Admin/PermissionsController
+  -Se edita UsersTableSeeder para agregar el campo display_name a los campos
+  -Se usa el comando php artisan migrate:fresh --seed
