@@ -1329,3 +1329,16 @@ Commit - Ver y editar permisos
   -Se crea la función edit en Admin/PermissionsController
   -Se edita UsersTableSeeder para agregar el campo display_name a los campos
   -Se usa el comando php artisan migrate:fresh --seed
+Commit - Políticas de acceso a permisos
+  -Se editan las funciones index y edit y update de Admin/PermissionsController para agregar los authorize
+  -Se crea la politica PermissionPolicy con el comando
+    -php artisan make:policy PermissionPolicy -m \\Spatie/Permission/Models/Permission
+      Nota: \\Spatie/Permission/Models/Permission
+        -Dónde -m es para vincular al modelo Permission
+        -Las 2 barras invertidas es para ir a la raíz del proyecto ya que el modelo es del paquete laravel-permission
+        -Se quitan los métodos create y delete de PermissionPolicy ya que no se vana  usar
+  -Se editan las funciones view y update de PermissionPolicy
+  -Se registra la política PermissionPolicy en app/Providers/AuthServiceProvider en la propiedad $policies
+    -'Spatie\Permission\Models\Permission' => 'App\Policies\PermissionPolicy',
+  -Se edita UsersTableSeeder para agregar los permisos
+  -Se usa el comando php artisan migrate:fresh --seed
