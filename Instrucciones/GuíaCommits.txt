@@ -1294,3 +1294,6 @@ Commit - Mensajes de validación personalizados
     -Se reemplaza el Request por SaveRolesRequest en el parámetro de la función edit y update 
       Nota: Importar el Form Request  
         -use App\Http\Requests\SaveRolesRequest;
+Commit - Eliminar roles
+  -Se edita la función destroy de Admin/RolesController
+  -Se edita la vista errors/403.blade.php
