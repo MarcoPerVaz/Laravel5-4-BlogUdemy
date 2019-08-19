@@ -1281,3 +1281,16 @@ Commit - Formulario para editar roles
   -Se crea la vista form.blade.php en admin/roles/
     -Se usa la directiva include para reemplazar a los formularios de las vistas admin/roles/create.blade.php y admin/roles/edit.blade.php
   -Se edita la función store de Admin/RolesController
+Commit - Mensajes de validación personalizados
+  -Se edita la función update de Admin/RolesController para cambiar el mensaje de validación
+  -Se edita la función store de Admin/RolesController para cambiar el mensaje de validación
+  -Se crea un FormRequest usando el comando
+    -php artisan make:request SaveRolesRequest
+  -Se edita SaveRolesRequest
+    -Se edita la función authorize()
+      -Se devuelve true
+    -Se edita la función rules()
+    -Se crea la función messages()
+    -Se reemplaza el Request por SaveRolesRequest en el parámetro de la función edit y update 
+      Nota: Importar el Form Request  
+        -use App\Http\Requests\SaveRolesRequest;

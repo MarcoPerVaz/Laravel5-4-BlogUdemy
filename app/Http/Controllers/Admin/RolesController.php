@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 // Importado
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Http\Requests\SaveRolesRequest;
 
 class RolesController extends Controller
 {
@@ -43,13 +44,20 @@ class RolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SaveRolesRequest $request)
     {
-        $data = $request->validate([
-                    'name' => 'required|unique:roles',
-                    'display_name' => 'required',
-                ]);
-        $role = Role::create($data);
+        /// Se ha pasado a SaveRolesRequest
+            // $data = $request->validate([
+            //             'name' => 'required|unique:roles',
+            //             'display_name' => 'required',
+            //         ], [
+            //                 'name.required' => 'El campo identificador es obligatorio',
+            //                 'name.unique' => 'Este identificador ya ha sido registrado',
+            //                 'display_name.required' => 'El campo nombre es obligatorio',
+            //         ]);
+            // $role = Role::create($data);
+        // 
+        $role = Role::create($request->validated());
 
         if ($request->has('permissions')) {
             $role->givePermissionTo($request->permissions);
@@ -91,13 +99,18 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(SaveRolesRequest $request, Role $role)
     {
-        $data = $request->validate([
-                    'display_name' => 'required',
-                ]);
+        // Se ha pasado a SaveRolesRequest
+            // $data = $request->validate(['display_name' => 'required'], 
+            //             [
+            //                 'display_name.required' => 'El campo nombre es obligatorio.'
+            //             ]
+            //         );
+            // $role->update($data);
+        // 
         
-        $role->update($data);
+        $role->update($request->validated());
 
         $role->permissions()->detach();
 
