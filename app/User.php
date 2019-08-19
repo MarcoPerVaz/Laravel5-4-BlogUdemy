@@ -50,4 +50,10 @@ class User extends Authenticatable
         
         return $query->where('id', auth()->id());
     }
+
+    // Función usada en la vista admin/layout.blade.php
+    public function getRoleDisplayNames()
+    {
+        return $this->roles->pluck('display_name')->implode(', ');
+    }
 }

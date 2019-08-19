@@ -1264,3 +1264,20 @@ Commit - Formulario para crear roles
   -Se edita la vista permissions/checkboxes.blade.php
   -Se edita la vista admin/users/create.blade.php
   -Se edita la vista admin/users/edit.blade.php
+Commit - Formulario para editar roles
+  -Se edita la función edit de Admin/RolesController
+  -Se crea y se edita la vista edit.blade.php en views/admin/roles/
+  -Se edita la vista partial  admin/permissions/checkboxes.blade.php
+  -Se edita la función store en Admin/RolesController
+  -Se edita la función update de Admin/RolesController
+  -Se edita la migración create_permission_tables
+    -Se agrega el campo display_name en permissions y en roles
+      -$table->string('display_name')->nullable();
+      Nota:Esta migración es del paquete laravel-permission
+  -Se usa el comando php artisan migrate:fresh --seed
+  -Se edita la vista admin/layout.blade.php
+  -Se crea la función getRoleDisplayNames(9 en el modelo User)
+  -Se unifican los formularios de edit y create para solo usar uno
+  -Se crea la vista form.blade.php en admin/roles/
+    -Se usa la directiva include para reemplazar a los formularios de las vistas admin/roles/create.blade.php y admin/roles/edit.blade.php
+  -Se edita la función store de Admin/RolesController

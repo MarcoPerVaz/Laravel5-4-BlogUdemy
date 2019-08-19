@@ -189,7 +189,8 @@ desired effect
                 <p>
                   {{-- Agregado por mi --}}
                     @if (auth()->user()->roles->count())
-                      {{ auth()->user()->name }} - {{ auth()->user()->roles->first()->name }}
+                      {{-- {{ auth()->user()->name }} - {{ auth()->user()->roles->first()->name }} --}}
+                      {{ auth()->user()->name }} - {{ auth()->user()->getRoleDisplayNames() }}
                     @else
                       {{ auth()->user()->name }}
                     @endif
