@@ -12,7 +12,11 @@ class PagesController extends Controller
 {
     public function home()
     {
-        $query = Post::published();
+        // Funciona pero las relaciones usando with se pasaron al modleo Post en la propiedad $with(por estabilidad se paso a la función published 
+            // del modelo Post)
+                // $query = Post::with(['category', 'tags', 'owner', 'photos'])->published(); //Consulta con precarga de consultas
+                $query = Post::published(); //Consulta con carga de consultas repetidas
+        // 
 
         if (request('month')) {
             $query->whereMonth('published_at', request('month'));
@@ -24,6 +28,7 @@ class PagesController extends Controller
 
         $posts = $query->paginate(); //Si paginate() no tiene número entonces por defecto son 15 ->paginate(15)
 
+        // return $posts;
         return view('pages.home', compact('posts'));   
     }
 

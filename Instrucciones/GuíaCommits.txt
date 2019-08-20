@@ -1386,3 +1386,14 @@ Commit - Filtrar posts por mes y año
   -Se edita la vista pages.home.blade modificando el render de paginate
     -Esto: {{ $posts->links() }}
     -Por esto: {{ $posts->appends(request()->all())->links() }}
+Commit - Optimización de consultas en Eloquent
+  -Se edita el archivo web.php usando una función para ver las consultas SQl realizadas(poco usado)
+  -Se implementa la dependencia Laravel Debugbar
+    -Instalación: composer require barryvdh/laravel-debugbar --dev
+      -Versión 3.2 de Laravel Debugbar
+    -Se edita el archivo .gitignore para incluir debugbar
+  -Se edita la función home de PagesController
+  -Se edita el modelo Post
+    -Se agrega la propiedad $with para precargar consultas y evitar consultas repetidas
+  -Se edita la función show de CategoriesController
+  -Se edita la función show de TagsController

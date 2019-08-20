@@ -14,6 +14,10 @@ class Post extends Model
 
     protected $dates = ['published_at'];
 
+    // Por estabilidad de sobrecargas de relaciones, se pasó a la función query scope published de este mismo modelo
+        // protected $with = ['owner', 'category', 'tags', 'photos'];
+    // 
+
     // Función que elimina las imágenes del post(Reemplaza a lo del controlador Admin/PhotosController)
         protected static function boot(){
             parent::boot();
@@ -60,7 +64,8 @@ class Post extends Model
     // Query Scope
     public function scopePublished($query)
     {
-        $query->whereNotNull('published_at') //Llama a todos los posts de forma descendente omitiendo los posts sin fecha(nulos) o futuros
+        $query->with(['owner', 'category', 'tags', 'photos'])
+              ->whereNotNull('published_at') //Llama a todos los posts de forma descendente omitiendo los posts sin fecha(nulos) o futuros
               ->where('published_at', '<=', Carbon::now())
               ->latest('published_at');
     }
