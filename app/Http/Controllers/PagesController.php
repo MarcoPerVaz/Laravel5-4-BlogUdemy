@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 // Importado
 use App\Post;
+use App\User;
+use App\Category;
 
 class PagesController extends Controller
 {
@@ -22,7 +24,11 @@ class PagesController extends Controller
 
     public function archive()
     {
-        return view('pages.archive');
+        return view('pages.archive', [
+            'authors' => User::latest()->take(4)->get(),
+            'categories' => Category::latest()->take(7)->get(),
+            'posts' => Post::latest()->take(5)->get(),
+        ]);
     }
 
     public function contact()

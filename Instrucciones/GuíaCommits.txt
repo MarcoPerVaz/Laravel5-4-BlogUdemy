@@ -1351,3 +1351,18 @@ Commit - Mostrar y ocultar botones
     -Se usa la directiva @can()
   -Se edita la vista admin/partials/nav.blade.php
   -Se edita la vista admin/users/show.blade.php
+Commit - Implementando la página de archivo
+  -Se edita la función archive de PagesController
+    Nota: Importar el modelo User use App\User;
+    Nota: Importar el modelo Category use App\Category;
+  -Se edita la vista pages/archive.blade.php
+  -Se crean 5 usuarios aleatorios con tinker
+    -php artisan tinker
+    -factory('App\User', 5)->create()
+  -Se crean 5 categorías con tinker
+    -php artisan tinker
+    -Category::create(['name' => 'Laravel'])
+    -Category::create(['name' => 'PHP'])
+    -Category::create(['name' => 'Javascript'])
+    -Category::create(['name' => 'VueJs'])
+  -Se edita la vista pages/home.blade.php

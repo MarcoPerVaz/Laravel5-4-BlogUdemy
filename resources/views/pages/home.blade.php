@@ -5,7 +5,7 @@
 		@if (isset($title))
 				<h3>{{ $title }}</h3>
 		@endif
-		@foreach ($posts as $post)
+		@forelse ($posts as $post)
 				<article class="post">
 
 					{{-- Función para las Vistas polfórmicas - Está en el modelo Post --}}
@@ -28,7 +28,16 @@
 						</footer>
 					</div>
 				</article>
-		@endforeach
+		@empty
+				<article class="post">
+
+					<div class="content-post">
+						
+						<h1>No hay publicaciones todavía</h1>
+
+					</div>
+				</article>
+		@endforelse
 	</section><!-- fin del div.posts.container -->
 
 	{{ $posts->links() }}
