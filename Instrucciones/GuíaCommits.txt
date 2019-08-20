@@ -1342,3 +1342,12 @@ Commit - Políticas de acceso a permisos
     -'Spatie\Permission\Models\Permission' => 'App\Policies\PermissionPolicy',
   -Se edita UsersTableSeeder para agregar los permisos
   -Se usa el comando php artisan migrate:fresh --seed
+Commit - Mostrar y ocultar botones
+  -Se edita la vista admin/permissions/index.blade.php
+    -Se usa la directiva @can()
+  -Se edita la vista admin/roles/index.blade.php
+    -Se usa la directiva @can()
+  -Se edita la vista admin/users/index.blade.php
+    -Se usa la directiva @can()
+  -Se edita la vista admin/partials/nav.blade.php
+  -Se edita la vista admin/users/show.blade.php
