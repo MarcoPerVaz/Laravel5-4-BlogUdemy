@@ -1366,3 +1366,12 @@ Commit - Implementando la página de archivo
     -Category::create(['name' => 'Javascript'])
     -Category::create(['name' => 'VueJs'])
   -Se edita la vista pages/home.blade.php
+Commit - Agrupar posts por mes y año
+  -Se edita la función archive de PagesController
+  Nota: Tuve que hacer este cambi solo en mi proyecto, en el curso no se hace
+    -Se edita el archivo config/database.php
+      -Se edita el array mysql
+        -Se edita la variable strict cambiando true por false
+          -Esto: 'strict' => true,
+          -Por esto: 'strict' => false,
+  -Se edita la vista pages/archive.blade.php
