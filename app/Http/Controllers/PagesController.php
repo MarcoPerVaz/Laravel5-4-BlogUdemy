@@ -12,7 +12,17 @@ class PagesController extends Controller
 {
     public function home()
     {
-        $posts = Post::published()->paginate(); //Si paginate() no tiene número entonces por defecto son 15 ->paginate(15)
+        $query = Post::published();
+
+        if (request('month')) {
+            $query->whereMonth('published_at', request('month'));
+        }
+
+        if (request('year')) {
+            $query->whereYear('published_at', request('year'));
+        }
+
+        $posts = $query->paginate(); //Si paginate() no tiene número entonces por defecto son 15 ->paginate(15)
 
         return view('pages.home', compact('posts'));   
     }
@@ -24,17 +34,25 @@ class PagesController extends Controller
 
     public function archive()
     {
-        $archive = Post::selectRaw('year(published_at) as year')
-                    ->selectRaw('monthname(published_at) as month')
-                    ->selectRaw('count(*) as posts')
-                    ->groupBy('year', 'month')
-                    ->orderBy('published_at')
-                    ->get();
+        // Sirve para cambiar los meses a español - Funciona pero fue pasado a Providers/AppServiceProvider.php
+            // \DB::statement("SET lc_time_names = 'es_ES'");
+        // 
+
+        // Funciona pero fue pasado a un Scope query llamada scopebyYearAndMonth
+            // $archive = Post::selectRaw('year(published_at) as year')
+            //             ->selectRaw('month(published_at) as month')
+            //             ->selectRaw('monthname(published_at) as monthname')
+            //             ->selectRaw('count(*) as posts')
+            //             ->groupBy('year', 'month', 'month')
+            //             ->orderBy('published_at')
+            //             ->get();
+        // 
+        $archive = Post::published()->byYearAndMonth(); //Query scope que viene del modelo Post scopebyYearAndMonth
 
         return view('pages.archive', [
             'authors' => User::latest()->take(4)->get(),
             'categories' => Category::latest()->take(7)->get(),
-            'posts' => Post::latest()->take(5)->get(),
+            'posts' => Post::latest('published_at')->take(5)->get(),
             'archive' => $archive
         ]);
     }

@@ -1375,3 +1375,14 @@ Commit - Agrupar posts por mes y año
           -Esto: 'strict' => true,
           -Por esto: 'strict' => false,
   -Se edita la vista pages/archive.blade.php
+Commit - Filtrar posts por mes y año
+  -Se edita la vista pages/archive.blade.php
+  -Se edita la función home de PagesController
+  -Se edita la función archive de PagesController
+  -Se edita Providers/appServiceProvider
+    Nota: Importar el namespace DB
+      -use DB;
+  -Se edita el modelo Post para crear una query scope llaamada scopebyYearAndMonth
+  -Se edita la vista pages.home.blade modificando el render de paginate
+    -Esto: {{ $posts->links() }}
+    -Por esto: {{ $posts->appends(request()->all())->links() }}

@@ -80,6 +80,18 @@ class Post extends Model
         return $query->where('user_id', auth()->id());
     }
 
+    // Función Query Scope para filtrar por mes y año, se usa en PagesController
+    public function scopebyYearAndMonth($query)
+    {
+        return $query->selectRaw('year(published_at) as year')
+                ->selectRaw('month(published_at) as month')
+                ->selectRaw('monthname(published_at) as monthname')
+                ->selectRaw('count(*) as posts')
+                ->groupBy('year', 'month', 'month')
+                ->orderBy('published_at')
+                ->get();
+    }
+
     // Verifica si el post es público
     public function isPublished()
     {
