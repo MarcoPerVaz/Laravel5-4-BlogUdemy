@@ -10,32 +10,35 @@ Vue.use(Router);
     let router = new Router({
         routes: [
             {
-                path: '/', 
+                path: '/',
                 component: {
                     template: '<div>Este es el home</div>'
                 }
             },
             {
-                path: '/nosotros', 
+                path: '/nosotros',
                 component: {
                     template: '<div>Este es el nosotros</div>'
                 }
             },
             {
-                path: '/archivo', 
+                path: '/archivo',
                 component: {
                     template: '<div>Este es el archivo</div>'
                 }
             },
             {
-                path: '/contacto', 
+                path: '/contacto',
                 component: {
                     template: '<div>Este es el contacto</div>'
                 }
-            },
-        ]
+            },    
+        ],
+
+        linkExactActiveClass: 'active',
     });
 // 
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

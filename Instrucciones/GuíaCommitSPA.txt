@@ -46,3 +46,6 @@ Commit - Instalación de Vue-Router
 Commit - Creando las rutas
   -Edición del archivo resources/assets/js/app.js
   -Edición de la vista pages/spa.blade.php
+Commit - Definiendo la navegación
+  -Edición de la vista pages/spa.blade.php
+  -Edición del archivo resources/assets/js/app.js
