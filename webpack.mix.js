@@ -12,3 +12,11 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js');
+
+mix.browserSync({
+  proxy: 'https://laravel5-4_blogudemy.it',
+  browser: 'firefox',
+  open: false
+});
+
+mix.disableNotifications();

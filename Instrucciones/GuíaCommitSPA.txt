@@ -26,3 +26,9 @@ Commit - Compilación de archivos con Laravel-Mix
   -Edición de la vista resources/views/layout.blade.php
   -Para compilar Laravel-Mix automáticamente se usa:
     -npm run watch
+Commit - Configurando BrowserSync
+  -Sitio web oficial de BrowserSync
+    -https://www.browsersync.io/
+  -Edición del archivo webpack.json
+  -Se usa el comando 
+    -npm run watch
