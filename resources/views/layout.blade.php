@@ -58,6 +58,9 @@
   </section>
 	<!-- Fin Footer -->
 
+	{{-- Archivo de compilación de Laravel-Mix --}}
+		<script src="{{ mix('js/app.js') }}"></script>
+		
 	{{-- Directiva Stack --}}
 		@stack('scripts')
 </body>

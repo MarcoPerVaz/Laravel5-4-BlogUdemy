@@ -13,3 +13,16 @@ Commit - Instalación de dependencias
   -Edicion del archivo resources/assets/sass/app.scss
     -Se quita el import de variables
     -Se quita el import de bootstrap
+Commit - Compilación de archivos con Laravel-Mix
+  -Documentación oficial de Webpack
+    -https://webpack.js.org/
+  -Documentación oficial de Laravel-Mix
+    -https://laravel.com/docs/5.6/mix
+  -Para compilar Laravel-Mix y sobreescribir los archivos public/js y public/css se usa:
+    -npm run dev
+  -Para compilar Laravel-Mix para modo de producción y sobreescribir los archivos public/js y public/css se usa:
+    -npm run -prod
+  -Se quita la compilación de sass de webpack.mix.js
+  -Edición de la vista resources/views/layout.blade.php
+  -Para compilar Laravel-Mix automáticamente se usa:
+    -npm run watch
