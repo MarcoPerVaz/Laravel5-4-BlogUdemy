@@ -2,6 +2,10 @@
 
 window.Vue = require('vue');
 
+import Router from 'vue-router';
+
+Vue.use(Router);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

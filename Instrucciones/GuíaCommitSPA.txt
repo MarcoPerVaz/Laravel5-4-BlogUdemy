@@ -38,3 +38,8 @@ Commit - Definiendo la vista principal
   -Creación y edición de la vista pages/spa.blade.php
   -Edición del archivo resources/assets/js/app.js
   -Edición de la vista layout.blade.php
+Commit - Instalación de Vue-Router
+  -Instalación de Vue-Router con el comando:
+    -npm install vue-router --save-dev
+  -Se usa el comando npm run watch
+  -Edición del archivo resources/assets/js/app.js
