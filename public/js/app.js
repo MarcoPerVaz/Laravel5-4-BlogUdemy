@@ -112,6 +112,31 @@ window.Vue = __webpack_require__(3);
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 
+// Rutas
+var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+    routes: [{
+        path: '/',
+        component: {
+            template: '<div>Este es el home</div>'
+        }
+    }, {
+        path: '/nosotros',
+        component: {
+            template: '<div>Este es el nosotros</div>'
+        }
+    }, {
+        path: '/archivo',
+        component: {
+            template: '<div>Este es el archivo</div>'
+        }
+    }, {
+        path: '/contacto',
+        component: {
+            template: '<div>Este es el contacto</div>'
+        }
+    }]
+});
+// 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -121,7 +146,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 Vue.component('example', __webpack_require__(8));
 
 var app = new Vue({
-  el: '#app'
+    el: '#app',
+    router: router
 });
 
 /***/ }),

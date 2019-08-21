@@ -43,3 +43,6 @@ Commit - Instalación de Vue-Router
     -npm install vue-router --save-dev
   -Se usa el comando npm run watch
   -Edición del archivo resources/assets/js/app.js
+Commit - Creando las rutas
+  -Edición del archivo resources/assets/js/app.js
+  -Edición de la vista pages/spa.blade.php
