@@ -1,0 +1,15 @@
+Commit - Instalación de dependencias
+  -Creación del archivo GuíaCommitSPA.txt
+  -Edición del archivo package.json
+    -Se dejan las dependencias que se van a usar en el proyecto
+      -Se copian las dependencias del sitio de GitHub de laravel
+        -https://github.com/laravel/laravel/blob/5.6/package.json
+        -Se quita bootstrap, lodash, jquery, popper
+  -Se usa el comando npm install para instalar las dependencias de package.json
+  -Se copia todo el contenido del sitio  de GitHub de laravel
+    -https://github.com/laravel/laravel/blob/5.6/resources/assets/js/bootstrap.js
+    -Se quita todo lo relacionado con las dependencias que se quitaron de package.json
+  -Se borra el archivo resources/assets/sass/__variables.scss
+  -Edicion del archivo resources/assets/sass/app.scss
+    -Se quita el import de variables
+    -Se quita el import de bootstrap
