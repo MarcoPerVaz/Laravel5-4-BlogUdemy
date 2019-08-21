@@ -32,3 +32,9 @@ Commit - Configurando BrowserSync
   -Edición del archivo webpack.json
   -Se usa el comando 
     -npm run watch
+Commit - Definiendo la vista principal
+  -Creación de la ruta principal en web.php
+  -Creación y edición de la función spa en PagesController
+  -Creación y edición de la vista pages/spa.blade.php
+  -Edición del archivo resources/assets/js/app.js
+  -Edición de la vista layout.blade.php

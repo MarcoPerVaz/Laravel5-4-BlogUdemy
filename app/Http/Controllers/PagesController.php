@@ -10,6 +10,12 @@ use App\Category;
 
 class PagesController extends Controller
 {
+
+    public function spa()
+    {
+        return view('pages.spa');
+    }
+
     public function home()
     {
         // Funciona pero las relaciones usando with se pasaron al modleo Post en la propiedad $with(por estabilidad se paso a la función published 
