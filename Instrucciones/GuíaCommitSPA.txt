@@ -68,3 +68,9 @@ Commit - Mostrando los posts vía Ajax - Axios
   -Edición de la función home de PagesController
   -Edición del modelo post
     -Se usa un accesor para cambiar el formato de la fecha del campo published_at
+Commit - Rutas con nombre
+  -Edición del archivo resources/assets/js/app.js
+    -Se mueven las rutas a un archivo aparte (routes.js)
+  -Creación y edición del archivo resources/assets/js/routes.js
+  -Edición de la vista pages/spa.blade.php
+  -Creación de la vista resources/assets/js/views/404.vue
