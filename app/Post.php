@@ -14,6 +14,8 @@ class Post extends Model
 
     protected $dates = ['published_at'];
 
+    protected $appends = ['published_date'];
+
     // Por estabilidad de sobrecargas de relaciones, se pasó a la función query scope published de este mismo modelo
         // protected $with = ['owner', 'category', 'tags', 'photos'];
     // 
@@ -155,6 +157,12 @@ class Post extends Model
         });
         
         return $this->tags()->sync($tagIds);
+    }
+
+    // Función accessor para formatear la fecha del campo published_at del proyecto SPA
+    public function getPublishedDateAttribute()
+    {
+        return optional($this->published_at)->format('M d');
     }
 
     // Función para integrar Vistas Polimórficas

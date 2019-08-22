@@ -56,3 +56,15 @@ Commit - Creando las vistas
   -Creación Y edición del archivo resources/assets/js/views/About.vue
   -Creación Y edición del archivo resources/assets/js/views/Archive.vue
   -Creación Y edición del archivo resources/assets/js/views/Contact.vue
+Commit - Mostrando los posts vía Ajax - Axios
+  -Edición del archivo resources/assets/js/app.js
+    -Se agregó la línea
+      -require('./bootstrap');
+  -Edición del componente resources/assets/js/views/Home.vue
+  -Edición del archivo routes/api.php
+    -Se quita todo excepto la etiqueta php
+    -Se crea la ruta posts 
+      -Route::get('posts', 'PagesController@home');
+  -Edición de la función home de PagesController
+  -Edición del modelo post
+    -Se usa un accesor para cambiar el formato de la fecha del campo published_at

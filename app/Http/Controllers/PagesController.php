@@ -34,6 +34,10 @@ class PagesController extends Controller
 
         $posts = $query->paginate(); //Si paginate() no tiene número entonces por defecto son 15 ->paginate(15)
 
+        if ( request()->wantsJson() ) {
+            return $posts;
+        }
+
         // return $posts;
         return view('pages.home', compact('posts'));   
     }
