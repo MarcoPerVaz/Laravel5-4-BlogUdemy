@@ -49,3 +49,10 @@ Commit - Creando las rutas
 Commit - Definiendo la navegación
   -Edición de la vista pages/spa.blade.php
   -Edición del archivo resources/assets/js/app.js
+Commit - Creando las vistas
+  -Creación de la carpeta resources/assets/js/views
+  -Creación Y edición del archivo resources/assets/js/views/Home.vue
+  -Edición de la vista pages/spa.blade.php
+  -Creación Y edición del archivo resources/assets/js/views/About.vue
+  -Creación Y edición del archivo resources/assets/js/views/Archive.vue
+  -Creación Y edición del archivo resources/assets/js/views/Contact.vue

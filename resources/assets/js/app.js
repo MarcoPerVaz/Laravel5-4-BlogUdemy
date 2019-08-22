@@ -11,27 +11,19 @@ Vue.use(Router);
         routes: [
             {
                 path: '/',
-                component: {
-                    template: '<div>Este es el home</div>'
-                }
+                component: require('./views/Home')
             },
             {
                 path: '/nosotros',
-                component: {
-                    template: '<div>Este es el nosotros</div>'
-                }
+                component: require('./views/About')
             },
             {
                 path: '/archivo',
-                component: {
-                    template: '<div>Este es el archivo</div>'
-                }
+                component: require('./views/Archive')
             },
             {
                 path: '/contacto',
-                component: {
-                    template: '<div>Este es el contacto</div>'
-                }
+                component: require('./views/Contact')
             },    
         ],
 
