@@ -30,17 +30,20 @@ export default new Router({
     {
       path: '/blog/:url',
       name: 'posts_show',
-      component: require('./views/PostsShow')
+      component: require('./views/PostsShow'),
+      props: true
     },
     {
       path: '/categories/:category',
       name: 'category_posts',
-      component: require('./views/CategoryPosts')
+      component: require('./views/CategoryPosts'),
+      props: true
     },
     {
       path: '/tags/:tag',
       name: 'tags_posts',
-      component: require('./views/TagsPosts')
+      component: require('./views/TagsPosts'),
+      props: true
     },
     {
       path: '*',

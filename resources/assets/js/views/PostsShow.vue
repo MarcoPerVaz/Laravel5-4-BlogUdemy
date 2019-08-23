@@ -30,6 +30,9 @@
 
 <script>
 export default {
+  props: [
+    'url'
+  ],
   data(){
     return {
       post: {
@@ -49,7 +52,7 @@ export default {
               // })
     // 
     // Forma 2
-      axios.get(`/api/blog/${this.$route.params.url}`)
+      axios.get(`/api/blog/${this.url}`)
            .then(res => {
             //  console.log(res.data);
              this.post = res.data

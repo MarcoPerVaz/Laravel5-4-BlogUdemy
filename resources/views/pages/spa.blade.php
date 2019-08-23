@@ -34,7 +34,7 @@
 			<!-- Fin Header -->
 
 			<!-- Contenido -->
-				<router-view></router-view>
+				<router-view :key="$route.fullPath"></router-view>
 			{{-- Fin Contenido --}}
 
 		{{-- {{ $posts->appends(request()->all())->links() }} --}}

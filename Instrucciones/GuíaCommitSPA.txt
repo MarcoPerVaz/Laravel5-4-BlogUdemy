@@ -124,3 +124,10 @@ Commit - Componentes para los posts
       -Vue.component('posts-list-item', require('./components/PostsListItem'));
   -Edición del componente resources/assets/js/views/CategoryPosts.vue
   -Edición del componente resources/assets/js/views/TagsPosts.vue
+Commit - Parámetros a propiedades
+  Nota: Esta parte es algo confusa, se creo un marcador de favorito(Parámetros a propiedades) en el vídeo del curso en Udemy como referencia
+  -Edición del componente resources/assets/js/vies/TagsPosts.vue
+  -Edición del archivo resources/assets/js/routes.js
+  -Edición de la vista pages/spa.blade.php
+  -Edición del componente resources/assets/js/vies/PostsShow.vue
+  -Edición del componente resources/assets/js/vies/PostsShow.vue
