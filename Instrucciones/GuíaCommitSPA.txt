@@ -81,3 +81,7 @@ Commit - Mostrando posts individuales
   -Creación de la ruta en routes/api.php
     -Route::get('blog/{url}', 'PostsController@show');
   -Edición de la función show en PostsController
+Commit - Uso de API Resources en Laravel
+  -Edición de componente resources/assets/js/views/PostsShow.Vue
+  -Edición de la función show de PostsController
+  Nota:Se muestra como usar API Resource pero en este proyecto se opto por usar la función load en el controlador
