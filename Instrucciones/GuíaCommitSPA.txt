@@ -74,3 +74,10 @@ Commit - Rutas con nombre
   -Creación y edición del archivo resources/assets/js/routes.js
   -Edición de la vista pages/spa.blade.php
   -Creación de la vista resources/assets/js/views/404.vue
+Commit - Mostrando posts individuales
+  -Edición de componente resources/assets/js/views/Home.vue
+  -Edición del archivo resources/assets/js/routes.js
+  -Creación y edición del componente resources/assets/js/views/PostsShow.vue
+  -Creación de la ruta en routes/api.php
+    -Route::get('blog/{url}', 'PostsController@show');
+  -Edición de la función show en PostsController

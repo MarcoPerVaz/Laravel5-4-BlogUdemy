@@ -17224,6 +17224,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -17290,7 +17296,34 @@ var render = function() {
             _c("p", { domProps: { textContent: _vm._s(post.excerpt) } }),
             _vm._v(" "),
             _c("footer", { staticClass: "container-flex space-between" }, [
-              _vm._m(0, true),
+              _c(
+                "div",
+                { staticClass: "read-more" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "text-uppercase c-green",
+                      attrs: { to: "/blog/" + post.url }
+                    },
+                    [_vm._v("Leer más 1")]
+                  ),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "text-uppercase c-green",
+                      attrs: {
+                        to: { name: "posts_show", params: { url: post.url } }
+                      }
+                    },
+                    [_vm._v("Leer más 2")]
+                  )
+                ],
+                1
+              ),
               _vm._v(" "),
               _c(
                 "div",
@@ -17314,23 +17347,13 @@ var render = function() {
       }),
       _vm._v(" "),
       !_vm.posts.length
-        ? _c("article", { staticClass: "post" }, [_vm._m(1)])
+        ? _c("article", { staticClass: "post" }, [_vm._m(0)])
         : _vm._e()
     ],
     2
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "read-more" }, [
-      _c("a", { staticClass: "text-uppercase c-green", attrs: { href: "#" } }, [
-        _vm._v("Leer más")
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -17853,6 +17876,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
     name: 'contact',
     component: __webpack_require__(44)
   }, {
+    path: '/blog/:url',
+    name: 'posts_show',
+    component: __webpack_require__(52)
+  }, {
     path: '*',
     component: __webpack_require__(50)
   }],
@@ -17944,6 +17971,167 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-30b290d5", module.exports)
   }
 }
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(54)
+/* template */
+var __vue_template__ = __webpack_require__(53)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/views/PostsShow.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2d8a2d2d", Component.options)
+  } else {
+    hotAPI.reload("data-v-2d8a2d2d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("section", { staticClass: "post container" }, [
+      _c("div", { staticClass: "content-post" }, [
+        _c("h1", [_vm._v(_vm._s(_vm.post.title))]),
+        _vm._v(" "),
+        _c("div", { staticClass: "divider" }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "image-w-text",
+          domProps: { innerHTML: _vm._s(_vm.post.body) }
+        }),
+        _vm._v(" "),
+        _c("footer", { staticClass: "container-flex space-between" }),
+        _vm._v(" "),
+        _vm._m(0)
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "comments" }, [
+      _c("div", { staticClass: "divider" }),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "disqus_thread" } })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2d8a2d2d", module.exports)
+  }
+}
+
+/***/ }),
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      post: {}
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    // Forma 1
+    // axios.get('/api/blog/' + this.$route.params.url)
+    // .then(res => {
+    //   console.log(res.data);
+    // })
+    // .catch(err => {
+    //   console.log(err.response.data);
+    // })
+    // 
+    // Forma 2
+    axios.get("/api/blog/" + this.$route.params.url).then(function (res) {
+      //  console.log(res.data);
+      _this.post = res.data;
+    }).catch(function (err) {
+      console.log(err.response.data);
+    });
+    // 
+  }
+});
 
 /***/ })
 /******/ ]);

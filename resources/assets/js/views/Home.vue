@@ -40,7 +40,13 @@
            <p v-text="post.excerpt"></p>
             <footer class="container-flex space-between">
               <div class="read-more">
-                <a href="#" class="text-uppercase c-green">Leer más</a>
+                <!-- Opción 1 -->
+                  <router-link :to="`/blog/${post.url}`" class="text-uppercase c-green">Leer más 1</router-link>
+                <!--  -->
+                <br>
+                <!-- Opción 2 (Se debe crear la ruta)-->
+                  <router-link :to="{name: 'posts_show', params: {url: post.url}}" class="text-uppercase c-green">Leer más 2</router-link>
+                  <!--  -->
               </div>
               
               <!-- @include('posts.tags') -->
