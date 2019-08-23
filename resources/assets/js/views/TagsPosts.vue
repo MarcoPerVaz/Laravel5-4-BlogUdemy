@@ -33,9 +33,7 @@
               <!-- @include('posts.tags') -->
               <div class="tags container-flex">
                   <span class="tag c-gris text-capitalize" v-for="(tag, index) in post.tags" :key="index">
-                    <router-link :to="{name: 'tags_posts', params: {tag: tag.url}}">
-                      {{ tag.name }}
-                    </router-link>
+                    <a href="#">{{ tag.name }}</a>
                   </span>	
               </div>
 
@@ -52,27 +50,26 @@
           </div>
         </article>
   </section>
-  <!-- {{ $posts->appends(request()->all())->links() }} -->
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      posts: []
+  export default {
+    data() {
+      return {
+        posts: []
+      }
+    },
+    mounted (){
+      axios.get(`/api/tags/${this.$route.params.tag}`)
+          .then(res => {
+            this.posts = res.data.data;
+            
+          })
+          .catch(err => {
+            console.log(err);
+            
+          });
+      
     }
-  },
-  mounted (){
-    axios.get('/api/posts')
-         .then(res => {
-           this.posts = res.data.data;
-           
-         })
-         .catch(err => {
-           console.log(err);
-           
-         });
-    
-  }
-}
+  } 
 </script>

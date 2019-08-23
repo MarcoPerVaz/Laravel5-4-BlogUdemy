@@ -98,7 +98,17 @@ Commit - Mostrar posts por categoría
   -Edición del archivo resources/assets/js/routes.js
     -Se crea la ruta con el nombre de category_posts
   -Creación y edición del componente resources/assets/js/views/CategoryPosts.vue
+  -Edición del componente resources/assets/js/views/Home.vue
   -Edición de la función show de CategoriesController
   -Se crea la ruta en routes/api.php
     -Route::get('categories/{category}', 'CategoriesController@show');
+  -Edición del componente resources/assets/js/components/PostHeader.vue
+Commit - Mostrar posts por etiquetas
+  -Edición del archivo resources/assets/js/routes.js
+    -Se crea la ruta con el nombre tag_posts
+  -Creación y edición del componente resources/assets/js/views/TagsPosts.vue
+  -Edición del componente resources/assets/js/views/Home.vue
+  -Edición de la función show de TagsController
+  -Se crea la ruta en routes/api.php
+    -Route::get('tags/{tag}', 'TagsController@show');
   -Edición del componente resources/assets/js/components/PostHeader.vue
