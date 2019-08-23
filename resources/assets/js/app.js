@@ -12,8 +12,10 @@ import router from './routes';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('post-header', require('./components/PostHeader.vue'));
-Vue.component('nav-bar', require('./components/NavBar.vue'));
+Vue.component('post-header', require('./components/PostHeader'));
+Vue.component('nav-bar', require('./components/NavBar'));
+Vue.component('posts-list', require('./components/PostsList'));
+Vue.component('posts-list-item', require('./components/PostsListItem'));
 
 const app = new Vue({
     el: '#app',

@@ -112,3 +112,15 @@ Commit - Mostrar posts por etiquetas
   -Se crea la ruta en routes/api.php
     -Route::get('tags/{tag}', 'TagsController@show');
   -Edición del componente resources/assets/js/components/PostHeader.vue
+Commit - Componentes para los posts
+  -Creación y edición del componente resources/assets/js/components/PostsList.vue
+  -Edición del componente resources/assets/js/views/Home.vue
+  -Edición del archivo resources/assets/js/app.js
+    -Se registra el componente
+      -Vue.component('posts-list', require('./components/PostsList'));
+  -Creación y edición del componente resources/assets/js/components/PostsListItem.vue
+  -Edición del archivo resources/assets/js/app.js
+    -Se registra el componente
+      -Vue.component('posts-list-item', require('./components/PostsListItem'));
+  -Edición del componente resources/assets/js/views/CategoryPosts.vue
+  -Edición del componente resources/assets/js/views/TagsPosts.vue
