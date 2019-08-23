@@ -85,3 +85,11 @@ Commit - Uso de API Resources en Laravel
   -Edición de componente resources/assets/js/views/PostsShow.Vue
   -Edición de la función show de PostsController
   Nota:Se muestra como usar API Resource pero en este proyecto se opto por usar la función load en el controlador
+Commit - Extracción de componentes
+  -Se elimina el componente resources/assets/js/components/Example.vue
+  -Edición del archivo resources/assets/js/app.js
+  -Creación y edición del componente resources/assets/js/components/PostHeader.vue
+  -Edición del componente resources/assets/js/components/Home.vue
+  -Edición del componente resources/assets/js/components/PostsShow.vue
+  -Edición de la vista pages/spa.blade.php
+  -Creación y edición del componente resources/assets/js/components/NavBar.vue

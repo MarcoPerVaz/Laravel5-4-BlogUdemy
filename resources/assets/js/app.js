@@ -12,7 +12,8 @@ import router from './routes';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('post-header', require('./components/PostHeader.vue'));
+Vue.component('nav-bar', require('./components/NavBar.vue'));
 
 const app = new Vue({
     el: '#app',
