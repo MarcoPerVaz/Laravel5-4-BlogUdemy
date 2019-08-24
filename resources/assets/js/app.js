@@ -21,6 +21,8 @@ Vue.component('post-link', require('./components/PostLink'));
 Vue.component('disqus-comments', require('./components/DisqusComments'));
 Vue.component('pagination-links', require('./components/PaginationLinks'));
 Vue.component('paginator', require('./components/Paginator'));
+Vue.component('social-links', require('./components/SocialLinks'));
+Vue.component('tag-link', require('./components/TagLink'));
 
 // require('vue2-animate/dist/vue2-animate.min.css')
 

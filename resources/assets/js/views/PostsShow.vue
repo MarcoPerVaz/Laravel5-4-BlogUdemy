@@ -14,9 +14,20 @@
 
         <div class="image-w-text" v-html="post.body"></div>
         <footer class="container-flex space-between">
-            <!-- @include('partials.social-links', ['description' => $post->title]) -->
+          
+            <!-- Componente SocialLinks.vue -->
+              <social-links :description="post.title"></social-links>
+            <!-- Fin Componente SocialLinks.vue -->
             
-            <!-- @include('posts.tags') -->
+            <div class="tags container-flex">
+              <span class="tag c-gris text-capitalize" v-for="(tag, index) in post.tags" :key="index">
+
+                <!-- Componente TagLink -->
+                  <tag-link :tag="tag"></tag-link>
+                <!-- Fin Componente TagLink -->
+                
+              </span>	
+          </div>
         </footer>
         <div class="comments">
           <div class="divider"></div>

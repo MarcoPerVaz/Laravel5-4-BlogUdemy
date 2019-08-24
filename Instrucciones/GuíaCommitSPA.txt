@@ -178,3 +178,12 @@ Commit - Efectos de transición
       -require('vue2-animate/dist/vue2-animate.min.css')
       -Se deja entre comentarios porque no se usará vue2-animate
   -Edición del archivo public/css/styles.css
+Commit - Botones de compartir
+  -Creación y edición del componente resources/assets/js/components/SocialLinks.vue
+  -Edición del archivo resources/assets/js/app.js
+    -Se registra el componente SocialLinks.vue
+      -Vue.component('social-links', require('./components/SocialLinks'));
+      -Vue.component('tag-link', require('./components/TagLink'));
+  -Edición del componente resources/assets/js/components/PostsShow.vue
+  -Creación y edición del componente resources/assets/js/components/TagLink.vue
+  -Edición del componente resources/assets/js/components/PostsListItem.vue

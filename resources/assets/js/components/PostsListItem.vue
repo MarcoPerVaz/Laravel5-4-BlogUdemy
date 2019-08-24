@@ -26,12 +26,11 @@
             <!--  -->
         </div>
         
-        <!-- @include('posts.tags') -->
         <div class="tags container-flex">
             <span class="tag c-gris text-capitalize" v-for="(tag, index) in post.tags" :key="index">
-              <router-link :to="{name: 'tags_posts', params: {tag: tag.url}}">
-                {{ tag.name }}
-              </router-link>
+              <!-- Componente TagLink -->
+                <tag-link :tag="tag"></tag-link>
+              <!-- Fin Componente TagLink -->
             </span>	
         </div>
 
