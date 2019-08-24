@@ -151,3 +151,5 @@ Commit - Agregando los comentarios con Disqus
   -Se registra el nuevo componente en resources/assets/js/app.js
     -Vue.component('disqus-comments', require('./components/DisqusComments'));
   -Edicion del componente resources/assets/js/views/PostsShow.vue
+Commit - Paginación con Vue Router
+  -Edición del componente resources/assets/js/views/Home.vue
