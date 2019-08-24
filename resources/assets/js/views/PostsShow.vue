@@ -20,8 +20,9 @@
         </footer>
         <div class="comments">
           <div class="divider"></div>
-          <div id="disqus_thread"></div>
-            <!-- @include('partials.disqus-script')                        -->
+          <!-- Componente DisqusComments.vue -->
+            <disqus-comments></disqus-comments>
+          <!-- Fin Componente DisqusComments.vue -->
         </div><!-- .comments -->
       </div>
     </section>

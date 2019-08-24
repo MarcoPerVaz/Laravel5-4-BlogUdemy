@@ -146,3 +146,8 @@ Commit - Implementando la vista archivo
     -Vue.component('post-link', require('./components/PostLink'));
   -Edicion del componente resources/assets/js/components/NavBar.vue
     -Se arregla la ruta de Contacto ya que apuntaba a la ruta home en la propiedad name:
+Commit - Agregando los comentarios con Disqus
+  -Creación del componente en resources/assets/js/components/DisqusComments.vue
+  -Se registra el nuevo componente en resources/assets/js/app.js
+    -Vue.component('disqus-comments', require('./components/DisqusComments'));
+  -Edicion del componente resources/assets/js/views/PostsShow.vue
