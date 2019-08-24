@@ -1116,6 +1116,8 @@ Vue.component('disqus-comments', __webpack_require__(75));
 Vue.component('pagination-links', __webpack_require__(78));
 Vue.component('paginator', __webpack_require__(81));
 
+// require('vue2-animate/dist/vue2-animate.min.css')
+
 var app = new Vue({
   el: '#app',
   router: __WEBPACK_IMPORTED_MODULE_0__routes__["a" /* default */]

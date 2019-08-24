@@ -22,6 +22,8 @@ Vue.component('disqus-comments', require('./components/DisqusComments'));
 Vue.component('pagination-links', require('./components/PaginationLinks'));
 Vue.component('paginator', require('./components/Paginator'));
 
+// require('vue2-animate/dist/vue2-animate.min.css')
+
 const app = new Vue({
     el: '#app',
     router: router

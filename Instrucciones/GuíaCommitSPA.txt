@@ -167,3 +167,14 @@ Commit - Componente de paginación reutilizable
   Nota: Me mostraba un error 500 y tuve que volver a usar el comando npm run watch para quitarlo
   -Edición del componente resources/assets/js/views/TagsPosts.vue
   -Edición del componente resources/assets/js/views/CategoryPosts.vue
+Commit - Efectos de transición
+  -Edición de la vista pages/spa.blade.php
+  -Instalación de vue2-animate
+    -sitio web de vue2-animate: https://github.com/asika32764/vue2-animate#installation
+    -Comando para la instalación
+      -npm install --save vue2-animate
+  -Edición del archivo resources/assets/js/app.js
+    -Se registra vue2-animate
+      -require('vue2-animate/dist/vue2-animate.min.css')
+      -Se deja entre comentarios porque no se usará vue2-animate
+  -Edición del archivo public/css/styles.css

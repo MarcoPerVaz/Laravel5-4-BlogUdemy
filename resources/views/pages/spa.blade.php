@@ -33,9 +33,13 @@
 			</header>
 			<!-- Fin Header -->
 
-			<!-- Contenido -->
-				<router-view :key="$route.fullPath"></router-view>
-			{{-- Fin Contenido --}}
+			<div class="page-wrapper">
+				<transition name="slide-fade" mode="out-in">
+					<!-- Contenido -->
+						<router-view :key="$route.fullPath"></router-view>
+					{{-- Fin Contenido --}}
+				</transition>
+			</div>
 
 		{{-- {{ $posts->appends(request()->all())->links() }} --}}
 		<!-- Footer -->
