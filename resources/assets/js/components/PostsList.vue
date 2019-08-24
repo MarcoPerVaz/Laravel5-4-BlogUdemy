@@ -5,13 +5,13 @@
     @endif -->
         <!-- Componente PostsListItem.vue -->
           <posts-list-item 
-              v-for="post in posts" 
+              v-for="post in items" 
               :key="post.id" 
               :post="post"
           />
         <!-- FinComponente PostsListItem.vue -->
     <!-- @empty -->
-        <article class="post" v-if="! posts.length">
+        <article class="post" v-if="! items.length">
 
           <div class="content-post">
             
@@ -26,7 +26,7 @@
 <script>
 export default {
   props: [
-    'posts'
+    'items'
   ]
 }
 </script>

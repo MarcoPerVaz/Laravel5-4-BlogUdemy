@@ -153,3 +153,17 @@ Commit - Agregando los comentarios con Disqus
   -Edicion del componente resources/assets/js/views/PostsShow.vue
 Commit - Paginación con Vue Router
   -Edición del componente resources/assets/js/views/Home.vue
+Commit - Componente de paginación reutilizable
+  -Edición del componente resources/assets/js/views/Home.vue
+  -Creación y edición del componente resources/assets/js/components/PaginationLinks.vue
+  -Edición del archivo resources/assets/js/app.js
+    -Se registra el componente PaginationLinks.vue
+      -Vue.component('pagination-links', require('./components/PaginationLinks'));
+  -Creación y edición del componente resources/assets/js/components/Paginator.vue
+  -Edición del componente resources/assets/js/components/PostsList.vue
+  -Edición del archivo resources/assets/js/app.js
+    -Se registra el componente Paginator.vue
+      -Vue.component('paginator', require('./components/Paginator'));
+  Nota: Me mostraba un error 500 y tuve que volver a usar el comando npm run watch para quitarlo
+  -Edición del componente resources/assets/js/views/TagsPosts.vue
+  -Edición del componente resources/assets/js/views/CategoryPosts.vue

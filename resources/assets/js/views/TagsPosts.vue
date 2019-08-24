@@ -1,28 +1,13 @@
 <template>
-  <!-- Componente PostsList.vue -->
-    <posts-list :posts="posts"></posts-list>
-  <!-- Fin Componente PostsList.vue -->
+  <!-- Componente Paginator.vue -->
+    <paginator :url="`/api/tags/${this.tag}`" component-name="posts-list"/>
+  <!-- FinComponente Paginator.vue -->
 </template>
 
 <script>
   export default {
     props: [
       'tag'
-    ],
-    data() {
-      return {
-        posts: []
-      }
-    },
-    mounted (){
-      axios.get(`/api/tags/${this.tag}`)
-            .then(res => {
-              this.posts = res.data.data;
-              
-            })
-            .catch(err => {
-              console.log(err);
-            });
-    },
+    ]
   } 
 </script>

@@ -1,30 +1,13 @@
 <template>
-  <!-- Componente PostsList.vue -->
-    <posts-list :posts="posts"></posts-list>
-  <!-- Fin Componente PostsList.vue -->
+  <!-- Componente Paginator.vue -->
+      <paginator :url="`/api/categories/${this.category}`" component-name="posts-list"/>
+    <!-- FinComponente Paginator.vue -->
 </template>
 
 <script>
   export default {
     props: [
       'category'
-    ],
-    data() {
-      return {
-        posts: []
-      }
-    },
-    mounted (){
-      axios.get(`/api/categories/${this.category}`)
-          .then(res => {
-            this.posts = res.data.data;
-            
-          })
-          .catch(err => {
-            console.log(err);
-            
-          });
-      
-    }
+    ]
   } 
 </script>
