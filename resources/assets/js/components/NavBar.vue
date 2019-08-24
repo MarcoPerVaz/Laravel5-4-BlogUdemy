@@ -12,7 +12,7 @@
           <router-link :to="{name: 'archive'}" class="pure menu-link c-gris-2 text-uppercase">Archivo</router-link>
       </li>
       <li class="pure-menu-item">
-          <router-link :to="{name: 'home'}" class="pure menu-link c-gris-2 text-uppercase">Contacto</router-link>
+          <router-link :to="{name: 'contact'}" class="pure menu-link c-gris-2 text-uppercase">Contacto</router-link>
       </li>
     </ul>
   </nav>

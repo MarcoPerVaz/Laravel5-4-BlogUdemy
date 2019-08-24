@@ -131,3 +131,18 @@ Commit - Parámetros a propiedades
   -Edición de la vista pages/spa.blade.php
   -Edición del componente resources/assets/js/vies/PostsShow.vue
   -Edición del componente resources/assets/js/vies/PostsShow.vue
+Commit - Implementando la vista archivo
+  -Edición del archivo routes/api.php
+    -Se crea la ruta
+      -Route::get('archivo', 'PagesController@archive');
+  -Edición de la función archive en PagesController
+  -Edición del componente resources/assets/js/views/Archive.vue
+  -Creación y edición del componente resources/assets/js/components/CategoryLink.vue
+  -Se registra el nuevo componente en resources/assets/js/app.js
+    -Vue.component('category-link', require('./components/CategoryLink'));
+  -Edición del componente resources/assets/js/components/PostHeader.vue
+  -Creación y edición del componente resources/assets/js/components/PostLink.vue
+  -Se registra el nuevo componente en resources/assets/js/app.js
+    -Vue.component('post-link', require('./components/PostLink'));
+  -Edicion del componente resources/assets/js/components/NavBar.vue
+    -Se arregla la ruta de Contacto ya que apuntaba a la ruta home en la propiedad name:

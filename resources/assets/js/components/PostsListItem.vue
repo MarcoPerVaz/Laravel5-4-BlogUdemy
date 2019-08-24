@@ -18,7 +18,7 @@
       <footer class="container-flex space-between">
         <div class="read-more">
           <!-- Opción 1 -->
-            <router-link :to="`/blog/${post.url}`" class="text-uppercase c-green">Leer más 1</router-link>
+            <post-link class="text-uppercase c-green" :post="post">Leer más</post-link>
           <!--  -->
           <br>
           <!-- Opción 2 (Se debe crear la ruta)-->

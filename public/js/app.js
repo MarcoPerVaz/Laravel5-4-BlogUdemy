@@ -1110,6 +1110,8 @@ Vue.component('post-header', __webpack_require__(55));
 Vue.component('nav-bar', __webpack_require__(58));
 Vue.component('posts-list', __webpack_require__(66));
 Vue.component('posts-list-item', __webpack_require__(69));
+Vue.component('category-link', __webpack_require__(73));
+Vue.component('post-link', __webpack_require__(76));
 
 var app = new Vue({
   el: '#app',
@@ -17366,7 +17368,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(72)
 /* template */
 var __vue_template__ = __webpack_require__(44)
 /* template functional */
@@ -17414,59 +17416,109 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "pages container" }, [
-      _c("div", { staticClass: "page page-archive" }, [
-        _c("h1", { staticClass: "text-capitalize" }, [_vm._v("archive")]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Nam efficitur, massa quis fringilla volutpat, ipsum massa consequat nisi, sed eleifend orci sem sodales lorem. Curabitur molestie eros urna, eleifend molestie risus placerat sed."
+  return _c("section", { staticClass: "pages container" }, [
+    _c("div", { staticClass: "page page-archive" }, [
+      _c("h1", { staticClass: "text-capitalize" }, [_vm._v("archive")]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "Nam efficitur, massa quis fringilla volutpat, ipsum massa consequat nisi, sed eleifend orci sem sodales lorem. Curabitur molestie eros urna, eleifend molestie risus placerat sed."
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "divider-2",
+        staticStyle: { margin: "35px 0" }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "container-flex space-between" }, [
+        _c("div", { staticClass: "authors-categories" }, [
+          _c("h3", { staticClass: "text-capitalize" }, [_vm._v("authors")]),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticClass: "list-unstyled" },
+            _vm._l(_vm.authors, function(author) {
+              return _c("li", {
+                key: author.id,
+                domProps: { textContent: _vm._s(author.name) }
+              })
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c("h3", { staticClass: "text-capitalize" }, [_vm._v("categories")]),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticClass: "list-unstyled" },
+            _vm._l(_vm.categories, function(category) {
+              return _c(
+                "li",
+                { key: category.id, staticClass: "text-capitalize" },
+                [_c("category-link", { attrs: { category: category } })],
+                1
+              )
+            }),
+            0
           )
         ]),
         _vm._v(" "),
-        _c("div", {
-          staticClass: "divider-2",
-          staticStyle: { margin: "35px 0" }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "container-flex space-between" }, [
-          _c("div", { staticClass: "authors-categories" }, [
-            _c("h3", { staticClass: "text-capitalize" }, [_vm._v("authors")]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "list-unstyled" }),
-            _vm._v(" "),
-            _c("h3", { staticClass: "text-capitalize" }, [
-              _vm._v("categories")
-            ]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "list-unstyled" })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "latest-posts" }, [
+        _c(
+          "div",
+          { staticClass: "latest-posts" },
+          [
             _c("h3", { staticClass: "text-capitalize" }, [
               _vm._v("latest posts")
             ]),
+            _vm._v(" "),
+            _vm._l(_vm.posts, function(post) {
+              return _c(
+                "p",
+                { key: post.id },
+                [
+                  _c("post-link", { attrs: { post: post } }, [
+                    _vm._v(_vm._s(post.title))
+                  ])
+                ],
+                1
+              )
+            }),
             _vm._v(" "),
             _c("h3", { staticClass: "text-capitalize" }, [
               _vm._v("posts by month")
             ]),
             _vm._v(" "),
-            _c("ul", { staticClass: "list-unstyled" }, [
-              _c("li", { staticClass: "text-capitalize" })
-            ])
-          ])
-        ])
+            _c(
+              "ul",
+              { staticClass: "list-unstyled" },
+              _vm._l(_vm.archive, function(date) {
+                return _c(
+                  "li",
+                  { key: date.id, staticClass: "text-capitalize" },
+                  [
+                    _vm._v(
+                      "\n\t\t\t\t\t\t\t\t\t" +
+                        _vm._s(date.monthname) +
+                        " " +
+                        _vm._s(date.year) +
+                        " (" +
+                        _vm._s(date.posts) +
+                        ")\n\t\t\t\t\t\t\t"
+                    )
+                  ]
+                )
+              }),
+              0
+            )
+          ],
+          2
+        )
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -17940,26 +17992,7 @@ var render = function() {
         _c(
           "span",
           { staticClass: "category" },
-          [
-            _c(
-              "router-link",
-              {
-                attrs: {
-                  to: {
-                    name: "category_posts",
-                    params: { category: _vm.post.category.url }
-                  }
-                }
-              },
-              [
-                _vm._v(
-                  "\n            " +
-                    _vm._s(_vm.post.category.name) +
-                    "\n          "
-                )
-              ]
-            )
-          ],
+          [_c("category-link", { attrs: { category: _vm.post.category } })],
           1
         )
       ])
@@ -18136,7 +18169,7 @@ var render = function() {
             "router-link",
             {
               staticClass: "pure menu-link c-gris-2 text-uppercase",
-              attrs: { to: { name: "home" } }
+              attrs: { to: { name: "contact" } }
             },
             [_vm._v("Contacto")]
           )
@@ -18602,12 +18635,12 @@ var render = function() {
             { staticClass: "read-more" },
             [
               _c(
-                "router-link",
+                "post-link",
                 {
                   staticClass: "text-uppercase c-green",
-                  attrs: { to: "/blog/" + _vm.post.url }
+                  attrs: { post: _vm.post }
                 },
-                [_vm._v("Leer más 1")]
+                [_vm._v("Leer más")]
               ),
               _vm._v(" "),
               _c("br"),
@@ -18666,6 +18699,280 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-3e68331d", module.exports)
+  }
+}
+
+/***/ }),
+/* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			authors: [],
+			categories: [],
+			posts: [],
+			archive: []
+		};
+	},
+	mounted: function mounted() {
+		var _this = this;
+
+		axios.get('/api/archivo').then(function (res) {
+			_this.authors = res.data.authors;
+			_this.categories = res.data.categories;
+			_this.posts = res.data.posts;
+			_this.archive = res.data.archive;
+		});
+	}
+});
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(74)
+/* template */
+var __vue_template__ = __webpack_require__(75)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/CategoryLink.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e1311062", Component.options)
+  } else {
+    hotAPI.reload("data-v-e1311062", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 74 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['category']
+});
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "router-link",
+    {
+      attrs: {
+        to: {
+          name: "category_posts",
+          params: {
+            category: _vm.category.url
+          }
+        }
+      }
+    },
+    [_vm._v(" " + _vm._s(_vm.category.name) + "\n")]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e1311062", module.exports)
+  }
+}
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(77)
+/* template */
+var __vue_template__ = __webpack_require__(78)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/PostLink.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0d6ef8f1", Component.options)
+  } else {
+    hotAPI.reload("data-v-0d6ef8f1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 77 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['post']
+});
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "router-link",
+    {
+      attrs: {
+        to: {
+          name: "posts_show",
+          params: {
+            url: _vm.post.url
+          }
+        }
+      }
+    },
+    [_vm._t("default")],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0d6ef8f1", module.exports)
   }
 }
 

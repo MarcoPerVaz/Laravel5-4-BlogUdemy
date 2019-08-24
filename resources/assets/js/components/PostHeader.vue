@@ -10,9 +10,9 @@
       <!-- @if ($post->category) -->
         <div class="post-category">
           <span class="category">
-            <router-link :to="{name: 'category_posts', params: { category: post.category.url }}">
-              {{ post.category.name }}
-            </router-link>
+            <!-- Componente CategoryLink.vue -->
+              <category-link :category="post.category"></category-link>
+            <!-- Fin Componente CategoryLink.vue -->
           </span>
         </div>
       <!-- @endif -->

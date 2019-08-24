@@ -62,14 +62,37 @@ class PagesController extends Controller
             //             ->orderBy('published_at')
             //             ->get();
         // 
-        $archive = Post::published()->byYearAndMonth(); //Query scope que viene del modelo Post scopebyYearAndMonth
+        // Funciona pero se cambio para el proyecto de SPA
+            // $archive = Post::published()->byYearAndMonth(); //Query scope que viene del modelo Post scopebyYearAndMonth
 
-        return view('pages.archive', [
-            'authors' => User::latest()->take(4)->get(),
-            'categories' => Category::latest()->take(7)->get(),
-            'posts' => Post::latest('published_at')->take(5)->get(),
-            'archive' => $archive
-        ]);
+            // return view('pages.archive', [
+            //     'authors' => User::latest()->take(4)->get(),
+            //     'categories' => Category::latest()->take(7)->get(),
+            //     'posts' => Post::latest('published_at')->take(5)->get(),
+            //     'archive' => $archive
+            // ]);
+        // 
+
+        // BlogUdemy SPA
+
+        $data = [
+                'authors' => User::latest()->take(4)->get(),
+                'categories' => Category::latest()->take(7)->get(),
+                'posts' => Post::latest('published_at')->take(5)->get(),
+                'archive' =>Post::selectRaw('year(published_at) as year')
+                        ->selectRaw('month(published_at) as month')
+                        ->selectRaw('monthname(published_at) as monthname')
+                        ->selectRaw('count(*) as posts')
+                        ->groupBy('year', 'month', 'month')
+                        ->orderBy('published_at')
+                        ->get()
+        ];
+
+        if (request()->wantsJson()) {
+            return $data;
+        }
+        return view('pages.archive', $data);
+
     }
 
     public function contact()
