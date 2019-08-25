@@ -23,6 +23,7 @@ Vue.component('pagination-links', require('./components/PaginationLinks'));
 Vue.component('paginator', require('./components/Paginator'));
 Vue.component('social-links', require('./components/SocialLinks'));
 Vue.component('tag-link', require('./components/TagLink'));
+Vue.component('contact-form', require('./components/ContactForm'));
 
 // require('vue2-animate/dist/vue2-animate.min.css')
 

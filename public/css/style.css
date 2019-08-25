@@ -253,12 +253,15 @@ a.btn-bar{
 	resize: vertical;
 	padding: 25px 0 0 15px; 
 }
-.page-contact .form-contact .send-message a{
+.page-contact .form-contact .send-message button{
 	display: block;
-	text-decoration: none;
-    font-weight: bold;
-    margin-top: 25px;
-    font-size: 19px;
+	font-weight: bold;
+	margin-top: 25px;
+	font-size: 19px;
+	border: none;
+	cursor: pointer;
+	padding: 15px 18px;
+	outline: none;
 }
 
 .custom-wrapper {

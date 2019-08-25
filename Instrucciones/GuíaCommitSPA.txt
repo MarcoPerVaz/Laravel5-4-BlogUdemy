@@ -187,3 +187,14 @@ Commit - Botones de compartir
   -Edición del componente resources/assets/js/components/PostsShow.vue
   -Creación y edición del componente resources/assets/js/components/TagLink.vue
   -Edición del componente resources/assets/js/components/PostsListItem.vue
+Commit - Formulario de contacto
+  -Edición del archivo resources/assets/js/routes.js
+  -Edición del componente resources/assets/js/views/Contact.vue
+  -Creación y edicion del componente resources/assets/js/components/ContactForm.vue
+  -Edición del archivo resources/assets/js/app.js
+    -Se registra el componente ContactForm 
+      -Vue.component('contact-form', require('./components/ContactForm'));
+  -Edición del archivo public/css/styles.css
+  -Edición del archivo routes/api.php
+    -Se crea la nueva ruta messages
+      -Route::post('messages', function(){ ...
