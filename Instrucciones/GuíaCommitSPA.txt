@@ -198,3 +198,6 @@ Commit - Formulario de contacto
   -Edición del archivo routes/api.php
     -Se crea la nueva ruta messages
       -Route::post('messages', function(){ ...
+Commit - Quitando el hash de la url
+  -Edición del archivo resources/assets/js/app.js
+  -Edición del archivo routes/web.php

@@ -14322,6 +14322,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
   }],
 
   linkExactActiveClass: 'active',
+  mode: 'history',
   scrollBehavior: function scrollBehavior() {
     return {
       x: 0,
